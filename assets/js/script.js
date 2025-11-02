@@ -30,7 +30,7 @@ const products = [
         name: "Premium Hoodie",
         category: "hoodies",
         price: 899,
-        image: "👕",
+        image: "assets/images/products/hoodie-classic.jpg",
         description: "Comfortable premium hoodie perfect for any season. Made with high-quality cotton blend.",
         featured: true
     },
@@ -39,7 +39,7 @@ const products = [
         name: "Designer Hoodie",
         category: "hoodies",
         price: 1199,
-        image: "👕",
+        image: "assets/images/products/sweatshirt-cozy.jpg",
         description: "Limited edition designer hoodie with unique patterns and premium finish."
     },
     {
@@ -47,7 +47,7 @@ const products = [
         name: "Oversized Hoodie",
         category: "hoodies",
         price: 1099,
-        image: "👕",
+        image: "assets/images/products/hoodie-classic.jpg",
         description: "Trendy oversized hoodie with relaxed fit and modern styling."
     },
     {
@@ -55,7 +55,7 @@ const products = [
         name: "Zip-Up Hoodie",
         category: "hoodies",
         price: 949,
-        image: "👕",
+        image: "assets/images/products/jacket-streetwear.jpg",
         description: "Versatile zip-up hoodie perfect for layering and active wear."
     },
     {
@@ -63,7 +63,7 @@ const products = [
         name: "Cropped Hoodie",
         category: "hoodies",
         price: 799,
-        image: "👕",
+        image: "assets/images/products/sweatshirt-cozy.jpg",
         description: "Stylish cropped hoodie with contemporary cut and premium materials."
     },
     
@@ -73,7 +73,7 @@ const products = [
         name: "Classic Jeans",
         category: "pants",
         price: 1299,
-        image: "👖",
+        image: "assets/images/products/jeans-premium.jpg",
         description: "Timeless denim jeans with perfect fit and durability. A wardrobe essential.",
         featured: true
     },
@@ -82,7 +82,7 @@ const products = [
         name: "Cargo Pants",
         category: "pants",
         price: 999,
-        image: "👖",
+        image: "assets/images/products/jeans-premium.jpg",
         description: "Functional cargo pants with multiple pockets and durable fabric."
     },
     {
@@ -90,7 +90,7 @@ const products = [
         name: "Slim Fit Chinos",
         category: "pants",
         price: 849,
-        image: "👖",
+        image: "assets/images/products/jeans-premium.jpg",
         description: "Elegant slim fit chinos perfect for casual and semi-formal occasions."
     },
     {
@@ -98,7 +98,7 @@ const products = [
         name: "Track Pants",
         category: "pants",
         price: 699,
-        image: "👖",
+        image: "assets/images/products/shorts-summer.jpg",
         description: "Comfortable track pants ideal for sports and leisure activities."
     },
     {
@@ -106,7 +106,7 @@ const products = [
         name: "Wide Leg Jeans",
         category: "pants",
         price: 1199,
-        image: "👖",
+        image: "assets/images/products/jeans-premium.jpg",
         description: "Trendy wide leg jeans with vintage-inspired styling and modern comfort."
     },
     
@@ -116,7 +116,7 @@ const products = [
         name: "Urban Sneakers",
         category: "shoes",
         price: 1599,
-        image: "👟",
+        image: "assets/images/products/sneakers-limited.jpg",
         description: "Stylish urban sneakers combining comfort and street style.",
         featured: true
     },
@@ -125,7 +125,7 @@ const products = [
         name: "High-Top Sneakers",
         category: "shoes",
         price: 1799,
-        image: "👟",
+        image: "assets/images/products/sneakers-limited.jpg",
         description: "Classic high-top sneakers with premium leather and superior support."
     },
     {
@@ -133,7 +133,7 @@ const products = [
         name: "Running Shoes",
         category: "shoes",
         price: 1899,
-        image: "👟",
+        image: "assets/images/products/sneakers-limited.jpg",
         description: "Performance running shoes with advanced cushioning and breathable design."
     },
     {
@@ -141,7 +141,7 @@ const products = [
         name: "Canvas Sneakers",
         category: "shoes",
         price: 899,
-        image: "👟",
+        image: "assets/images/products/sneakers-limited.jpg",
         description: "Lightweight canvas sneakers perfect for everyday casual wear."
     },
     {
@@ -149,7 +149,7 @@ const products = [
         name: "Slip-On Shoes",
         category: "shoes",
         price: 1299,
-        image: "👟",
+        image: "assets/images/products/sneakers-limited.jpg",
         description: "Convenient slip-on shoes with elastic panels and comfortable sole."
     },
     
@@ -159,7 +159,7 @@ const products = [
         name: "Street Cap",
         category: "hats",
         price: 399,
-        image: "🧢",
+        image: "assets/images/products/cap-urban.jpg",
         description: "Classic street cap with adjustable fit and premium materials.",
         featured: true
     },
@@ -168,7 +168,7 @@ const products = [
         name: "Snapback Cap",
         category: "hats",
         price: 449,
-        image: "🧢",
+        image: "assets/images/products/cap-urban.jpg",
         description: "Trendy snapback cap with flat brim and adjustable closure."
     },
     {
@@ -176,7 +176,7 @@ const products = [
         name: "Bucket Hat",
         category: "hats",
         price: 349,
-        image: "🧢",
+        image: "assets/images/products/cap-urban.jpg",
         description: "Stylish bucket hat perfect for sun protection and street fashion."
     },
     {
@@ -184,7 +184,7 @@ const products = [
         name: "Beanie",
         category: "hats",
         price: 299,
-        image: "🧢",
+        image: "assets/images/products/cap-urban.jpg",
         description: "Warm knitted beanie ideal for cold weather and casual styling."
     },
     {
@@ -192,7 +192,7 @@ const products = [
         name: "Dad Hat",
         category: "hats",
         price: 379,
-        image: "🧢",
+        image: "assets/images/products/cap-urban.jpg",
         description: "Relaxed dad hat with curved brim and comfortable unstructured fit."
     },
     
@@ -202,7 +202,7 @@ const products = [
         name: "Comfort Socks",
         category: "socks",
         price: 199,
-        image: "🧦",
+        image: "assets/images/products/accessories-combo.jpg",
         description: "Ultra-comfortable socks with moisture-wicking technology."
     },
     {
@@ -210,7 +210,7 @@ const products = [
         name: "Athletic Socks",
         category: "socks",
         price: 249,
-        image: "🧦",
+        image: "assets/images/products/accessories-combo.jpg",
         description: "Performance athletic socks with cushioned sole and arch support."
     },
     {
@@ -218,7 +218,7 @@ const products = [
         name: "Crew Socks",
         category: "socks",
         price: 179,
-        image: "🧦",
+        image: "assets/images/products/accessories-combo.jpg",
         description: "Classic crew socks in premium cotton blend for everyday wear."
     },
     {
@@ -226,7 +226,7 @@ const products = [
         name: "Ankle Socks",
         category: "socks",
         price: 159,
-        image: "🧦",
+        image: "assets/images/products/accessories-combo.jpg",
         description: "Low-cut ankle socks perfect for sneakers and casual shoes."
     },
     {
@@ -234,7 +234,7 @@ const products = [
         name: "Wool Socks",
         category: "socks",
         price: 299,
-        image: "🧦",
+        image: "assets/images/products/accessories-combo.jpg",
         description: "Premium wool socks providing warmth and natural odor resistance."
     },
     
@@ -244,7 +244,7 @@ const products = [
         name: "Essential Underwear",
         category: "underwear",
         price: 299,
-        image: "🩲",
+        image: "assets/images/products/tank-top-athletic.jpg",
         description: "Premium underwear with superior comfort and fit."
     },
     {
@@ -252,7 +252,7 @@ const products = [
         name: "Boxer Briefs",
         category: "underwear",
         price: 349,
-        image: "🩲",
+        image: "assets/images/products/tank-top-athletic.jpg",
         description: "Supportive boxer briefs with moisture-wicking fabric and comfortable waistband."
     },
     {
@@ -260,7 +260,7 @@ const products = [
         name: "Cotton Briefs",
         category: "underwear",
         price: 249,
-        image: "🩲",
+        image: "assets/images/products/tank-top-athletic.jpg",
         description: "Classic cotton briefs offering comfort and breathability for daily wear."
     },
     {
@@ -268,7 +268,7 @@ const products = [
         name: "Performance Underwear",
         category: "underwear",
         price: 399,
-        image: "🩲",
+        image: "assets/images/products/tank-top-athletic.jpg",
         description: "High-performance underwear with advanced fabric technology for active lifestyles."
     },
     {
@@ -276,19 +276,19 @@ const products = [
         name: "Bamboo Underwear",
         category: "underwear",
         price: 449,
-        image: "🩲",
+        image: "assets/images/products/polo-classic.jpg",
         description: "Eco-friendly bamboo underwear with natural antibacterial properties."
     }
 ];
 
 // Gallery items
 const galleryItems = [
-    { id: 1, image: "👕", title: "Street Style Collection", description: "Urban fashion meets comfort" },
-    { id: 2, image: "👖", title: "Denim Dreams", description: "Classic meets contemporary" },
-    { id: 3, image: "👟", title: "Sneaker Culture", description: "Step up your game" },
-    { id: 4, image: "🧢", title: "Cap Collection", description: "Top off your look" },
-    { id: 5, image: "👕", title: "Hoodie Season", description: "Cozy meets cool" },
-    { id: 6, image: "👖", title: "Perfect Fit", description: "Tailored for you" }
+    { id: 1, image: "assets/images/gallery/collection-1.jpg", title: "Street Style Collection", description: "Urban fashion meets comfort" },
+    { id: 2, image: "assets/images/products/jeans-premium.jpg", title: "Denim Dreams", description: "Classic meets contemporary" },
+    { id: 3, image: "assets/images/products/sneakers-limited.jpg", title: "Sneaker Culture", description: "Step up your game" },
+    { id: 4, image: "assets/images/products/cap-urban.jpg", title: "Cap Collection", description: "Top off your look" },
+    { id: 5, image: "assets/images/products/hoodie-classic.jpg", title: "Hoodie Season", description: "Cozy meets cool" },
+    { id: 6, image: "assets/images/gallery/lifestyle-1.jpg", title: "Perfect Fit", description: "Tailored for you" }
 ];
 
 // Data SDK handler
@@ -468,9 +468,7 @@ function renderProducts() {
     
     grid.innerHTML = filteredProducts.map(product => `
         <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
-            <div class="bg-gray-200 h-48 flex items-center justify-center text-6xl">
-                ${product.image}
-            </div>
+            <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
             <div class="p-4">
                 <h3 class="font-semibold text-lg mb-2">${product.name}</h3>
                 <p class="text-gray-600 text-sm mb-3">${product.description}</p>
@@ -512,9 +510,7 @@ function renderCategorySections() {
                     <div class="category-scroll" id="scroll-${category}">
                         ${categoryProducts.map(product => `
                             <div class="scroll-product-card card-hover bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
-                                <div class="bg-gray-200 h-48 flex items-center justify-center text-6xl">
-                                    ${product.image}
-                                </div>
+                                <img src="${product.image}" alt="${product.name}" class="w-full h-48 object-cover">
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">${product.name}</h4>
                                     <p class="text-gray-600 text-sm mb-3 line-clamp-2">${product.description}</p>
@@ -578,7 +574,7 @@ function openProductModal(productId) {
     document.getElementById('modal-product-description').textContent = product.description;
     document.getElementById('modal-product-price').textContent = `R${product.price}`;
     document.getElementById('modal-product-image').innerHTML = `
-        <div class="text-8xl">${product.image}</div>
+        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover rounded-lg">
     `;
     
     document.getElementById('product-modal').classList.add('active');
@@ -688,9 +684,7 @@ function renderGallery() {
     
     grid.innerHTML = galleryItems.map(item => `
         <div class="gallery-item card-hover bg-white rounded-lg shadow-md overflow-hidden">
-            <div class="bg-gray-200 h-64 flex items-center justify-center text-8xl">
-                ${item.image}
-            </div>
+            <img src="${item.image}" alt="${item.title}" class="w-full h-64 object-cover">
             <div class="p-4">
                 <h3 class="font-semibold text-lg mb-2">${item.title}</h3>
                 <p class="text-gray-600">${item.description}</p>
