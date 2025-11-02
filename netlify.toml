@@ -12,17 +12,29 @@
 
 # Form notifications with branded templates
 [forms]
-  # Contact form
-  [forms.contact]
-    template = "email-templates/contact-template.html"
+  # Contact form - business notification
+  [forms.contact-business]
+    template = "email-templates/contact-business-notification.html"
     to = "${EMAIL_TO}"
-    subject = "New CRBFTN Contact Form Submission - {{contactName}}"
+    subject = "New CRBFTN Contact Form Submission from {{name}}"
     
-  # Cart checkout form  
-  [forms.cart-checkout]
-    template = "email-templates/invoice-template.html"
+  # Contact form - customer thank you
+  [forms.contact-customer]
+    template = "email-templates/contact-customer-thankyou.html"
+    to = "{{email}}"
+    subject = "Thank you for contacting CRBFTN - We'll be in touch soon!"
+
+  # Quote request - business notification
+  [forms.quote-business]
+    template = "email-templates/quote-business-notification.html"
     to = "${EMAIL_TO}"
-    subject = "New CRBFTN Order - Invoice Request from {{firstName}} {{lastName}}"
+    subject = "New CRBFTN Quote Request from {{customerName}}"
+
+  # Quote request - customer confirmation
+  [forms.quote-customer]
+    template = "email-templates/quote-customer-confirmation.html"
+    to = "{{customerEmail}}"
+    subject = "Your CRBFTN Quote Request - We're Preparing Your Custom Quote!"
 
 [[redirects]]
   from = "/home"
@@ -37,11 +49,6 @@
 [[redirects]]
   from = "/products/*"
   to = "/products.html"
-  status = 200
-
-[[redirects]]
-  from = "/account/*"
-  to = "/account.html"
   status = 200
 
 [[redirects]]

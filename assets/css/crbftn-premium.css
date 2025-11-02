@@ -506,24 +506,6 @@ body {
     transition: all 0.3s ease;
 }
 
-/* ========== ACCOUNT STYLES ========== */
-.account-nav-item {
-    color: var(--text-secondary);
-    font-weight: 500;
-    transition: all 0.3s ease;
-}
-
-.account-nav-item:hover {
-    background: rgba(220, 38, 38, 0.1);
-    color: var(--brand-red);
-}
-
-.account-nav-item.active {
-    background: linear-gradient(135deg, var(--brand-red), var(--brand-blue));
-    color: white;
-    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
-}
-
 /* ========== CONTACT FORM STYLES ========== */
 .contact-form {
     background: var(--glass-bg);
