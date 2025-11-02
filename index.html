@@ -957,6 +957,15 @@
             await loadComponent('footer-container', 'components/footer.html');
             await loadComponent('modals-container', 'components/modals.html');
             
+            // Initialize AOS animations
+            if (typeof AOS !== 'undefined') {
+                AOS.init({
+                    duration: 1000,
+                    once: true,
+                    offset: 100
+                });
+            }
+            
             // Initialize the app after components are loaded
             if (typeof init === 'function') {
                 init();
