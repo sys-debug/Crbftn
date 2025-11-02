@@ -66,6 +66,49 @@ const products = [
         image: "assets/images/products/sweatshirt-cozy.jpg",
         description: "Stylish cropped hoodie with contemporary cut and premium materials."
     },
+
+    // T-Shirts
+    {
+        id: 31,
+        name: "Classic Tee",
+        category: "tshirts",
+        price: 499,
+        image: "assets/images/products/t-shirt-premium.jpg",
+        description: "Premium cotton t-shirt with CRBFTN branding. Essential wardrobe staple.",
+        featured: true
+    },
+    {
+        id: 32,
+        name: "Graphic Tee",
+        category: "tshirts",
+        price: 549,
+        image: "assets/images/products/polo-classic.jpg",
+        description: "Bold graphic t-shirt with unique CRBFTN artwork and premium print quality."
+    },
+    {
+        id: 33,
+        name: "Vintage Tee",
+        category: "tshirts",
+        price: 599,
+        image: "assets/images/products/t-shirt-premium.jpg",
+        description: "Vintage-inspired t-shirt with distressed details and soft cotton blend."
+    },
+    {
+        id: 34,
+        name: "Long Sleeve Tee",
+        category: "tshirts",
+        price: 649,
+        image: "assets/images/products/tank-top-athletic.jpg",
+        description: "Comfortable long sleeve t-shirt perfect for layering and casual wear."
+    },
+    {
+        id: 35,
+        name: "Polo Shirt",
+        category: "tshirts",
+        price: 749,
+        image: "assets/images/products/polo-classic.jpg",
+        description: "Classic polo shirt with modern fit and premium cotton construction."
+    },
     
     // Pants
     {
@@ -153,11 +196,11 @@ const products = [
         description: "Convenient slip-on shoes with elastic panels and comfortable sole."
     },
     
-    // Hats
+    // Accessories (Hats, Socks, Underwear)
     {
         id: 4,
         name: "Street Cap",
-        category: "hats",
+        category: "accessories",
         price: 399,
         image: "assets/images/products/cap-urban.jpg",
         description: "Classic street cap with adjustable fit and premium materials.",
@@ -166,7 +209,7 @@ const products = [
     {
         id: 10,
         name: "Snapback Cap",
-        category: "hats",
+        category: "accessories",
         price: 449,
         image: "assets/images/products/cap-urban.jpg",
         description: "Trendy snapback cap with flat brim and adjustable closure."
@@ -174,7 +217,7 @@ const products = [
     {
         id: 16,
         name: "Bucket Hat",
-        category: "hats",
+        category: "accessories",
         price: 349,
         image: "assets/images/products/cap-urban.jpg",
         description: "Stylish bucket hat perfect for sun protection and street fashion."
@@ -182,7 +225,7 @@ const products = [
     {
         id: 22,
         name: "Beanie",
-        category: "hats",
+        category: "accessories",
         price: 299,
         image: "assets/images/products/cap-urban.jpg",
         description: "Warm knitted beanie ideal for cold weather and casual styling."
@@ -190,17 +233,15 @@ const products = [
     {
         id: 28,
         name: "Dad Hat",
-        category: "hats",
+        category: "accessories",
         price: 379,
         image: "assets/images/products/cap-urban.jpg",
         description: "Relaxed dad hat with curved brim and comfortable unstructured fit."
     },
-    
-    // Socks
     {
         id: 5,
         name: "Comfort Socks",
-        category: "socks",
+        category: "accessories",
         price: 199,
         image: "assets/images/products/accessories-combo.jpg",
         description: "Ultra-comfortable socks with moisture-wicking technology."
@@ -208,7 +249,7 @@ const products = [
     {
         id: 11,
         name: "Athletic Socks",
-        category: "socks",
+        category: "accessories",
         price: 249,
         image: "assets/images/products/accessories-combo.jpg",
         description: "Performance athletic socks with cushioned sole and arch support."
@@ -216,7 +257,7 @@ const products = [
     {
         id: 17,
         name: "Crew Socks",
-        category: "socks",
+        category: "accessories",
         price: 179,
         image: "assets/images/products/accessories-combo.jpg",
         description: "Classic crew socks in premium cotton blend for everyday wear."
@@ -224,7 +265,7 @@ const products = [
     {
         id: 23,
         name: "Ankle Socks",
-        category: "socks",
+        category: "accessories",
         price: 159,
         image: "assets/images/products/accessories-combo.jpg",
         description: "Low-cut ankle socks perfect for sneakers and casual shoes."
@@ -232,17 +273,15 @@ const products = [
     {
         id: 29,
         name: "Wool Socks",
-        category: "socks",
+        category: "accessories",
         price: 299,
         image: "assets/images/products/accessories-combo.jpg",
         description: "Premium wool socks providing warmth and natural odor resistance."
     },
-    
-    // Underwear
     {
         id: 6,
         name: "Essential Underwear",
-        category: "underwear",
+        category: "accessories",
         price: 299,
         image: "assets/images/products/tank-top-athletic.jpg",
         description: "Premium underwear with superior comfort and fit."
@@ -250,7 +289,7 @@ const products = [
     {
         id: 12,
         name: "Boxer Briefs",
-        category: "underwear",
+        category: "accessories",
         price: 349,
         image: "assets/images/products/tank-top-athletic.jpg",
         description: "Supportive boxer briefs with moisture-wicking fabric and comfortable waistband."
@@ -258,7 +297,7 @@ const products = [
     {
         id: 18,
         name: "Cotton Briefs",
-        category: "underwear",
+        category: "accessories",
         price: 249,
         image: "assets/images/products/tank-top-athletic.jpg",
         description: "Classic cotton briefs offering comfort and breathability for daily wear."
@@ -266,7 +305,7 @@ const products = [
     {
         id: 24,
         name: "Performance Underwear",
-        category: "underwear",
+        category: "accessories",
         price: 399,
         image: "assets/images/products/tank-top-athletic.jpg",
         description: "High-performance underwear with advanced fabric technology for active lifestyles."
@@ -274,7 +313,7 @@ const products = [
     {
         id: 30,
         name: "Bamboo Underwear",
-        category: "underwear",
+        category: "accessories",
         price: 449,
         image: "assets/images/products/polo-classic.jpg",
         description: "Eco-friendly bamboo underwear with natural antibacterial properties."
