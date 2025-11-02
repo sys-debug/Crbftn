@@ -76,6 +76,7 @@ body {
     color: var(--text-primary);
     background-color: var(--brand-white);
     overflow-x: hidden;
+    padding-top: 80px; /* Account for fixed navigation */
 }
 
 /* ========== TYPOGRAPHY ========== */
@@ -915,8 +916,29 @@ body.has-sticky-nav {
         padding: 30px 20px;
     }
     
-    body.has-sticky-nav {
-        padding-top: 70px;
+    body {
+        padding-top: 70px; /* Smaller padding on mobile */
+    }
+    
+    /* Mobile navigation fixes */
+    .navbar-sticky {
+        padding: 8px 0;
+        height: 64px;
+    }
+    
+    /* Ensure touch targets are large enough */
+    button, .btn-primary, .btn-secondary {
+        min-height: 44px;
+        min-width: 44px;
+    }
+    
+    /* Better mobile text sizing */
+    .text-6xl {
+        font-size: 3rem !important;
+    }
+    
+    .text-4xl {
+        font-size: 2rem !important;
     }
 }
 
