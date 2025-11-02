@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Contact Form Submission - CRBFTN</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9fafb;
+            color: #1f2937;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #ffffff;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .header {
+            background: linear-gradient(135deg, #dc2626, #1d4ed8);
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+        .header h1 {
+            margin: 0;
+            font-size: 32px;
+            font-weight: bold;
+            letter-spacing: 2px;
+        }
+        .header p {
+            margin: 10px 0 0 0;
+            font-size: 16px;
+            opacity: 0.9;
+        }
+        .content {
+            padding: 40px 30px;
+        }
+        .alert {
+            background: linear-gradient(135deg, #fee2e2, #dbeafe);
+            border-left: 4px solid #dc2626;
+            padding: 20px;
+            margin-bottom: 30px;
+            border-radius: 8px;
+        }
+        .alert h2 {
+            margin: 0 0 10px 0;
+            color: #dc2626;
+            font-size: 20px;
+        }
+        .customer-details {
+            background: #f3f4f6;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+        }
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid #e5e7eb;
+        }
+        .detail-row:last-child {
+            border-bottom: none;
+        }
+        .detail-label {
+            font-weight: 600;
+            color: #374151;
+            min-width: 120px;
+        }
+        .detail-value {
+            color: #1f2937;
+            font-weight: 500;
+            flex: 1;
+            text-align: right;
+        }
+        .message-section {
+            background: #f9fafb;
+            border-radius: 12px;
+            padding: 25px;
+            margin: 25px 0;
+            border-left: 4px solid #1d4ed8;
+        }
+        .message-section h3 {
+            margin: 0 0 15px 0;
+            color: #1d4ed8;
+            font-size: 18px;
+        }
+        .message-content {
+            line-height: 1.6;
+            color: #374151;
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+        .action-button {
+            display: inline-block;
+            background: linear-gradient(135deg, #dc2626, #1d4ed8);
+            color: white;
+            text-decoration: none;
+            padding: 15px 30px;
+            border-radius: 8px;
+            font-weight: 600;
+            text-align: center;
+            margin: 20px 0;
+            transition: transform 0.2s ease;
+        }
+        .action-button:hover {
+            transform: translateY(-2px);
+            text-decoration: none;
+            color: white;
+        }
+        .footer {
+            background: #1f2937;
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+        .footer h3 {
+            margin: 0 0 15px 0;
+            color: #dc2626;
+        }
+        .footer p {
+            margin: 5px 0;
+            opacity: 0.8;
+        }
+        .timestamp {
+            background: #e5e7eb;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 14px;
+            color: #6b7280;
+            text-align: center;
+            margin: 20px 0;
+        }
+        .priority-high {
+            background: linear-gradient(135deg, #fee2e2, #fef2f2);
+            border: 2px solid #dc2626;
+            padding: 15px;
+            border-radius: 8px;
+            margin: 20px 0;
+            text-align: center;
+        }
+        .priority-high strong {
+            color: #dc2626;
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <h1>CRBFTN</h1>
+            <p>Style Redefined - New Customer Inquiry</p>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Alert -->
+            <div class="alert">
+                <h2>🔔 New Contact Form Submission</h2>
+                <p>A potential customer has reached out through your website contact form. Review the details below and respond within 24 hours.</p>
+            </div>
+
+            <!-- Customer Details -->
+            <div class="customer-details">
+                <h3 style="margin: 0 0 20px 0; color: #1f2937;">Customer Information</h3>
+                <div class="detail-row">
+                    <span class="detail-label">Name:</span>
+                    <span class="detail-value">{{firstName}} {{lastName}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Email:</span>
+                    <span class="detail-value">{{email}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Phone:</span>
+                    <span class="detail-value">{{phone}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Subject:</span>
+                    <span class="detail-value">{{subject}}</span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Newsletter:</span>
+                    <span class="detail-value">{{newsletter}}</span>
+                </div>
+            </div>
+
+            <!-- Message -->
+            <div class="message-section">
+                <h3>📝 Customer Message</h3>
+                <div class="message-content">
+                    {{message}}
+                </div>
+            </div>
+
+            <!-- Priority Notice -->
+            <div class="priority-high">
+                <strong>⚡ HIGH PRIORITY</strong><br>
+                Respond within 24 hours to maintain excellent customer service
+            </div>
+
+            <!-- Action Button -->
+            <div style="text-align: center;">
+                <a href="mailto:{{email}}" class="action-button">
+                    📧 Reply to Customer
+                </a>
+            </div>
+
+            <!-- Timestamp -->
+            <div class="timestamp">
+                Submitted: {{submissionDate}}
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div class="footer">
+            <h3>CRBFTN Business Dashboard</h3>
+            <p>📍 Makhado, Limpopo, South Africa</p>
+            <p>📧 hello@crbftn.co.za</p>
+            <p>🌐 Premium Clothing Brand</p>
+            <p style="margin-top: 20px; font-size: 12px; opacity: 0.6;">
+                This notification was generated automatically from your CRBFTN website contact form.
+            </p>
+        </div>
+    </div>
+</body>
+</html>

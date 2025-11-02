@@ -6,8 +6,8 @@
     <title>Contact Us - CRBFTN</title>
     <meta name="description" content="Get in touch with CRBFTN. Located in Makhado, Limpopo. Premium clothing brand with South African heritage.">
     
-    <!-- Tailwind CSS (Local Production Build) -->
-    <link rel="stylesheet" href="assets/css/tailwind.css">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
     
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -219,6 +219,23 @@
                             <input type="text" name="total" />
                             <input type="text" name="timestamp" />
                         </form>
+                        
+                        <!-- Hidden form for customer thank you emails -->
+                        <form name="contact-customer-thankyou" method="POST" data-netlify="true" style="display: none;">
+                            <input type="text" name="firstName" />
+                            <input type="text" name="lastName" />
+                            <input type="email" name="email" />
+                            <input type="text" name="subject" />
+                            <input type="text" name="timestamp" />
+                        </form>
+                        
+                        <!-- Hidden form for quote customer confirmations -->
+                        <form name="quote-customer-confirmation" method="POST" data-netlify="true" style="display: none;">
+                            <input type="text" name="items" />
+                            <input type="text" name="total" />
+                            <input type="text" name="timestamp" />
+                            <input type="text" name="itemsCount" />
+                        </form>
                     </div>
                 </div>
             </div>
@@ -373,7 +390,7 @@
             }
         });
 
-        // Contact form submission handler
+        // Contact form submission handler with dual emails
         function handleContactSubmission(event) {
             event.preventDefault(); // Prevent default form submission
             
@@ -383,9 +400,10 @@
             
             // Set the submission date
             const dateField = document.getElementById('submissionDate');
+            const timestamp = new Date().toISOString();
             if (dateField) {
-                dateField.value = new Date().toISOString();
-                formData.set('submissionDate', dateField.value);
+                dateField.value = timestamp;
+                formData.set('submissionDate', timestamp);
             }
             
             // Show loading state
@@ -394,17 +412,37 @@
             submitBtn.innerHTML = '<svg class="w-5 h-5 mr-2 animate-spin" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" class="opacity-75"></path></svg>Sending...';
             submitBtn.disabled = true;
             
-            // Submit to Netlify
+            // Submit main contact form (to business)
             fetch('/', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 body: new URLSearchParams(formData).toString()
             })
             .then(() => {
+                // Now send thank you email to customer
+                const customerFormData = new FormData();
+                customerFormData.append('form-name', 'contact-customer-thankyou');
+                customerFormData.append('firstName', formData.get('firstName'));
+                customerFormData.append('lastName', formData.get('lastName'));
+                customerFormData.append('email', formData.get('email'));
+                customerFormData.append('subject', formData.get('subject'));
+                customerFormData.append('timestamp', timestamp);
+                
+                return fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(customerFormData).toString()
+                });
+            })
+            .then(() => {
                 // Show success message
                 form.style.display = 'none';
                 successDiv.style.display = 'block';
                 successDiv.scrollIntoView({ behavior: 'smooth' });
+                
+                // Reset button
+                submitBtn.innerHTML = originalText;
+                submitBtn.disabled = false;
             })
             .catch((error) => {
                 console.error('Error:', error);
@@ -418,6 +456,7 @@
         }
     </script>
 
-
+    <!-- Cloudflare Script -->
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99835476556a3e9a',t:'MTc2MjA4MzM0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>

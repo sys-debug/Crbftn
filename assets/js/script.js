@@ -732,6 +732,10 @@ function requestQuote() {
     }
     
     // Prepare quote data
+    const timestamp = new Date().toISOString();
+    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const itemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
+    
     const quoteData = {
         items: cart.map(item => ({
             name: item.name,
@@ -740,19 +744,22 @@ function requestQuote() {
             price: item.price,
             total: item.price * item.quantity
         })),
-        totalAmount: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        totalAmount: totalAmount,
+        itemsCount: itemsCount,
         customerInfo: {
-            timestamp: new Date().toISOString(),
+            timestamp: timestamp,
             userAgent: navigator.userAgent
         }
     };
     
-    // Create form data for Netlify
-    const formData = new FormData();
-    formData.append('form-name', 'quote-request');
-    formData.append('items', JSON.stringify(quoteData.items));
-    formData.append('total', `R${quoteData.totalAmount.toFixed(2)}`);
-    formData.append('timestamp', quoteData.customerInfo.timestamp);
+    // Create form data for business notification
+    const businessFormData = new FormData();
+    businessFormData.append('form-name', 'quote-request');
+    businessFormData.append('items', JSON.stringify(quoteData.items));
+    businessFormData.append('total', `R${totalAmount.toFixed(2)}`);
+    businessFormData.append('timestamp', timestamp);
+    businessFormData.append('itemsCount', itemsCount.toString());
+    businessFormData.append('userAgent', navigator.userAgent);
     
     // Show loading state
     const requestBtn = document.querySelector('[onclick="requestQuote()"]');
@@ -766,15 +773,30 @@ function requestQuote() {
     `;
     requestBtn.disabled = true;
     
-    // Submit to Netlify
+    // Submit business notification first
     fetch('/', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(formData).toString()
+        body: new URLSearchParams(businessFormData).toString()
+    })
+    .then(() => {
+        // Now send customer confirmation email
+        const customerFormData = new FormData();
+        customerFormData.append('form-name', 'quote-customer-confirmation');
+        customerFormData.append('items', JSON.stringify(quoteData.items));
+        customerFormData.append('total', `R${totalAmount.toFixed(2)}`);
+        customerFormData.append('timestamp', timestamp);
+        customerFormData.append('itemsCount', itemsCount.toString());
+        
+        return fetch('/', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+            body: new URLSearchParams(customerFormData).toString()
+        });
     })
     .then(() => {
         // Success - show message and clear cart
-        showToast('Quote request sent! We\'ll email you within 24 hours. 📧');
+        showToast('Quote request sent! Check your email for confirmation. We\'ll send your quote within 24 hours. 📧');
         cart = [];
         updateCartDisplay();
         toggleCart();
