@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Premium Collection - CRBFTN</title>
+    <meta name="description" content="Discover CRBFTN's premium streetwear collection. Quality clothing from Makhado, Limpopo with South African heritage.">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Inter:wght@300;400;500;600;700&family=Old+Standard+TT:wght@400;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom Styles -->
+    <link rel="stylesheet" href="assets/css/crbftn-premium.css">
+    
+    <!-- AOS Animation Library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+</head>
+<body class="bg-gray-50 overflow-x-hidden">
+    <!-- Navigation -->
+    <div id="navigation-container"></div>
+
+    <!-- Hero Section -->
+    <section class="relative bg-gradient-to-br from-black via-red-900 to-blue-900 text-white py-24">
+        <div class="floating-element floating-element-1"></div>
+        <div class="floating-element floating-element-2"></div>
+        
+        <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="animate-fadeInUp">
+                <span class="text-red-400 font-semibold text-sm uppercase tracking-wider">Premium Collection</span>
+                <h1 class="heading-brand text-6xl md:text-7xl mt-4 mb-8 text-white">
+                    Our Products
+                </h1>
+                <div class="w-32 h-1 bg-gradient-to-r from-red-600 to-blue-600 mx-auto mb-8 animate-shimmer"></div>
+                <p class="text-xl opacity-90 max-w-3xl mx-auto leading-relaxed">
+                    Discover our handcrafted collection where South African heritage meets contemporary streetwear. 
+                    Every piece tells a story of quality, culture, and cutting-edge style.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filters Section -->
+    <section class="py-16 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">Shop by Category</h2>
+                <p class="text-gray-600">Find exactly what you're looking for</p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4 mb-8" data-aos="fade-up" data-aos-delay="200">
+                <button onclick="filterProducts('all')" class="filter-btn active btn-primary">
+                    All Products
+                </button>
+                <button onclick="filterProducts('hoodies')" class="filter-btn btn-secondary">
+                    Premium Hoodies
+                </button>
+                <button onclick="filterProducts('tshirts')" class="filter-btn btn-secondary">
+                    Classic Tees
+                </button>
+                <button onclick="filterProducts('accessories')" class="filter-btn btn-outline-red">
+                    Accessories
+                </button>
+                <button onclick="filterProducts('pants')" class="filter-btn btn-secondary">
+                    Pants
+                </button>
+                <button onclick="filterProducts('shoes')" class="filter-btn btn-secondary">
+                    Footwear
+                </button>
+            </div>
+            
+            <!-- Sort and View Options -->
+            <div class="flex flex-col sm:flex-row justify-between items-center mb-8" data-aos="fade-up" data-aos-delay="400">
+                <div class="flex items-center space-x-4 mb-4 sm:mb-0">
+                    <span class="text-gray-600">Sort by:</span>
+                    <select class="form-input bg-white text-gray-900 border-gray-300">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest First</option>
+                        <option>Best Selling</option>
+                    </select>
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button class="p-2 border rounded hover:bg-gray-50">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2V6zM14 6a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2V6zM4 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2H6a2 2 0 01-2-2v-2zM14 16a2 2 0 012-2h2a2 2 0 012 2v2a2 2 0 01-2 2h-2a2 2 0 01-2-2v-2z"></path>
+                        </svg>
+                    </button>
+                    <button class="p-2 border rounded hover:bg-gray-50">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 10h16M4 14h16M4 18h16"></path>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Products Grid -->
+    <section class="py-16 bg-gray-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="product-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-grid">
+                <!-- Products will be populated by JavaScript -->
+            </div>
+            
+            <!-- Load More Button -->
+            <div class="text-center mt-16" data-aos="fade-up">
+                <button class="btn-primary text-lg px-12 py-4">
+                    Load More Products
+                </button>
+                <p class="text-gray-600 mt-4">Showing 12 of 48 products</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="text-center" data-aos="fade-up" data-aos-delay="200">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Premium Quality</h3>
+                    <p class="text-gray-600">Every piece is crafted with attention to detail and premium materials</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="400">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Fast Delivery</h3>
+                    <p class="text-gray-600">Free shipping nationwide on orders over R500</p>
+                </div>
+                <div class="text-center" data-aos="fade-up" data-aos-delay="600">
+                    <div class="w-16 h-16 bg-gradient-to-r from-red-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                        <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path>
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-bold mb-4">Made with Love</h3>
+                    <p class="text-gray-600">Proudly designed and crafted in Makhado, Limpopo</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <div id="footer-container"></div>
+
+    <!-- Modals -->
+    <div id="modals-container"></div>
+
+    <!-- Custom JavaScript -->
+    <script src="assets/js/script.js"></script>
+
+    <!-- Component Loader Script -->
+    <script>
+        // Function to load HTML components
+        async function loadComponent(elementId, componentPath) {
+            try {
+                const response = await fetch(componentPath);
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const html = await response.text();
+                document.getElementById(elementId).innerHTML = html;
+            } catch (error) {
+                console.error(`Error loading ${componentPath}:`, error);
+                // Fallback for local file testing - load inline navigation
+                if (location.protocol === 'file:' && elementId === 'navigation-container') {
+                    loadInlineNavigation();
+                }
+            }
+        }
+
+        // Fallback inline navigation for local testing
+        function loadInlineNavigation() {
+            const navContainer = document.getElementById('navigation-container');
+            if (navContainer) {
+                navContainer.innerHTML = `
+                    <nav class="navbar bg-white shadow-lg sticky top-0 z-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="flex justify-between items-center h-16">
+                                <div class="flex items-center">
+                                    <h1 class="text-2xl font-bold text-gray-900 heading-display">CRBFTN</h1>
+                                    <span class="ml-3 text-sm text-gray-600">Style Redefined</span>
+                                </div>
+                                <div class="hidden md:flex space-x-8">
+                                    <a href="index.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                                    <a href="about.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                                    <a href="products.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Products</a>
+                                    <a href="gallery.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                                    <a href="reviews.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                                    <a href="contact.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                                    <a href="account.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Account</a>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <div class="hidden md:flex">
+                                        <button onclick="alert('Sign in feature requires server')" class="text-sm text-gray-700 hover:text-purple-600 mr-4">Sign In</button>
+                                        <button onclick="alert('Sign up feature requires server')" class="btn-secondary text-sm px-4 py-2">Sign Up</button>
+                                    </div>
+                                    <button onclick="window.location.href='cart.html'" class="relative p-2 text-gray-700 hover:text-purple-600 transition-colors">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9"></path>
+                                        </svg>
+                                        <span class="cart-badge">0</span>
+                                    </button>
+                                    <button class="md:hidden" onclick="toggleMobileMenuFallback()">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+                        <div class="px-4 py-2 space-y-2">
+                            <a href="index.html" class="block py-2 text-gray-700">Home</a>
+                            <a href="about.html" class="block py-2 text-gray-700">About</a>
+                            <a href="products.html" class="block py-2 text-gray-700">Products</a>
+                            <a href="gallery.html" class="block py-2 text-gray-700">Gallery</a>
+                            <a href="reviews.html" class="block py-2 text-gray-700">Reviews</a>
+                            <a href="contact.html" class="block py-2 text-gray-700">Contact</a>
+                            <a href="account.html" class="block py-2 text-gray-700">Account</a>
+                        </div>
+                    </div>
+                `;
+            }
+        }
+
+        // Simple mobile menu toggle for fallback
+        function toggleMobileMenuFallback() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+            }
+        }
+
+        // Load all components when DOM is ready
+        document.addEventListener('DOMContentLoaded', async function() {
+            await loadComponent('navigation-container', 'components/navigation.html');
+            await loadComponent('footer-container', 'components/footer.html');
+            await loadComponent('modals-container', 'components/modals.html');
+            
+            // Initialize the app after components are loaded
+            if (typeof init === 'function') {
+                init();
+            }
+        });
+    </script>
+
+    <!-- Cloudflare Script -->
+    <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99835476556a3e9a',t:'MTc2MjA4MzM0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
+</body>
+</html>
+
+

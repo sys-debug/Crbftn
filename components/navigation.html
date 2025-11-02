@@ -1,0 +1,92 @@
+<!-- Navigation -->
+<nav class="navbar bg-white shadow-lg sticky top-0 z-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center h-16">
+            <div class="flex items-center">
+                <h1 id="brand-name" class="text-2xl font-bold text-gray-900 heading-display">CRBFTN</h1>
+                <span id="brand-tagline" class="ml-3 text-sm text-gray-600">Style Redefined</span>
+            </div>
+            <div class="hidden md:flex space-x-8">
+                <a href="index.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                <a href="about.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                <a href="products.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Products</a>
+                <a href="gallery.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                <a href="reviews.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                <a href="contact.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+            </div>
+            <div class="flex items-center space-x-4">
+                <!-- Authentication Container -->
+                <div id="auth-container" class="hidden md:flex space-x-3">
+                    <!-- Default signed out state -->
+                    <div id="signed-out-buttons" class="flex space-x-3">
+                        <button onclick="showAuthModal && showAuthModal('signin')" class="text-sm text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                            Sign In
+                        </button>
+                        <button onclick="showAuthModal && showAuthModal('signup')" class="btn-primary text-sm px-4 py-2">
+                            Sign Up
+                        </button>
+                    </div>
+                    <!-- Signed in state (hidden by default) -->
+                    <div id="signed-in-buttons" class="hidden flex items-center space-x-3">
+                        <span id="user-greeting" class="text-sm text-gray-700">Hello, User!</span>
+                        <a href="account.html" class="text-sm text-gray-700 hover:text-purple-600 font-medium transition-colors">
+                            Account
+                        </a>
+                        <button onclick="signOut && signOut()" class="text-sm text-gray-700 hover:text-red-600 font-medium transition-colors">
+                            Sign Out
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Cart Button -->
+                <button onclick="toggleCart && toggleCart()" class="relative p-2 text-gray-700 hover:text-purple-600 transition-colors">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9"></path>
+                    </svg>
+                    <span id="cart-count" class="cart-badge">0</span>
+                </button>
+                
+                <!-- Mobile Menu Button -->
+                <button class="md:hidden" onclick="toggleMobileMenu && toggleMobileMenu()">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Menu -->
+<div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg">
+    <div class="px-4 py-2 space-y-2">
+        <a href="index.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+        <a href="about.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">About</a>
+        <a href="products.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">Products</a>
+        <a href="gallery.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+        <a href="reviews.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+        <a href="contact.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+        
+        <!-- Mobile Auth Section -->
+        <div id="mobile-auth-container" class="pt-4 border-t border-gray-200">
+            <!-- Mobile signed out state -->
+            <div id="mobile-signed-out" class="space-y-2">
+                <button onclick="showAuthModal && showAuthModal('signin')" class="block w-full text-left py-2 text-gray-700 hover:text-purple-600 transition-colors">
+                    Sign In
+                </button>
+                <button onclick="showAuthModal && showAuthModal('signup')" class="block w-full text-left py-2 text-gray-700 hover:text-purple-600 transition-colors">
+                    Sign Up
+                </button>
+            </div>
+            <!-- Mobile signed in state (hidden by default) -->
+            <div id="mobile-signed-in" class="hidden space-y-2">
+                <a href="account.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">
+                    My Account
+                </a>
+                <button onclick="signOut && signOut()" class="block w-full text-left py-2 text-gray-700 hover:text-red-600 transition-colors">
+                    Sign Out
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
