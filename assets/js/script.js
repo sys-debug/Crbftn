@@ -427,8 +427,13 @@ async function init() {
 // Navigation functions
 function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
-    menu.classList.toggle('hidden');
+    if (menu) {
+        menu.classList.toggle('hidden');
+    }
 }
+
+// Make sure the function is globally available
+window.toggleMobileMenu = toggleMobileMenu;
 
 // Product functions
 function renderProducts() {

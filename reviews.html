@@ -350,50 +350,6 @@
             </div>
         </div>
     </section>
-    <!-- Navigation -->
-    <div id="navigation-container"></div>
-
-    <!-- Reviews Page Content -->
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-        <h2 class="text-3xl font-bold mb-8">Customer Reviews</h2>
-        
-        <!-- Add Review Form -->
-        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
-            <h3 class="text-xl font-semibold mb-4">Leave a Review</h3>
-            <form id="review-form" onsubmit="submitReview(event)">
-                <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-                    <input type="text" id="reviewer-name" placeholder="Your Name" required class="border rounded-lg px-4 py-2">
-                    <input type="email" id="reviewer-email" placeholder="Your Email" required class="border rounded-lg px-4 py-2">
-                </div>
-                <div class="mb-4">
-                    <select id="product-select" required class="border rounded-lg px-4 py-2 w-full">
-                        <option value="">Select Product</option>
-                        <option value="Premium Hoodie">Premium Hoodie</option>
-                        <option value="Classic Jeans">Classic Jeans</option>
-                        <option value="Urban Sneakers">Urban Sneakers</option>
-                        <option value="Street Cap">Street Cap</option>
-                    </select>
-                </div>
-                <div class="mb-4">
-                    <label class="block text-sm font-medium mb-2">Rating</label>
-                    <div class="flex space-x-2">
-                        <button type="button" onclick="setRating(1)" class="rating-star text-2xl text-gray-300">★</button>
-                        <button type="button" onclick="setRating(2)" class="rating-star text-2xl text-gray-300">★</button>
-                        <button type="button" onclick="setRating(3)" class="rating-star text-2xl text-gray-300">★</button>
-                        <button type="button" onclick="setRating(4)" class="rating-star text-2xl text-gray-300">★</button>
-                        <button type="button" onclick="setRating(5)" class="rating-star text-2xl text-gray-300">★</button>
-                    </div>
-                </div>
-                <textarea id="review-text" placeholder="Write your review..." required class="border rounded-lg px-4 py-2 w-full h-24 mb-4"></textarea>
-                <button type="submit" class="btn-primary text-white px-6 py-2 rounded-lg">Submit Review</button>
-            </form>
-        </div>
-        
-        <!-- Reviews List -->
-        <div id="reviews-list" class="space-y-6">
-            <!-- Reviews will be populated by JavaScript -->
-        </div>
-    </div>
 
     <!-- Footer -->
     <div id="footer-container"></div>
