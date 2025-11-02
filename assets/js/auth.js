@@ -19,14 +19,14 @@ import {
     orderBy 
 } from 'firebase/firestore';
 
-// Firebase configuration - REPLACE WITH YOUR PROJECT DETAILS
+// Firebase configuration - CRBFTN Project Configuration
 const firebaseConfig = {
-    apiKey: "YOUR_API_KEY",
-    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
-    projectId: "YOUR_PROJECT_ID",
-    storageBucket: "YOUR_PROJECT_ID.appspot.com",
-    messagingSenderId: "YOUR_MESSAGING_SENDER_ID",
-    appId: "YOUR_APP_ID"
+    apiKey: "AIzaSyARHl5oM9k1baV6TYiaBPzA3o0sxitZJLM",
+    authDomain: "crbftn.firebaseapp.com",
+    projectId: "crbftn",
+    storageBucket: "crbftn.firebasestorage.app",
+    messagingSenderId: "63933497433",
+    appId: "1:63933497433:web:07021d7c3711c0ca66b148"
 };
 
 // Initialize Firebase
