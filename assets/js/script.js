@@ -429,11 +429,35 @@ function toggleMobileMenu() {
     const menu = document.getElementById('mobile-menu');
     if (menu) {
         menu.classList.toggle('hidden');
+        
+        // Add overlay for better mobile UX
+        let overlay = document.getElementById('mobile-menu-overlay');
+        if (!menu.classList.contains('hidden')) {
+            if (!overlay) {
+                overlay = document.createElement('div');
+                overlay.id = 'mobile-menu-overlay';
+                overlay.style.cssText = 'position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); z-index: 99997;';
+                overlay.onclick = () => toggleMobileMenu();
+                document.body.appendChild(overlay);
+            }
+            document.body.style.overflow = 'hidden';
+        } else {
+            if (overlay) {
+                overlay.remove();
+            }
+            document.body.style.overflow = '';
+        }
     }
 }
 
-// Make sure the function is globally available
+// Enhanced fallback function for mobile menu
+function toggleMobileMenuFallback() {
+    toggleMobileMenu();
+}
+
+// Make sure the function is globally available with enhanced error checking
 window.toggleMobileMenu = toggleMobileMenu;
+window.toggleMobileMenuFallback = toggleMobileMenuFallback;
 
 // Product functions
 function renderProducts() {
