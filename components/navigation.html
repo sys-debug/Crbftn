@@ -67,6 +67,17 @@
         <a href="reviews.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
         <a href="contact.html" class="block py-2 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
         
+        <!-- Mobile Cart -->
+        <button onclick="if(typeof toggleCart === 'function') { toggleCart(); } else { window.location.href='cart.html'; }" class="flex items-center justify-between w-full py-2 text-gray-700 hover:text-purple-600 transition-colors">
+            <span class="flex items-center">
+                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6M7 13l-1.5 6m0 0h9"></path>
+                </svg>
+                Shopping Cart
+            </span>
+            <span id="mobile-cart-count" class="bg-red-600 text-white text-xs rounded-full px-2 py-1 min-w-[20px] text-center">0</span>
+        </button>
+        
         <!-- Mobile Auth Section -->
         <div id="mobile-auth-container" class="pt-4 border-t border-gray-200">
             <!-- Mobile signed out state -->

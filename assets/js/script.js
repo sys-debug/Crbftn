@@ -421,6 +421,18 @@ async function init() {
     renderProducts();
     renderCategorySections();
     renderGallery();
+    
+    // Initialize cart from localStorage
+    const savedCart = localStorage.getItem('crbftn_cart');
+    if (savedCart) {
+        try {
+            cart = JSON.parse(savedCart);
+        } catch (e) {
+            console.error('Error loading cart from localStorage:', e);
+            cart = [];
+        }
+    }
+    
     updateCartDisplay();
 }
 
@@ -623,58 +635,162 @@ function removeFromCart(productId, size) {
 
 function updateCartDisplay() {
     const cartCount = document.getElementById('cart-count');
+    const mobileCartCount = document.getElementById('mobile-cart-count');
     const cartItems = document.getElementById('cart-items');
     const cartTotal = document.getElementById('cart-total');
     
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
     const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
     
+    // Update cart counts
     if (cartCount) cartCount.textContent = totalItems;
+    if (mobileCartCount) mobileCartCount.textContent = totalItems;
     if (cartTotal) cartTotal.textContent = `R${totalPrice.toFixed(2)}`;
     
+    // Update cart items display
     if (cartItems) {
         if (cart.length === 0) {
-            cartItems.innerHTML = '<p class="text-gray-500 text-center py-4">Your cart is empty</p>';
+            cartItems.innerHTML = `
+                <div class="text-center text-gray-500 py-8">
+                    <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13l-1.5 6M7 13l-1.5 6m0 0h9"></path>
+                    </svg>
+                    <p>Your cart is empty</p>
+                    <p class="text-sm">Add some premium CRBFTN items!</p>
+                </div>
+            `;
         } else {
             cartItems.innerHTML = cart.map(item => `
-                <div class="flex justify-between items-center p-3 bg-gray-50 rounded-lg">
-                    <div class="flex items-center space-x-3">
-                        <span class="text-2xl">${item.image}</span>
-                        <div>
-                            <h4 class="font-medium">${item.name}</h4>
-                            <p class="text-sm text-gray-600">Size: ${item.size} | Qty: ${item.quantity}</p>
+                <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
+                    <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
+                    <div class="flex-1">
+                        <h4 class="font-semibold">${item.name}</h4>
+                        <p class="text-sm text-gray-600">Size: ${item.size}</p>
+                        <div class="flex items-center space-x-2 mt-1">
+                            <button onclick="updateCartQuantity(${item.id}, '${item.size}', ${item.quantity - 1})" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-gray-600 hover:bg-gray-300">-</button>
+                            <span class="font-medium">${item.quantity}</span>
+                            <button onclick="updateCartQuantity(${item.id}, '${item.size}', ${item.quantity + 1})" class="w-6 h-6 flex items-center justify-center bg-gray-200 rounded text-gray-600 hover:bg-gray-300">+</button>
                         </div>
                     </div>
-                    <div class="flex items-center space-x-2">
-                        <span class="font-semibold">R${(item.price * item.quantity).toFixed(2)}</span>
-                        <button onclick="removeFromCart(${item.id}, '${item.size}')" class="text-red-500 hover:text-red-700">
-                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"></path>
-                            </svg>
+                    <div class="text-right">
+                        <p class="font-bold">R${(item.price * item.quantity).toFixed(2)}</p>
+                        <button onclick="removeFromCart(${item.id}, '${item.size}')" class="text-red-500 hover:text-red-700 text-sm">
+                            Remove
                         </button>
                     </div>
                 </div>
             `).join('');
         }
     }
+    
+    // Save cart to localStorage
+    localStorage.setItem('crbftn_cart', JSON.stringify(cart));
 }
 
-function toggleCart() {
-    const modal = document.getElementById('cart-modal');
-    modal.classList.toggle('active');
-}
-
-function checkout() {
-    if (cart.length === 0) {
-        showToast('Your cart is empty!');
+function updateCartQuantity(productId, size, newQuantity) {
+    if (newQuantity <= 0) {
+        removeFromCart(productId, size);
         return;
     }
     
-    const total = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-    showToast(`Thank you for your order! Total: R${total.toFixed(2)}`);
-    cart = [];
-    updateCartDisplay();
-    toggleCart();
+    const item = cart.find(item => item.id === productId && item.size === size);
+    if (item) {
+        item.quantity = newQuantity;
+        updateCartDisplay();
+    }
+}
+
+function toggleCart() {
+    const overlay = document.getElementById('cart-overlay');
+    const sidebar = document.getElementById('cart-sidebar');
+    
+    if (!overlay || !sidebar) return;
+    
+    if (overlay.classList.contains('hidden')) {
+        // Show cart
+        overlay.classList.remove('hidden');
+        setTimeout(() => {
+            overlay.classList.add('opacity-100');
+            sidebar.classList.remove('translate-x-full');
+        }, 10);
+        document.body.style.overflow = 'hidden';
+    } else {
+        // Hide cart
+        overlay.classList.remove('opacity-100');
+        sidebar.classList.add('translate-x-full');
+        setTimeout(() => {
+            overlay.classList.add('hidden');
+            document.body.style.overflow = '';
+        }, 300);
+    }
+}
+
+function requestQuote() {
+    if (cart.length === 0) {
+        showToast('Your cart is empty! Add some items first.');
+        return;
+    }
+    
+    // Prepare quote data
+    const quoteData = {
+        items: cart.map(item => ({
+            name: item.name,
+            size: item.size,
+            quantity: item.quantity,
+            price: item.price,
+            total: item.price * item.quantity
+        })),
+        totalAmount: cart.reduce((sum, item) => sum + (item.price * item.quantity), 0),
+        customerInfo: {
+            timestamp: new Date().toISOString(),
+            userAgent: navigator.userAgent
+        }
+    };
+    
+    // Create form data for Netlify
+    const formData = new FormData();
+    formData.append('form-name', 'quote-request');
+    formData.append('items', JSON.stringify(quoteData.items));
+    formData.append('total', `R${quoteData.totalAmount.toFixed(2)}`);
+    formData.append('timestamp', quoteData.customerInfo.timestamp);
+    
+    // Show loading state
+    const requestBtn = document.querySelector('[onclick="requestQuote()"]');
+    const originalText = requestBtn.innerHTML;
+    requestBtn.innerHTML = `
+        <svg class="w-5 h-5 mr-2 animate-spin" fill="none" viewBox="0 0 24 24">
+            <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle>
+            <path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" class="opacity-75"></path>
+        </svg>
+        Sending Quote Request...
+    `;
+    requestBtn.disabled = true;
+    
+    // Submit to Netlify
+    fetch('/', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams(formData).toString()
+    })
+    .then(() => {
+        // Success - show message and clear cart
+        showToast('Quote request sent! We\'ll email you within 24 hours. 📧');
+        cart = [];
+        updateCartDisplay();
+        toggleCart();
+        
+        // Reset button
+        requestBtn.innerHTML = originalText;
+        requestBtn.disabled = false;
+    })
+    .catch((error) => {
+        console.error('Error:', error);
+        showToast('Error sending quote request. Please try again or contact us directly.');
+        
+        // Reset button
+        requestBtn.innerHTML = originalText;
+        requestBtn.disabled = false;
+    });
 }
 
 // Gallery functions
@@ -832,6 +948,7 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryParam = getUrlParameter('category');
     if (categoryParam && window.location.pathname.includes('products.html')) {
         currentFilter = categoryParam;
+        
         // Set active filter button
         document.querySelectorAll('.filter-btn').forEach(btn => {
             btn.classList.remove('active');
@@ -840,6 +957,26 @@ document.addEventListener('DOMContentLoaded', function() {
             }
         });
     }
+    
+    // Add click outside handler for cart sidebar
+    const cartOverlay = document.getElementById('cart-overlay');
+    if (cartOverlay) {
+        cartOverlay.addEventListener('click', function(e) {
+            if (e.target === cartOverlay) {
+                toggleCart();
+            }
+        });
+    }
+    
+    // Add escape key handler to close cart
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {
+            const cartOverlay = document.getElementById('cart-overlay');
+            if (cartOverlay && !cartOverlay.classList.contains('hidden')) {
+                toggleCart();
+            }
+        }
+    });
     
     init();
 });
