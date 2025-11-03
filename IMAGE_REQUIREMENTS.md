@@ -14,10 +14,12 @@
 - **Current:** `assets/images/logo.png`
 - **Format:** PNG (to maintain transparency and crisp edges)
 - **Usage:** Navigation headers, footers, email templates
+- **Dimensions:** Height: 48px (h-12), Width: 400px (w-100)
 - **Files Using Logo:** 
   - components/navigation.html
   - components/navigation-inline.html
   - cart.html (header & footer)
+  - Index.html (inline navigation)
   - All main pages through navigation components
 - **Specifications:** High resolution, transparent background, works on both light and dark backgrounds
 - **Footer Version:** Inverted/white version for dark backgrounds (using CSS filter)
