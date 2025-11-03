@@ -14,7 +14,7 @@
 - **Current:** `assets/images/logo.png`
 - **Format:** PNG (to maintain transparency and crisp edges)
 - **Usage:** Navigation headers, footers, email templates
-- **Dimensions:** Height: 48px (h-12), Width: 384px (w-96)
+- **Dimensions:** Height: 48px (h-12), Width: 200px (w-50)
 - **Frame Design:** Bordered container with rounded corners and shadow
 - **Files Using Logo:** 
   - components/navigation.html
