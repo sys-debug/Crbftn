@@ -278,45 +278,47 @@ const products = [
         image: "assets/images/products/accessories-combo.jpg",
         description: "Premium wool socks providing warmth and natural odor resistance."
     },
+    
+    // MORE JEANS COLLECTION
     {
         id: 6,
-        name: "Essential Underwear",
-        category: "accessories",
-        price: 299,
-        image: "assets/images/products/tank-top-athletic.jpg",
-        description: "Premium underwear with superior comfort and fit."
+        name: "Dark Wash CRBFTN Jeans",
+        category: "pants",
+        price: 1399,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Deep indigo dark wash jeans with CRBFTN signature stitching and premium denim."
     },
     {
         id: 12,
-        name: "Boxer Briefs",
-        category: "accessories",
-        price: 349,
-        image: "assets/images/products/tank-top-athletic.jpg",
-        description: "Supportive boxer briefs with moisture-wicking fabric and comfortable waistband."
+        name: "Distressed CRBFTN Jeans",
+        category: "pants",
+        price: 1499,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Carefully distressed jeans with authentic wear patterns and CRBFTN patches."
     },
     {
         id: 18,
-        name: "Cotton Briefs",
-        category: "accessories",
-        price: 249,
-        image: "assets/images/products/tank-top-athletic.jpg",
-        description: "Classic cotton briefs offering comfort and breathability for daily wear."
+        name: "Slim Black CRBFTN Jeans",
+        category: "pants",
+        price: 1449,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Sleek black jeans with slim fit and subtle CRBFTN logo embroidery."
     },
     {
         id: 24,
-        name: "Performance Underwear",
-        category: "accessories",
-        price: 399,
-        image: "assets/images/products/tank-top-athletic.jpg",
-        description: "High-performance underwear with advanced fabric technology for active lifestyles."
+        name: "Vintage Blue CRBFTN Jeans",
+        category: "pants",
+        price: 1349,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Classic vintage blue wash with faded effects and CRBFTN heritage styling."
     },
     {
         id: 30,
-        name: "Bamboo Underwear",
-        category: "accessories",
-        price: 449,
-        image: "assets/images/products/polo-classic.jpg",
-        description: "Eco-friendly bamboo underwear with natural antibacterial properties."
+        name: "Raw Denim CRBFTN Jeans",
+        category: "pants",
+        price: 1599,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Premium raw denim jeans that age beautifully with CRBFTN craftsmanship."
     },
     
     // NEW CREATIVE CRBFTN CLOTHING COLLECTION
@@ -354,6 +356,57 @@ const products = [
         price: 1249,
         image: "assets/images/products/jacket-streetwear.jpg",
         description: "Sleek black hoodie with glow-in-the-dark CRBFTN logo and constellation print."
+    },
+    
+    // JACKETS COLLECTION
+    {
+        id: 56,
+        name: "CRBFTN Bomber Jacket",
+        category: "jackets",
+        price: 1799,
+        image: "assets/images/products/jacket-streetwear.jpg",
+        description: "Premium bomber jacket with CRBFTN embroidered patches and satin lining.",
+        featured: true
+    },
+    {
+        id: 57,
+        name: "Urban Wind Breaker",
+        category: "jackets",
+        price: 1299,
+        image: "assets/images/products/jacket-streetwear.jpg",
+        description: "Lightweight windbreaker perfect for city adventures with CRBFTN branding."
+    },
+    {
+        id: 58,
+        name: "Heritage Denim Jacket",
+        category: "jackets",
+        price: 1699,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Classic denim jacket with South African heritage details and CRBFTN styling."
+    },
+    {
+        id: 59,
+        name: "CRBFTN Track Jacket",
+        category: "jackets",
+        price: 1449,
+        image: "assets/images/products/jacket-streetwear.jpg",
+        description: "Athletic track jacket with racing stripes and moisture-wicking technology."
+    },
+    {
+        id: 60,
+        name: "Street King Leather Jacket",
+        category: "jackets",
+        price: 2299,
+        image: "assets/images/products/jacket-streetwear.jpg",
+        description: "Premium leather jacket with CRBFTN hardware and urban street styling."
+    },
+    {
+        id: 61,
+        name: "CRBFTN Varsity Jacket",
+        category: "jackets",
+        price: 1599,
+        image: "assets/images/products/jacket-streetwear.jpg",
+        description: "Classic varsity jacket with CRBFTN lettering and contrast sleeves."
     },
     
     // Creative Jeans & Pants

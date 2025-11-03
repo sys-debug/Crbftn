@@ -1,9 +1,10 @@
 # 🖼️ CRBFTN Website Image Requirements - WebP Migration Guide
 
 **Total Image References Found: 94 instances across 8 files**
-**Total Unique Images Needed: 68 (48 original + 20 new creative CRBFTN items)**
+**Total Unique Images Needed: 74 (48 original + 26 new creative CRBFTN items)**
 **Target Format: WebP (.webp)**
 **Status: Ready for custom image creation and WebP conversion**
+**Updates: Removed underwear, added more jeans and jackets collection**
 
 ---
 
@@ -219,35 +220,35 @@
     - Product: Premium wool socks, R299
     - Style: Warmth, odor resistance
 
-#### **Underwear (5 items)**
-31. **Essential Underwear** - `assets/images/products/essential-underwear.webp`
-    - Current: `tank-top-athletic.jpg` (Used 5x)
-    - Product: Premium underwear, R299
-    - Style: Superior comfort and fit
+#### **Additional Jeans Collection (5 items)**
+31. **Dark Wash CRBFTN Jeans** - `assets/images/products/dark-wash-crbftn-jeans.webp`
+    - Current: `jeans-premium.jpg` (reused)
+    - Product: Deep indigo dark wash jeans, R1399
+    - Style: CRBFTN signature stitching, premium denim
 
-32. **Boxer Briefs** - `assets/images/products/boxer-briefs.webp`
-    - Current: `tank-top-athletic.jpg` (reused)
-    - Product: Supportive boxer briefs, R349
-    - Style: Moisture-wicking fabric
+32. **Distressed CRBFTN Jeans** - `assets/images/products/distressed-crbftn-jeans.webp`
+    - Current: `jeans-premium.jpg` (reused)
+    - Product: Carefully distressed jeans, R1499
+    - Style: Authentic wear patterns, CRBFTN patches
 
-33. **Cotton Briefs** - `assets/images/products/cotton-briefs.webp`
-    - Current: `tank-top-athletic.jpg` (reused)
-    - Product: Classic cotton briefs, R249
-    - Style: Comfort and breathability
+33. **Slim Black CRBFTN Jeans** - `assets/images/products/slim-black-crbftn-jeans.webp`
+    - Current: `jeans-premium.jpg` (reused)
+    - Product: Sleek black jeans, R1449
+    - Style: Slim fit, subtle CRBFTN logo embroidery
 
-34. **Performance Underwear** - `assets/images/products/performance-underwear.webp`
-    - Current: `tank-top-athletic.jpg` (reused)
-    - Product: High-performance underwear, R399
-    - Style: Advanced fabric technology
+34. **Vintage Blue CRBFTN Jeans** - `assets/images/products/vintage-blue-crbftn-jeans.webp`
+    - Current: `jeans-premium.jpg` (reused)
+    - Product: Classic vintage blue wash, R1349
+    - Style: Faded effects, CRBFTN heritage styling
 
-35. **Bamboo Underwear** - `assets/images/products/bamboo-underwear.webp`
-    - Current: `polo-classic.jpg` (reused)
-    - Product: Eco-friendly bamboo underwear, R449
-    - Style: Natural antibacterial properties
+35. **Raw Denim CRBFTN Jeans** - `assets/images/products/raw-denim-crbftn-jeans.webp`
+    - Current: `jeans-premium.jpg` (reused)
+    - Product: Premium raw denim jeans, R1599
+    - Style: Ages beautifully, CRBFTN craftsmanship
 
 ---
 
-## 🆕 **NEW CREATIVE CRBFTN CLOTHING COLLECTION** (20 new items needed)
+## 🆕 **NEW CREATIVE CRBFTN CLOTHING COLLECTION** (26 new items needed)
 
 ### **Creative Hoodies (4 new items)**
 36. **Fresh New Sea Hoodie** - `assets/images/products/fresh-new-sea-hoodie.webp`
@@ -270,86 +271,125 @@
     - Product: Sleek black hoodie, R1249
     - Style: Glow-in-the-dark logo, constellation print
 
+### **Creative Jackets (6 new items)**
+40. **CRBFTN Bomber Jacket** - `assets/images/products/crbftn-bomber-jacket.webp`
+    - Current: `jacket-streetwear.jpg` (reused)
+    - Product: Premium bomber jacket, R1799 (Featured)
+    - Style: CRBFTN embroidered patches, satin lining
+
+41. **Urban Wind Breaker** - `assets/images/products/urban-wind-breaker.webp`
+    - Current: `jacket-streetwear.jpg` (reused)
+    - Product: Lightweight windbreaker, R1299
+    - Style: City adventures ready, CRBFTN branding
+
+42. **Heritage Denim Jacket** - `assets/images/products/heritage-denim-jacket.webp`
+    - Current: `jeans-premium.jpg` (reused)
+    - Product: Classic denim jacket, R1699
+    - Style: South African heritage details, CRBFTN styling
+
+43. **CRBFTN Track Jacket** - `assets/images/products/crbftn-track-jacket.webp`
+    - Current: `jacket-streetwear.jpg` (reused)
+    - Product: Athletic track jacket, R1449
+    - Style: Racing stripes, moisture-wicking technology
+
+44. **Street King Leather Jacket** - `assets/images/products/street-king-leather-jacket.webp`
+    - Current: `jacket-streetwear.jpg` (reused)
+    - Product: Premium leather jacket, R2299
+    - Style: CRBFTN hardware, urban street styling
+
+45. **CRBFTN Varsity Jacket** - `assets/images/products/crbftn-varsity-jacket.webp`
+    - Current: `jacket-streetwear.jpg` (reused)
+    - Product: Classic varsity jacket, R1599
+    - Style: CRBFTN lettering, contrast sleeves
+
 ### **Creative Jeans & Pants (4 new items)**
-40. **Baggy CRBFTN Jeans** - `assets/images/products/baggy-crbftn-jeans.webp`
+46. **Baggy CRBFTN Jeans** - `assets/images/products/baggy-crbftn-jeans.webp`
     - Current: `jeans-premium.jpg` (reused)
     - Product: Relaxed fit jeans, R1499 (Featured)
     - Style: Embroidered CRBFTN patches, vintage wash finish
 
-41. **Classic CRBFTN Jeans** - `assets/images/products/classic-crbftn-jeans.webp`
+47. **Classic CRBFTN Jeans** - `assets/images/products/classic-crbftn-jeans.webp`
     - Current: `jeans-premium.jpg` (reused)
     - Product: Timeless straight-leg jeans, R1399
     - Style: Subtle CRBFTN branding, premium denim construction
 
-42. **Street King Cargo Pants** - `assets/images/products/street-king-cargo-pants.webp`
+48. **Street King Cargo Pants** - `assets/images/products/street-king-cargo-pants.webp`
     - Current: `shorts-summer.jpg` (reused)
     - Product: Multi-pocket cargo pants, R1199
     - Style: Urban exploration inspired, street culture vibes
 
-43. **CRBFTN Track Pants** - `assets/images/products/crbftn-track-pants.webp`
+49. **CRBFTN Track Pants** - `assets/images/products/crbftn-track-pants.webp`
     - Current: `jeans-premium.jpg` (reused)
     - Product: Athletic track pants, R899
     - Style: Racing stripes, CRBFTN logo down the leg
 
 ### **Creative T-Shirts (4 new items)**
-44. **CRBFTN Vintage Tee** - `assets/images/products/crbftn-vintage-tee.webp`
+50. **CRBFTN Vintage Tee** - `assets/images/products/crbftn-vintage-tee.webp`
     - Current: `t-shirt-premium.jpg` (reused)
     - Product: Retro-inspired tee, R649
     - Style: Faded CRBFTN logo, soft vintage wash
 
-45. **Limpopo Pride Tee** - `assets/images/products/limpopo-pride-tee.webp`
+51. **Limpopo Pride Tee** - `assets/images/products/limpopo-pride-tee.webp`
     - Current: `polo-classic.jpg` (reused)
     - Product: Heritage celebration tee, R599
     - Style: Limpopo province graphics, CRBFTN branding
 
-46. **CRBFTN Artist Tee** - `assets/images/products/crbftn-artist-tee.webp`
+52. **CRBFTN Artist Tee** - `assets/images/products/crbftn-artist-tee.webp`
     - Current: `t-shirt-premium.jpg` (reused)
     - Product: Limited edition artist collaboration, R699
     - Style: Unique CRBFTN design, local artist partnership
 
-47. **Street Philosophy Tee** - `assets/images/products/street-philosophy-tee.webp`
+53. **Street Philosophy Tee** - `assets/images/products/street-philosophy-tee.webp`
     - Current: `tank-top-athletic.jpg` (reused)
     - Product: Thought-provoking graphic tee, R549
     - Style: Inspirational quotes, CRBFTN street wisdom
 
 ### **Creative Shoes (3 new items)**
-48. **CRBFTN Air Classics** - `assets/images/products/crbftn-air-classics.webp`
+54. **CRBFTN Air Classics** - `assets/images/products/crbftn-air-classics.webp`
     - Current: `sneakers-limited.jpg` (reused)
     - Product: Premium sneakers, R1999 (Featured)
     - Style: CRBFTN colorway, signature comfort technology
 
-49. **Street Walker CRBFTN** - `assets/images/products/street-walker-crbftn.webp`
+55. **Street Walker CRBFTN** - `assets/images/products/street-walker-crbftn.webp`
     - Current: `sneakers-limited.jpg` (reused)
     - Product: Durable street shoes, R1799
     - Style: Urban adventures ready, CRBFTN sole design
 
-50. **CRBFTN High Tops** - `assets/images/products/crbftn-high-tops.webp`
+56. **CRBFTN High Tops** - `assets/images/products/crbftn-high-tops.webp`
     - Current: `sneakers-limited.jpg` (reused)
     - Product: Classic high-top silhouette, R1899
     - Style: CRBFTN ankle patches, premium materials
 
 ### **Creative Accessories (5 new items)**
-51. **CRBFTN Crown Cap** - `assets/images/products/crbftn-crown-cap.webp`
+57. **CRBFTN Crown Cap** - `assets/images/products/crbftn-crown-cap.webp`
     - Current: `cap-urban.jpg` (reused)
     - Product: Structured cap, R499
     - Style: Embroidered CRBFTN crown logo, premium fit
 
-52. **Heritage CRBFTN Bucket Hat** - `assets/images/products/heritage-crbftn-bucket-hat.webp`
+58. **Heritage CRBFTN Bucket Hat** - `assets/images/products/heritage-crbftn-bucket-hat.webp`
+    - Current: `cap-urban.jpg` (reused)
+### **Creative Accessories (5 new items)**
+57. **CRBFTN Crown Cap** - `assets/images/products/crbftn-crown-cap.webp`
+    - Current: `cap-urban.jpg` (reused)
+    - Product: Structured cap, R499
+    - Style: Embroidered CRBFTN crown logo, premium fit
+
+58. **Heritage CRBFTN Bucket Hat** - `assets/images/products/heritage-crbftn-bucket-hat.webp`
     - Current: `cap-urban.jpg` (reused)
     - Product: Traditional patterns bucket hat, R449
     - Style: Traditional patterns meet modern streetwear
 
-53. **CRBFTN Signature Socks** - `assets/images/products/crbftn-signature-socks.webp`
+59. **CRBFTN Signature Socks** - `assets/images/products/crbftn-signature-socks.webp`
     - Current: `accessories-combo.jpg` (reused)
     - Product: Premium crew socks, R299
     - Style: CRBFTN logo pattern, superior comfort
 
-54. **CRBFTN Explorer Backpack** - `assets/images/products/crbftn-explorer-backpack.webp`
+60. **CRBFTN Explorer Backpack** - `assets/images/products/crbftn-explorer-backpack.webp`
     - Current: `accessories-combo.jpg` (reused)
     - Product: Urban exploration backpack, R899
     - Style: CRBFTN branding, multiple compartments
 
-55. **CRBFTN Street Belt** - `assets/images/products/crbftn-street-belt.webp`
+61. **CRBFTN Street Belt** - `assets/images/products/crbftn-street-belt.webp`
     - Current: `accessories-combo.jpg` (reused)
     - Product: Adjustable street belt, R399
     - Style: Custom CRBFTN buckle, durable construction
@@ -459,9 +499,9 @@
 
 ## 🎯 **NEXT STEPS**
 
-1. **Create/Source 68 unique images** in original format (JPG/PNG)
+1. **Create/Source 74 unique images** in original format (JPG/PNG)
    - 48 original website images
-   - 20 new creative CRBFTN-branded clothing items
+   - 26 new creative CRBFTN-branded clothing items (removed underwear, added jackets)
 2. **Convert all images to WebP format** using tools like:
    - Online converters (Convertio, CloudConvert)
    - Command line tools (cwebp)
@@ -474,11 +514,11 @@
    - cart.html (1 reference)
    - about.html (5 references)
    - Index.html (23 references)
-   - assets/js/script.js (67 references - 47 original + 20 new)
+   - assets/js/script.js (73 references - 47 original + 26 new)
    - components/modals.html (1 reference)
 
 4. **Test all pages** to ensure images load correctly
 5. **Update alt text** to be more specific for each unique image
 6. **Implement lazy loading** for performance optimization
 
-**Ready for professional image creation and WebP migration with expanded CRBFTN catalog! 🚀**
+**Ready for professional image creation and WebP migration with expanded jeans and jackets collection! 🚀**
