@@ -14,7 +14,8 @@
 - **Current:** `assets/images/logo.png`
 - **Format:** PNG (to maintain transparency and crisp edges)
 - **Usage:** Navigation headers, footers, email templates
-- **Dimensions:** Height: 48px (h-12), Width: 600px (w-150)
+- **Dimensions:** Height: 48px (h-12), Width: 384px (w-96)
+- **Frame Design:** Bordered container with rounded corners and shadow
 - **Files Using Logo:** 
   - components/navigation.html
   - components/navigation-inline.html
@@ -22,7 +23,8 @@
   - Index.html (inline navigation)
   - All main pages through navigation components
 - **Specifications:** High resolution, transparent background, works on both light and dark backgrounds
-- **Footer Version:** Inverted/white version for dark backgrounds (using CSS filter)
+- **Header Frame:** Gray border with white background and shadow (border-2 border-gray-300 rounded-lg p-2 bg-white shadow-sm)
+- **Footer Frame:** White border with black background (border-2 border-white rounded-lg p-2 bg-black shadow-sm)
 - **Clean Design:** Logo only, no additional taglines in navigation areas
 
 ---
