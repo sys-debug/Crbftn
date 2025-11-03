@@ -317,6 +317,181 @@ const products = [
         price: 449,
         image: "assets/images/products/polo-classic.jpg",
         description: "Eco-friendly bamboo underwear with natural antibacterial properties."
+    },
+    
+    // NEW CREATIVE CRBFTN CLOTHING COLLECTION
+    
+    // Creative Hoodies
+    {
+        id: 36,
+        name: "Fresh New Sea Hoodie",
+        category: "hoodies",
+        price: 1299,
+        image: "assets/images/products/hoodie-classic.jpg",
+        description: "Dive into style with our ocean-inspired hoodie featuring wave graphics and marine blue accents.",
+        featured: true
+    },
+    {
+        id: 37,
+        name: "Hip Hop Hoodie",
+        category: "hoodies",
+        price: 1199,
+        image: "assets/images/products/sweatshirt-cozy.jpg",
+        description: "Capture the rhythm of the streets with bold typography and urban-inspired design elements."
+    },
+    {
+        id: 38,
+        name: "CRBFTN Culture Hoodie",
+        category: "hoodies",
+        price: 1399,
+        image: "assets/images/products/hoodie-classic.jpg",
+        description: "Celebrate South African heritage with traditional patterns reimagined for modern streetwear."
+    },
+    {
+        id: 39,
+        name: "Midnight CRBFTN Hoodie",
+        category: "hoodies",
+        price: 1249,
+        image: "assets/images/products/jacket-streetwear.jpg",
+        description: "Sleek black hoodie with glow-in-the-dark CRBFTN logo and constellation print."
+    },
+    
+    // Creative Jeans & Pants
+    {
+        id: 40,
+        name: "Baggy CRBFTN Jeans",
+        category: "pants",
+        price: 1499,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Relaxed fit jeans with embroidered CRBFTN patches and vintage wash finish.",
+        featured: true
+    },
+    {
+        id: 41,
+        name: "Classic CRBFTN Jeans",
+        category: "pants",
+        price: 1399,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Timeless straight-leg jeans with subtle CRBFTN branding and premium denim construction."
+    },
+    {
+        id: 42,
+        name: "Street King Cargo Pants",
+        category: "pants",
+        price: 1199,
+        image: "assets/images/products/shorts-summer.jpg",
+        description: "Multi-pocket cargo pants inspired by urban exploration and street culture."
+    },
+    {
+        id: 43,
+        name: "CRBFTN Track Pants",
+        category: "pants",
+        price: 899,
+        image: "assets/images/products/jeans-premium.jpg",
+        description: "Athletic track pants with racing stripes and CRBFTN logo down the leg."
+    },
+    
+    // Creative T-Shirts
+    {
+        id: 44,
+        name: "CRBFTN Vintage Tee",
+        category: "tshirts",
+        price: 649,
+        image: "assets/images/products/t-shirt-premium.jpg",
+        description: "Retro-inspired tee with faded CRBFTN logo and soft vintage wash."
+    },
+    {
+        id: 45,
+        name: "Limpopo Pride Tee",
+        category: "tshirts",
+        price: 599,
+        image: "assets/images/products/polo-classic.jpg",
+        description: "Celebrate local heritage with Limpopo province graphics and CRBFTN branding."
+    },
+    {
+        id: 46,
+        name: "CRBFTN Artist Tee",
+        category: "tshirts",
+        price: 699,
+        image: "assets/images/products/t-shirt-premium.jpg",
+        description: "Limited edition tee featuring local artist collaboration with unique CRBFTN design."
+    },
+    {
+        id: 47,
+        name: "Street Philosophy Tee",
+        category: "tshirts",
+        price: 549,
+        image: "assets/images/products/tank-top-athletic.jpg",
+        description: "Thought-provoking graphic tee with inspirational quotes and CRBFTN street wisdom."
+    },
+    
+    // Creative Shoes
+    {
+        id: 48,
+        name: "CRBFTN Air Classics",
+        category: "shoes",
+        price: 1999,
+        image: "assets/images/products/sneakers-limited.jpg",
+        description: "Premium sneakers with CRBFTN colorway and signature comfort technology.",
+        featured: true
+    },
+    {
+        id: 49,
+        name: "Street Walker CRBFTN",
+        category: "shoes",
+        price: 1799,
+        image: "assets/images/products/sneakers-limited.jpg",
+        description: "Durable street shoes built for urban adventures with CRBFTN sole design."
+    },
+    {
+        id: 50,
+        name: "CRBFTN High Tops",
+        category: "shoes",
+        price: 1899,
+        image: "assets/images/products/sneakers-limited.jpg",
+        description: "Classic high-top silhouette with CRBFTN ankle patches and premium materials."
+    },
+    
+    // Creative Accessories
+    {
+        id: 51,
+        name: "CRBFTN Crown Cap",
+        category: "accessories",
+        price: 499,
+        image: "assets/images/products/cap-urban.jpg",
+        description: "Structured cap with embroidered CRBFTN crown logo and premium fit."
+    },
+    {
+        id: 52,
+        name: "Heritage CRBFTN Bucket Hat",
+        category: "accessories",
+        price: 449,
+        image: "assets/images/products/cap-urban.jpg",
+        description: "Traditional patterns meet modern streetwear in this unique bucket hat design."
+    },
+    {
+        id: 53,
+        name: "CRBFTN Signature Socks",
+        category: "accessories",
+        price: 299,
+        image: "assets/images/products/accessories-combo.jpg",
+        description: "Premium crew socks with CRBFTN logo pattern and superior comfort."
+    },
+    {
+        id: 54,
+        name: "CRBFTN Explorer Backpack",
+        category: "accessories",
+        price: 899,
+        image: "assets/images/products/accessories-combo.jpg",
+        description: "Urban exploration backpack with CRBFTN branding and multiple compartments."
+    },
+    {
+        id: 55,
+        name: "CRBFTN Street Belt",
+        category: "accessories",
+        price: 399,
+        image: "assets/images/products/accessories-combo.jpg",
+        description: "Adjustable street belt with custom CRBFTN buckle and durable construction."
     }
 ];
 
