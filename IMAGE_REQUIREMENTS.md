@@ -1,10 +1,26 @@
 # 🖼️ CRBFTN Website Image Requirements - WebP Migration Guide
 
 **Total Image References Found: 94 instances across 8 files**
-**Total Unique Images Needed: 74 (48 original + 26 new creative CRBFTN items)**
-**Target Format: WebP (.webp)**
+**Total Unique Images Needed: 75 (48 original + 26 creative items + 1 logo)**
+**Target Format: WebP (.webp) for products/gallery, PNG for logo**
 **Status: Ready for custom image creation and WebP conversion**
-**Updates: Removed underwear, added more jeans and jackets collection**
+**Updates: Removed underwear, added more jeans and jackets collection, integrated custom logo**
+
+---
+
+## 🏷️ **BRAND LOGO** (1 image needed)
+
+### **CRBFTN Custom Logo**
+- **Current:** `assets/images/logo.png`
+- **Format:** PNG (to maintain transparency and crisp edges)
+- **Usage:** Navigation headers, footers, email templates
+- **Files Using Logo:** 
+  - components/navigation.html
+  - components/navigation-inline.html
+  - cart.html (header & footer)
+  - All main pages through navigation components
+- **Specifications:** High resolution, transparent background, works on both light and dark backgrounds
+- **Footer Version:** Inverted/white version for dark backgrounds (using CSS filter)
 
 ---
 
@@ -499,14 +515,16 @@
 
 ## 🎯 **NEXT STEPS**
 
-1. **Create/Source 74 unique images** in original format (JPG/PNG)
-   - 48 original website images
-   - 26 new creative CRBFTN-branded clothing items (removed underwear, added jackets)
-2. **Convert all images to WebP format** using tools like:
+1. **Create/Source 75 unique images** in original format:
+   - 48 original website images (JPG/PNG converted to WebP)
+   - 26 new creative CRBFTN-branded clothing items (WebP)
+   - 1 CRBFTN logo (PNG format with transparency)
+2. **Upload your custom logo** as `assets/images/logo.png`
+3. **Convert product/gallery images to WebP format** using tools like:
    - Online converters (Convertio, CloudConvert)
    - Command line tools (cwebp)
    - Image editing software (Photoshop, GIMP)
-3. **Update all file references** from `.jpg` to `.webp` in:
+4. **Update all file references** from `.jpg` to `.webp` in:
    - contact.html (1 reference)
    - products.html (5 references)
    - gallery.html (10 references)
@@ -517,8 +535,8 @@
    - assets/js/script.js (73 references - 47 original + 26 new)
    - components/modals.html (1 reference)
 
-4. **Test all pages** to ensure images load correctly
-5. **Update alt text** to be more specific for each unique image
-6. **Implement lazy loading** for performance optimization
+5. **Test all pages** to ensure images and logo load correctly
+6. **Update alt text** to be more specific for each unique image
+7. **Implement lazy loading** for performance optimization
 
-**Ready for professional image creation and WebP migration with expanded jeans and jackets collection! 🚀**
+**Ready for professional image creation, custom logo integration, and WebP migration! 🚀**
