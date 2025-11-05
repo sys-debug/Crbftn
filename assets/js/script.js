@@ -1019,13 +1019,19 @@ function showQuoteEmailModal() {
     
     // Show modal
     modal.classList.remove('hidden');
+    modal.classList.add('flex');
+    modal.style.display = 'flex';
+    modal.style.alignItems = 'center';
+    modal.style.justifyContent = 'center';
+    
+    console.log('✅ Quote modal displayed!');
 }
 
 // Create fallback quote modal if component didn't load
 function createFallbackQuoteModal() {
     const modalHtml = `
-        <div id="quote-email-modal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 hidden">
-            <div class="modal-content bg-white rounded-xl max-w-md mx-auto mt-20 p-6 relative">
+        <div id="quote-email-modal" class="modal fixed inset-0 bg-black bg-opacity-50 z-50 hidden flex items-center justify-center">
+            <div class="modal-content bg-white rounded-xl max-w-md w-full mx-4 p-6 relative">
                 <button onclick="closeQuoteEmailModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
@@ -1099,10 +1105,10 @@ function closeQuoteEmailModal() {
 function submitQuoteRequest(event) {
     event.preventDefault();
     
-    const email = document.getElementById('quote-email').value;
-    const name = document.getElementById('quote-name').value;
-    const phone = document.getElementById('quote-phone').value;
-    const message = document.getElementById('quote-message').value;
+    const email = document.getElementById('customer-email').value;
+    const name = document.getElementById('customer-name').value;
+    const phone = document.getElementById('customer-phone').value;
+    const message = document.getElementById('customer-message').value;
     
     if (!email || !name) {
         showToast('Please fill in your email and name.');
