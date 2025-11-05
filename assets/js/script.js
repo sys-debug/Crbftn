@@ -1018,10 +1018,13 @@ function showQuoteEmailModal() {
         totalDisplay.textContent = `R${totalAmount.toFixed(2)}`;
     }
     
-    // SIMPLE SOLUTION - Just remove hidden class, CSS flex class handles the rest
+    // SIMPLE SOLUTION - Just remove hidden class and ensure display is flex with centering
     modal.classList.remove('hidden');
+    modal.style.display = 'flex';
+    modal.style.justifyContent = 'center';
+    modal.style.alignItems = 'center';
     
-    console.log('🚀 Modal shown by removing hidden class');
+    console.log('🚀 Modal shown by removing hidden class and setting display flex');
     console.log('Modal element:', modal);
     console.log('Modal computed display:', window.getComputedStyle(modal).display);
     console.log('Modal classList:', modal.classList.toString());
@@ -1103,6 +1106,7 @@ function closeQuoteEmailModal() {
     const modal = document.getElementById('quote-email-modal');
     if (modal) {
         modal.classList.add('hidden');
+        modal.style.display = 'none';
         
         // Reset form
         const form = document.getElementById('quote-email-form');
