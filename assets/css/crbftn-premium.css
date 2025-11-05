@@ -1017,10 +1017,14 @@ body.has-sticky-nav {
 }
 
 /* ========== MODAL SYSTEM ========== */
-.modal {
+.modal.hidden {
     display: none !important;
-    visibility: hidden !important;
-    opacity: 0 !important;
+}
+
+.modal:not(.hidden) {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
     position: fixed;
     top: 0;
     left: 0;
