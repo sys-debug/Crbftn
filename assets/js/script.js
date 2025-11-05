@@ -1018,19 +1018,41 @@ function showQuoteEmailModal() {
         totalDisplay.textContent = `R${totalAmount.toFixed(2)}`;
     }
     
-    // FORCE show modal - Tailwind's hidden class uses !important so we need to override aggressively
+    // NUCLEAR OPTION - Force show modal with ALL possible overrides
     modal.classList.remove('hidden');
-    modal.style.display = 'flex !important';
-    modal.style.visibility = 'visible';
-    modal.style.opacity = '1';
+    modal.className = modal.className.replace('hidden', ''); // Remove hidden from class string
+    
+    // Set EVERY display-related property aggressively
+    modal.style.cssText = `
+        display: flex !important;
+        visibility: visible !important;
+        opacity: 1 !important;
+        z-index: 99999 !important;
+        position: fixed !important;
+        inset: 0 !important;
+        background-color: rgba(0, 0, 0, 0.5) !important;
+        align-items: center !important;
+        justify-content: center !important;
+        pointer-events: auto !important;
+    `;
+    
+    console.log('🚀 NUCLEAR DISPLAY ACTIVATED! Modal should be VISIBLE NOW!');
+    console.log('Modal element:', modal);
+    console.log('Modal computed style display:', window.getComputedStyle(modal).display);
+    console.log('Modal computed style visibility:', window.getComputedStyle(modal).visibility);
+    console.log('Modal computed style z-index:', window.getComputedStyle(modal).zIndex);
     
     // Also close the cart when showing quote modal
     const cartOverlay = document.getElementById('cart-overlay');
     if (cartOverlay) {
         cartOverlay.classList.add('hidden');
+        cartOverlay.style.display = 'none';
     }
     
-    console.log('✅ Quote modal FORCED display! Check if visible now.');
+    // Make sure document body isn't preventing scrolling/interaction
+    document.body.style.overflow = 'hidden';
+    
+    console.log('✅ Quote modal FORCED with NUCLEAR option!');
 }
 
 // Create fallback quote modal if component didn't load
@@ -1098,15 +1120,17 @@ function closeQuoteEmailModal() {
     const modal = document.getElementById('quote-email-modal');
     if (modal) {
         modal.classList.add('hidden');
-        modal.style.display = 'none';
-        modal.style.visibility = 'hidden';
-        modal.style.opacity = '0';
+        modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
         
         // Reset form
         const form = document.getElementById('quote-email-form');
         if (form) {
             form.reset();
         }
+        
+        // Restore body scroll
+        document.body.style.overflow = '';
+        
         console.log('✅ Quote modal closed');
     }
 }
