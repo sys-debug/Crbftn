@@ -1060,6 +1060,8 @@ function showQuoteEmailModal() {
     modal.style.display = 'flex';
     modal.style.justifyContent = 'center';
     modal.style.alignItems = 'center';
+    modal.style.zIndex = '1000';
+    modal.style.transform = 'translateY(0)';
     
     console.log('🚀 Modal shown by removing hidden class and setting display flex');
     console.log('Modal element:', modal);
@@ -1144,6 +1146,8 @@ function closeQuoteEmailModal() {
     if (modal) {
         modal.classList.add('hidden');
         modal.style.display = 'none';
+        modal.style.zIndex = '-9999';
+        modal.style.transform = 'translateY(-200%)';
         
         // Reset form
         const form = document.getElementById('quote-email-form');
