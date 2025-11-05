@@ -1017,12 +1017,16 @@ body.has-sticky-nav {
 }
 
 /* ========== MODAL SYSTEM ========== */
-#quote-email-modal.modal-hidden {
+#quote-email-modal.modal-hidden,
+#quote-email-modal.modal-hidden *,
+#quote-email-modal.modal-hidden *::before,
+#quote-email-modal.modal-hidden *::after {
     display: none !important;
-}
-
-#quote-email-modal.modal-hidden * {
-    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    position: absolute !important;
+    left: -99999px !important;
+    pointer-events: none !important;
 }
 
 .modal:not(.modal-hidden) {
