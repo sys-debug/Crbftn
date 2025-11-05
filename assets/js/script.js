@@ -896,7 +896,11 @@ function updateCartDisplay() {
     const cartTotal = document.getElementById('cart-total');
     
     const totalItems = cart.reduce((sum, item) => sum + item.quantity, 0);
-    const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    // Apply 35% discount (multiply by 0.65)
+    const totalPrice = cart.reduce((sum, item) => {
+        const discountedPrice = Math.round(item.price * 0.65);
+        return sum + (discountedPrice * item.quantity);
+    }, 0);
     
     // Update cart counts
     if (cartCount) cartCount.textContent = totalItems;
@@ -916,7 +920,9 @@ function updateCartDisplay() {
                 </div>
             `;
         } else {
-            cartItems.innerHTML = cart.map(item => `
+            cartItems.innerHTML = cart.map(item => {
+                const discountedPrice = Math.round(item.price * 0.65);
+                return `
                 <div class="flex items-center space-x-4 p-4 bg-gray-50 rounded-lg">
                     <img src="${item.image}" alt="${item.name}" class="w-16 h-16 object-cover rounded-lg">
                     <div class="flex-1">
@@ -929,14 +935,19 @@ function updateCartDisplay() {
                         </div>
                     </div>
                     <div class="text-right">
-                        <p class="font-bold">R${(item.price * item.quantity).toFixed(2)}</p>
+                        <p class="text-xs text-gray-400 line-through">R${item.price}</p>
+                        <p class="font-bold text-red-600">R${(discountedPrice * item.quantity).toFixed(2)}</p>
                         <button onclick="removeFromCart(${item.id}, '${item.size}')" class="text-red-500 hover:text-red-700 text-sm">
                             Remove
                         </button>
                     </div>
                 </div>
-            `).join('') + 
+            `}).join('') + 
             `<div class="border-t border-gray-200 pt-4 mt-4">
+                <div class="flex justify-between items-center mb-3 text-sm">
+                    <span class="text-gray-600">🔥 Launch Sale Discount (35%)</span>
+                    <span class="text-green-600 font-semibold">Applied!</span>
+                </div>
                 <button onclick="requestQuote()" class="w-full bg-purple-600 text-white py-3 px-4 rounded-lg font-semibold hover:bg-purple-700 transition-colors">
                     Request Quote
                 </button>
@@ -1013,20 +1024,35 @@ function showQuoteEmailModal() {
     const itemsList = document.getElementById('quote-items-list');
     const totalDisplay = document.getElementById('quote-total-display');
     
-    // Populate items list
-    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    // Populate items list with discounted prices (35% off)
+    const totalAmount = cart.reduce((sum, item) => {
+        const discountedPrice = Math.round(item.price * 0.65);
+        return sum + (discountedPrice * item.quantity);
+    }, 0);
     
     if (itemsList) {
-        itemsList.innerHTML = cart.map(item => `
+        itemsList.innerHTML = cart.map(item => {
+            const originalPrice = item.price * item.quantity;
+            const discountedPrice = Math.round(item.price * 0.65);
+            const discountedTotal = discountedPrice * item.quantity;
+            return `
             <div class="flex justify-between items-center">
                 <span>${item.name} (Size: ${item.size}) × ${item.quantity}</span>
-                <span class="font-medium">R${(item.price * item.quantity).toFixed(2)}</span>
+                <div class="text-right">
+                    <div class="text-xs text-gray-400 line-through">R${originalPrice.toFixed(2)}</div>
+                    <div class="font-medium text-red-600">R${discountedTotal.toFixed(2)}</div>
+                </div>
             </div>
-        `).join('');
+        `}).join('');
     }
     
     if (totalDisplay) {
-        totalDisplay.textContent = `R${totalAmount.toFixed(2)}`;
+        totalDisplay.innerHTML = `
+            <div class="text-right">
+                <div class="text-sm text-green-600">🔥 Launch Sale: 35% OFF Applied!</div>
+                <div class="text-xl font-bold">R${totalAmount.toFixed(2)}</div>
+            </div>
+        `;
     }
     
     // SIMPLE SOLUTION - Just remove hidden class and ensure display is flex with centering
@@ -1158,20 +1184,28 @@ async function handleQuoteSubmission(customerEmail, customerName, customerPhone,
         return;
     }
     
-    // Prepare quote data
+    // Prepare quote data with 35% launch discount
     const timestamp = new Date().toISOString();
-    const totalAmount = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
+    const totalAmount = cart.reduce((sum, item) => {
+        const discountedPrice = Math.round(item.price * 0.65);
+        return sum + (discountedPrice * item.quantity);
+    }, 0);
     const itemsCount = cart.reduce((sum, item) => sum + item.quantity, 0);
     const quoteId = `CRBFTN-${Date.now()}`;
     
     const quoteData = {
-        items: cart.map(item => ({
-            name: item.name,
-            size: item.size,
-            quantity: item.quantity,
-            price: item.price,
-            total: item.price * item.quantity
-        })),
+        items: cart.map(item => {
+            const discountedPrice = Math.round(item.price * 0.65);
+            return {
+                name: item.name,
+                size: item.size,
+                quantity: item.quantity,
+                originalPrice: item.price,
+                discountedPrice: discountedPrice,
+                discount: '35% Launch Sale',
+                total: discountedPrice * item.quantity
+            };
+        }),
         totalAmount: totalAmount,
         itemsCount: itemsCount,
         customerInfo: {
