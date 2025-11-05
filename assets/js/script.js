@@ -626,41 +626,53 @@ function renderProducts() {
     
     const filteredProducts = currentFilter === 'all' ? allProducts : allProducts.filter(p => p.category === currentFilter);
     
-    grid.innerHTML = filteredProducts.map(product => `
-        <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
+    grid.innerHTML = filteredProducts.map(product => {
+        const discountedPrice = Math.round(product.price * 0.65); // 35% off
+        return `
+        <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden cursor-pointer relative" onclick="openProductModal(${product.id})">
+            <!-- Launch Sale Badge -->
+            <div class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded-md text-xs font-bold z-10 shadow-lg">
+                🔥 LAUNCH SALE
+            </div>
+            <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg">
+                -35%
+            </div>
             <div class="aspect-square overflow-hidden">
                 <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
             </div>
-            <div class="p-4">
-                <h3 class="font-semibold text-lg mb-2">${product.name}</h3>
-                <p class="text-gray-600 text-sm mb-3">${product.description}</p>
+            <div class="p-3">
+                <h3 class="font-semibold text-base mb-1">${product.name}</h3>
+                <p class="text-gray-600 text-xs mb-2 line-clamp-2">${product.description}</p>
                 
                 <!-- Size Selection -->
-                <div class="mb-3">
-                    <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
-                    <div class="flex gap-2 ${product.category === 'shoes' ? 'flex-wrap' : ''}">
+                <div class="mb-2">
+                    <p class="text-xs font-medium text-gray-700 mb-1">Size:</p>
+                    <div class="flex gap-1 ${product.category === 'shoes' ? 'flex-wrap' : ''}">
                         ${product.category === 'shoes' ? 
-                            `<button onclick="event.stopPropagation(); selectSize(this, '7')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">7</button>
-                            <button onclick="event.stopPropagation(); selectSize(this, '8')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">8</button>
-                            <button onclick="event.stopPropagation(); selectSize(this, '9')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">9</button>
-                            <button onclick="event.stopPropagation(); selectSize(this, '10')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">10</button>
-                            <button onclick="event.stopPropagation(); selectSize(this, '11')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">11</button>` :
-                            `<button onclick="event.stopPropagation(); selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
-                            <button onclick="event.stopPropagation(); selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
-                            <button onclick="event.stopPropagation(); selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>`
+                            `<button onclick="event.stopPropagation(); selectSize(this, '7')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">7</button>
+                            <button onclick="event.stopPropagation(); selectSize(this, '8')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">8</button>
+                            <button onclick="event.stopPropagation(); selectSize(this, '9')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">9</button>
+                            <button onclick="event.stopPropagation(); selectSize(this, '10')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">10</button>
+                            <button onclick="event.stopPropagation(); selectSize(this, '11')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">11</button>` :
+                            `<button onclick="event.stopPropagation(); selectSize(this, 'S')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+                            <button onclick="event.stopPropagation(); selectSize(this, 'M')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+                            <button onclick="event.stopPropagation(); selectSize(this, 'L')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">L</button>`
                         }
                     </div>
                 </div>
                 
                 <div class="flex justify-between items-center">
-                    <span class="text-xl font-bold text-purple-600">R${product.price}</span>
-                    <button onclick="event.stopPropagation(); addToCartWithSize(${product.id}, this)" class="btn-primary text-white px-4 py-2 rounded-lg text-sm">
+                    <div class="flex flex-col">
+                        <span class="text-xs text-gray-400 line-through">R${product.price}</span>
+                        <span class="text-lg font-bold text-red-600">R${discountedPrice}</span>
+                    </div>
+                    <button onclick="event.stopPropagation(); addToCartWithSize(${product.id}, this)" class="btn-primary text-white px-3 py-1.5 rounded-lg text-xs">
                         Add to Cart
                     </button>
                 </div>
             </div>
         </div>
-    `).join('');
+    `}).join('');
 }
 
 function renderCategorySections() {
@@ -688,19 +700,28 @@ function renderCategorySections() {
                 </div>
                 <div class="relative">
                     <div class="category-scroll" id="scroll-${category}">
-                        ${categoryProducts.map(product => `
-                            <div class="scroll-product-card card-hover bg-white rounded-lg shadow-md overflow-hidden cursor-pointer" onclick="openProductModal(${product.id})">
+                        ${categoryProducts.map(product => {
+                            const discountedPrice = Math.round(product.price * 0.65); // 35% off
+                            return `
+                            <div class="scroll-product-card card-hover bg-white rounded-lg shadow-md overflow-hidden cursor-pointer relative" onclick="openProductModal(${product.id})">
+                                <!-- Launch Sale Badge -->
+                                <div class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded-md text-xs font-bold z-10 shadow-lg">
+                                    🔥 LAUNCH
+                                </div>
+                                <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg">
+                                    -35%
+                                </div>
                                 <div class="aspect-square overflow-hidden">
                                     <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                                 </div>
-                                <div class="p-4">
-                                    <h4 class="font-semibold text-lg mb-2">${product.name}</h4>
-                                    <p class="text-gray-600 text-sm mb-3 line-clamp-2">${product.description}</p>
+                                <div class="p-3">
+                                    <h4 class="font-semibold text-base mb-1">${product.name}</h4>
+                                    <p class="text-gray-600 text-xs mb-2 line-clamp-2">${product.description}</p>
                                     
                                     <!-- Size Selection -->
-                                    <div class="mb-3">
-                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
-                                        <div class="flex gap-2 ${product.category === 'shoes' ? 'flex-wrap' : ''}">
+                                    <div class="mb-2">
+                                        <p class="text-xs font-medium text-gray-700 mb-1">Size:</p>
+                                        <div class="flex gap-1 ${product.category === 'shoes' ? 'flex-wrap' : ''}">
                                             ${product.category === 'shoes' ? 
                                                 `<button onclick="event.stopPropagation(); selectSize(this, '7')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">7</button>
                                                 <button onclick="event.stopPropagation(); selectSize(this, '8')" class="size-btn px-2 py-1 border border-gray-300 rounded text-xs hover:border-red-600 hover:text-red-600 transition-colors">8</button>
@@ -715,14 +736,17 @@ function renderCategorySections() {
                                     </div>
                                     
                                     <div class="flex justify-between items-center">
-                                        <span class="text-xl font-bold text-purple-600">R${product.price}</span>
-                                        <button onclick="event.stopPropagation(); addToCartWithSize(${product.id}, this)" class="btn-primary text-white px-3 py-1 rounded text-sm">
+                                        <div class="flex flex-col">
+                                            <span class="text-xs text-gray-400 line-through">R${product.price}</span>
+                                            <span class="text-base font-bold text-red-600">R${discountedPrice}</span>
+                                        </div>
+                                        <button onclick="event.stopPropagation(); addToCartWithSize(${product.id}, this)" class="btn-primary text-white px-2 py-1 rounded text-xs">
                                             Add to Cart
                                         </button>
                                     </div>
                                 </div>
                             </div>
-                        `).join('')}
+                        `}).join('')}
                     </div>
                     <button class="scroll-nav-btn left" onclick="scrollCategory('${category}', 'left')">
                         <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

@@ -64,6 +64,15 @@
     <!-- Navigation -->
     <div id="navigation-container"></div>
 
+    <!-- Launch Sale Banner -->
+    <div class="bg-gradient-to-r from-red-600 via-pink-600 to-purple-600 text-white py-3 text-center font-bold animate-pulse">
+        <div class="flex items-center justify-center gap-3">
+            <span class="text-2xl">🎉</span>
+            <span class="text-sm md:text-base">LAUNCH SALE NOW LIVE! Get 35% OFF Everything!</span>
+            <span class="text-2xl">🔥</span>
+        </div>
+    </div>
+
     <!-- Hero Section -->
     <section class="relative text-white py-24" style="background: url('assets/images/hero/products-hero.webp') center/cover no-repeat; background-attachment: fixed;">
         <!-- Dark Overlay -->
@@ -152,58 +161,78 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="product-grid grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8" id="products-grid">
                 <!-- Default clothing while JavaScript loads -->
-                <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden relative">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded-md text-xs font-bold z-10 shadow-lg">🔥 LAUNCH SALE</div>
+                    <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg">-35%</div>
                     <div class="aspect-square overflow-hidden">
                         <img src="assets/images/products/premium-hoodie.webp" alt="Premium Hoodie" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-2">Premium Hoodie</h3>
-                        <p class="text-gray-600 text-sm mb-3">Comfortable premium hoodie perfect for any season</p>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-base mb-1">Premium Hoodie</h3>
+                        <p class="text-gray-600 text-xs mb-2">Comfortable premium hoodie perfect for any season</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-red-600">R899</span>
-                            <button class="btn-primary text-white px-4 py-2 rounded-lg text-sm">Add to Cart</button>
+                            <div class="flex flex-col">
+                                <span class="text-xs text-gray-400 line-through">R899</span>
+                                <span class="text-lg font-bold text-red-600">R584</span>
+                            </div>
+                            <button class="btn-primary text-white px-3 py-1.5 rounded-lg text-xs">Add to Cart</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden relative">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded-md text-xs font-bold z-10 shadow-lg">🔥 LAUNCH SALE</div>
+                    <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg">-35%</div>
                     <div class="aspect-square overflow-hidden">
                         <img src="assets/images/products/classic-tee.webp" alt="Classic Tee" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-2">Classic Tee</h3>
-                        <p class="text-gray-600 text-sm mb-3">Premium cotton t-shirt with CRBFTN branding</p>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-base mb-1">Classic Tee</h3>
+                        <p class="text-gray-600 text-xs mb-2">Premium cotton t-shirt with CRBFTN branding</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-red-600">R499</span>
-                            <button class="btn-primary text-white px-4 py-2 rounded-lg text-sm">Add to Cart</button>
+                            <div class="flex flex-col">
+                                <span class="text-xs text-gray-400 line-through">R499</span>
+                                <span class="text-lg font-bold text-red-600">R324</span>
+                            </div>
+                            <button class="btn-primary text-white px-3 py-1.5 rounded-lg text-xs">Add to Cart</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden relative">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded-md text-xs font-bold z-10 shadow-lg">🔥 LAUNCH SALE</div>
+                    <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg">-35%</div>
                     <div class="aspect-square overflow-hidden">
                         <img src="assets/images/products/crbftn-air-classics.webp" alt="Designer Sneakers" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-2">Designer Sneakers</h3>
-                        <p class="text-gray-600 text-sm mb-3">Limited edition CRBFTN footwear collection</p>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-base mb-1">Designer Sneakers</h3>
+                        <p class="text-gray-600 text-xs mb-2">Limited edition CRBFTN footwear collection</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-red-600">R1299</span>
-                            <button class="btn-primary text-white px-4 py-2 rounded-lg text-sm">Add to Cart</button>
+                            <div class="flex flex-col">
+                                <span class="text-xs text-gray-400 line-through">R1299</span>
+                                <span class="text-lg font-bold text-red-600">R844</span>
+                            </div>
+                            <button class="btn-primary text-white px-3 py-1.5 rounded-lg text-xs">Add to Cart</button>
                         </div>
                     </div>
                 </div>
                 
-                <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden">
+                <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden relative">
+                    <div class="absolute top-2 left-2 bg-red-600 text-white px-2 py-1 rounded-md text-xs font-bold z-10 shadow-lg">🔥 LAUNCH SALE</div>
+                    <div class="absolute top-2 right-2 bg-green-600 text-white px-2 py-1 rounded-full text-xs font-bold z-10 shadow-lg">-35%</div>
                     <div class="aspect-square overflow-hidden">
                         <img src="assets/images/products/snapback-cap.webp" alt="CRBFTN Cap" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
                     </div>
-                    <div class="p-4">
-                        <h3 class="font-semibold text-lg mb-2">CRBFTN Cap</h3>
-                        <p class="text-gray-600 text-sm mb-3">Signature cap with embroidered logo</p>
+                    <div class="p-3">
+                        <h3 class="font-semibold text-base mb-1">CRBFTN Cap</h3>
+                        <p class="text-gray-600 text-xs mb-2">Signature cap with embroidered logo</p>
                         <div class="flex justify-between items-center">
-                            <span class="text-xl font-bold text-red-600">R299</span>
-                            <button class="btn-primary text-white px-4 py-2 rounded-lg text-sm">Add to Cart</button>
+                            <div class="flex flex-col">
+                                <span class="text-xs text-gray-400 line-through">R299</span>
+                                <span class="text-lg font-bold text-red-600">R194</span>
+                            </div>
+                            <button class="btn-primary text-white px-3 py-1.5 rounded-lg text-xs">Add to Cart</button>
                         </div>
                     </div>
                 </div>
