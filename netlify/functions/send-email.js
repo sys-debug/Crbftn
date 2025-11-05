@@ -92,157 +92,28 @@ exports.handler = async (event, context) => {
       }
     });
 
+    const submissionDate = new Date().toLocaleString();
+    const newsletterStatus = formData.newsletter ? 'Yes - Subscribed' : 'No';
+
     // Send email to business
     console.log('📧 Sending business email...');
     const businessResult = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: 'crabfontain@gmail.com',
-      subject: `� New Contact - ${formData.firstName} ${formData.lastName}`,
-      html: `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <style>
-            body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-            .container { max-width: 600px; margin: 0 auto; background: white; }
-            .header { background: linear-gradient(135deg, #dc2626 0%, #2563eb 100%); padding: 30px; text-align: center; }
-            .logo-text { color: white; font-size: 28px; font-weight: bold; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            .tagline { color: #ffffff; font-size: 14px; margin: 5px 0 0 0; opacity: 0.9; }
-            .banner { background: #1f2937; color: #dc2626; padding: 15px; text-align: center; font-size: 18px; font-weight: bold; }
-            .content { padding: 30px; }
-            .inquiry-box { background: #f8f9fa; border-left: 5px solid #dc2626; padding: 20px; margin: 20px 0; }
-            .field-row { margin: 15px 0; }
-            .field-label { font-weight: bold; color: #1f2937; display: inline-block; width: 120px; }
-            .field-value { color: #555; }
-            .message-box { background: #dc2626; color: white; padding: 20px; border-radius: 8px; margin: 20px 0; }
-            .footer { background: #1f2937; color: #dc2626; padding: 20px; text-align: center; font-size: 12px; }
-            .divider { height: 3px; background: linear-gradient(90deg, #dc2626, #2563eb, #dc2626); margin: 20px 0; }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <h1 class="logo-text">CRBFTN</h1>
-              <p class="tagline">Premium Clothing from Makhado • Style Redefined</p>
-            </div>
-            
-            <div class="banner">
-              � NEW CONTACT INQUIRY
-            </div>
-            
-            <div class="content">
-              <div class="inquiry-box">
-                <h3 style="color: #dc2626; margin-top: 0;">Contact Information</h3>
-                <div class="field-row">
-                  <span class="field-label">Name:</span>
-                  <span class="field-value">${formData.firstName} ${formData.lastName}</span>
-                </div>
-                <div class="field-row">
-                  <span class="field-label">Email:</span>
-                  <span class="field-value">${formData.email}</span>
-                </div>
-                <div class="field-row">
-                  <span class="field-label">Subject:</span>
-                  <span class="field-value">${formData.subject || 'General Inquiry'}</span>
-                </div>
-              </div>
-              
-              <div class="divider"></div>
-              
-              <div class="message-box">
-                <h3 style="margin-top: 0; color: white;">Customer Message:</h3>
-                <p style="margin: 0; line-height: 1.6;">${formData.message}</p>
-              </div>
-              
-              <p style="color: #555; margin-top: 30px;">
-                <strong>Next Steps:</strong> Respond within 24 hours to maintain excellent customer service standards.
-              </p>
-            </div>
-            
-            <div class="footer">
-              <p style="margin: 0;"><strong>CRBFTN Premium Clothing</strong></p>
-              <p style="margin: 5px 0;">Makhado, Limpopo Province, South Africa</p>
-              <p style="margin: 5px 0;">📧 crabfontain@gmail.com • 📞 +27 68 000 3578</p>
-            </div>
-          </div>
-        </body>
-        </html>
-      `
+      subject: '🔔 New Contact - ' + formData.firstName + ' ' + formData.lastName,
+      html: '<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;margin:0;padding:0;background-color:#f9fafb;color:#1f2937}.container{max-width:600px;margin:0 auto;background-color:#fff;border-radius:12px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.1)}.header{background:linear-gradient(135deg,#dc2626,#1d4ed8);color:#fff;padding:40px 30px;text-align:center}.header h1{margin:0;font-size:32px;font-weight:700;letter-spacing:2px}.header p{margin:10px 0 0;font-size:16px;opacity:.9}.content{padding:40px 30px}.alert{background:linear-gradient(135deg,#fee2e2,#dbeafe);border-left:4px solid #dc2626;padding:20px;margin-bottom:30px;border-radius:8px}.alert h2{margin:0 0 10px;color:#dc2626;font-size:20px}.customer-details{background:#f3f4f6;border-radius:12px;padding:25px;margin:25px 0}.detail-row{display:flex;justify-content:space-between;align-items:center;padding:12px 0;border-bottom:1px solid #e5e7eb}.detail-row:last-child{border-bottom:none}.detail-label{font-weight:600;color:#374151;min-width:120px}.detail-value{color:#1f2937;font-weight:500;flex:1;text-align:right}.message-section{background:#f9fafb;border-radius:12px;padding:25px;margin:25px 0;border-left:4px solid #1d4ed8}.message-section h3{margin:0 0 15px;color:#1d4ed8;font-size:18px}.message-content{line-height:1.6;color:#374151;background:#fff;padding:20px;border-radius:8px;border:1px solid #e5e7eb}.action-button{display:inline-block;background:linear-gradient(135deg,#dc2626,#1d4ed8);color:#fff;text-decoration:none;padding:15px 30px;border-radius:8px;font-weight:600;text-align:center;margin:20px 0;transition:transform .2s ease}.footer{background:#1f2937;color:#fff;padding:30px;text-align:center}.footer h3{margin:0 0 15px;color:#dc2626}.footer p{margin:5px 0;opacity:.8}.timestamp{background:#e5e7eb;padding:10px 15px;border-radius:6px;font-size:14px;color:#6b7280;text-align:center;margin:20px 0}.priority-high{background:linear-gradient(135deg,#fee2e2,#fef2f2);border:2px solid #dc2626;padding:15px;border-radius:8px;margin:20px 0;text-align:center}.priority-high strong{color:#dc2626;font-size:16px}</style></head><body><div class="container"><div class="header"><h1>CRBFTN</h1><p>Style Redefined - New Customer Inquiry</p></div><div class="content"><div class="alert"><h2>🔔 New Contact Form Submission</h2><p>A potential customer has reached out through your website contact form. Review the details below and respond within 24 hours.</p></div><div class="customer-details"><h3 style="margin:0 0 20px;color:#1f2937">Customer Information</h3><div class="detail-row"><span class="detail-label">Name:</span><span class="detail-value">' + formData.firstName + ' ' + formData.lastName + '</span></div><div class="detail-row"><span class="detail-label">Email:</span><span class="detail-value">' + formData.email + '</span></div><div class="detail-row"><span class="detail-label">Phone:</span><span class="detail-value">' + (formData.phone || 'Not provided') + '</span></div><div class="detail-row"><span class="detail-label">Subject:</span><span class="detail-value">' + (formData.subject || 'General Inquiry') + '</span></div><div class="detail-row"><span class="detail-label">Newsletter:</span><span class="detail-value">' + newsletterStatus + '</span></div></div><div class="message-section"><h3>📝 Customer Message</h3><div class="message-content">' + formData.message + '</div></div><div class="priority-high"><strong>⚡ HIGH PRIORITY</strong><br>Respond within 24 hours to maintain excellent customer service</div><div style="text-align:center"><a href="mailto:' + formData.email + '" class="action-button">📧 Reply to Customer</a></div><div class="timestamp">Submitted: ' + submissionDate + '</div></div><div class="footer"><h3>CRBFTN Business Dashboard</h3><p>📍 Makhado, Limpopo, South Africa</p><p>📧 crabfontain@gmail.com</p><p>� +27 68 000 3578</p><p style="margin-top:20px;font-size:12px;opacity:.6">This notification was generated automatically from your CRBFTN website contact form.</p></div></div></body></html>'
     });
 
     console.log('✅ Business email sent:', businessResult.messageId);
 
     // Send confirmation to customer
+    const timestamp = new Date().toLocaleString();
     console.log('📧 Sending confirmation email...');
     const confirmationResult = await transporter.sendMail({
       from: process.env.EMAIL_USER,
       to: formData.email,
-      subject: '� Thank you for contacting CRBFTN!',
-      html: `
-        <!DOCTYPE html>
-        <html>
-        <head>
-          <style>
-            body { font-family: 'Arial', sans-serif; margin: 0; padding: 0; background-color: #f4f4f4; }
-            .container { max-width: 600px; margin: 0 auto; background: white; }
-            .header { background: linear-gradient(135deg, #dc2626 0%, #2563eb 100%); padding: 30px; text-align: center; }
-            .logo-text { color: white; font-size: 28px; font-weight: bold; margin: 0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3); }
-            .tagline { color: #ffffff; font-size: 14px; margin: 5px 0 0 0; opacity: 0.9; }
-            .welcome-banner { background: #1f2937; color: #dc2626; padding: 20px; text-align: center; }
-            .welcome-title { font-size: 24px; margin: 0; font-weight: bold; }
-            .content { padding: 30px; }
-            .highlight-box { background: linear-gradient(135deg, #dc2626, #2563eb); color: white; padding: 25px; border-radius: 10px; margin: 20px 0; text-align: center; }
-            .message-recap { background: #f8f9fa; border-left: 5px solid #2563eb; padding: 20px; margin: 20px 0; }
-            .contact-box { background: #1f2937; color: #dc2626; padding: 20px; border-radius: 8px; margin: 20px 0; }
-            .footer { background: linear-gradient(135deg, #dc2626 0%, #2563eb 100%); color: white; padding: 20px; text-align: center; font-size: 12px; }
-            .divider { height: 3px; background: linear-gradient(90deg, #dc2626, #2563eb, #dc2626); margin: 20px 0; }
-          </style>
-        </head>
-        <body>
-          <div class="container">
-            <div class="header">
-              <h1 class="logo-text">CRBFTN</h1>
-              <p class="tagline">Premium Clothing from Makhado • Style Redefined</p>
-            </div>
-            
-            <div class="welcome-banner">
-              <h2 class="welcome-title">Thank You, ${formData.firstName}!</h2>
-            </div>
-            
-            <div class="content">
-              <div class="highlight-box">
-                <h3 style="margin-top: 0;">We've Received Your Message!</h3>
-                <p style="margin: 0; font-size: 16px;">Thank you for reaching out to CRBFTN. We'll respond to your inquiry within 24 hours.</p>
-              </div>
-              
-              <div class="message-recap">
-                <h3 style="color: #2563eb; margin-top: 0;">Your Message to Us:</h3>
-                <p style="margin: 0; line-height: 1.6; color: #555;">"${formData.message}"</p>
-              </div>
-              
-              <div class="divider"></div>
-              
-              <div class="contact-box">
-                <h3 style="margin-top: 0; color: #dc2626;">Contact Information</h3>
-                <p style="margin: 5px 0; color: white;"><strong>Email:</strong> crabfontain@gmail.com</p>
-                <p style="margin: 5px 0; color: white;"><strong>Phone/WhatsApp:</strong> +27 68 000 3578</p>
-                <p style="margin: 5px 0; color: white;"><strong>Location:</strong> Makhado, Limpopo Province, South Africa</p>
-              </div>
-              
-              <p style="text-align: center; color: #555; margin-top: 30px;">
-                <em>"Style redefined. Quality delivered. Proudly from Makhado."</em>
-              </p>
-            </div>
-            
-            <div class="footer">
-              <p style="margin: 0; font-weight: bold;">Best regards,</p>
-              <p style="margin: 5px 0;">The CRBFTN Team</p>
-              <p style="margin: 5px 0; opacity: 0.8;">Premium clothing from the heart of Limpopo</p>
-            </div>
-          </div>
-        </body>
-        </html>
-      `
+      subject: 'Thank You for Contacting CRBFTN - We\'ll Respond Within 24 Hours',
+      html: '<!DOCTYPE html><html><head><style>body{font-family:Arial,sans-serif;margin:0;padding:0;background-color:#f9fafb;color:#1f2937}.container{max-width:650px;margin:0 auto;background-color:#fff;border-radius:12px;overflow:hidden;box-shadow:0 10px 25px rgba(0,0,0,0.1)}.header{background:linear-gradient(135deg,#dc2626,#1d4ed8);color:#fff;padding:50px 30px;text-align:center}.header h1{margin:0;font-size:36px;font-weight:700;letter-spacing:3px}.header p{margin:15px 0 0;font-size:18px;opacity:.95}.content{padding:40px 30px}.thank-you{background:linear-gradient(135deg,#fee2e2,#dbeafe);border-radius:12px;padding:30px;margin-bottom:30px;text-align:center}.thank-you h2{margin:0 0 15px;color:#dc2626;font-size:26px}.thank-you p{margin:0;font-size:16px;color:#374151;line-height:1.6}.response-info{background:#f3f4f6;border-radius:12px;padding:25px;margin:25px 0;border-left:4px solid #1d4ed8}.response-info h3{margin:0 0 15px;color:#1d4ed8;font-size:20px}.response-info p{margin:10px 0;color:#374151;line-height:1.6}.info-box{background:#fff;border:2px solid #e5e7eb;border-radius:12px;padding:25px;margin:25px 0}.info-box h3{margin:0 0 20px;color:#1f2937;font-size:18px;border-bottom:2px solid #dc2626;padding-bottom:10px}.contact-item{display:flex;align-items:center;margin:12px 0;padding:10px;background:#f9fafb;border-radius:6px}.contact-item strong{min-width:100px;color:#374151}.banking-details{background:linear-gradient(135deg,#f3f4f6,#e5e7eb);border-radius:12px;padding:25px;margin:25px 0}.banking-details h3{margin:0 0 20px;color:#1f2937;font-size:18px;text-align:center}.bank-item{margin:10px 0;padding:10px;background:#fff;border-radius:6px;display:flex;justify-content:space-between;align-items:center}.bank-label{font-weight:600;color:#374151}.bank-value{color:#1f2937;font-weight:500}.products{margin:30px 0}.products h3{text-align:center;color:#1f2937;font-size:22px;margin-bottom:25px}.product-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.product-card{background:#f9fafb;border-radius:8px;padding:15px;text-align:center;border:2px solid #e5e7eb;transition:transform .2s ease}.product-card h4{margin:10px 0;color:#dc2626;font-size:16px}.product-card p{margin:0;color:#6b7280;font-size:14px}.cta-button{display:inline-block;background:linear-gradient(135deg,#dc2626,#1d4ed8);color:#fff;text-decoration:none;padding:18px 40px;border-radius:10px;font-weight:700;text-align:center;margin:20px 0;transition:transform .2s ease;font-size:16px;box-shadow:0 4px 12px rgba(220,38,38,0.3)}.social-section{background:#f3f4f6;border-radius:12px;padding:25px;margin:30px 0;text-align:center}.social-section h3{margin:0 0 15px;color:#1f2937}.social-links{display:flex;justify-content:center;gap:20px;margin-top:15px}.social-link{display:inline-flex;align-items:center;justify-content:center;width:45px;height:45px;background:#fff;border-radius:50%;color:#dc2626;text-decoration:none;font-weight:700;border:2px solid #dc2626;transition:all .2s ease}.footer{background:#1f2937;color:#fff;padding:30px;text-align:center}.footer h3{margin:0 0 15px;color:#dc2626}.footer p{margin:8px 0;opacity:.85}.reference{background:#e5e7eb;padding:12px 20px;border-radius:8px;font-size:14px;color:#6b7280;text-align:center;margin:20px 0;border-left:4px solid #1d4ed8}</style></head><body><div class="container"><div class="header"><h1>CRBFTN</h1><p>Style Redefined - Premium Clothing</p></div><div class="content"><div class="thank-you"><h2>🎉 Thank You, ' + formData.firstName + '!</h2><p>We truly appreciate you reaching out to CRBFTN. Your inquiry is important to us, and our team is already reviewing your message.</p></div><div class="response-info"><h3>⏰ What Happens Next?</h3><p><strong>Response Time:</strong> Our team will respond to your inquiry within 24 hours during business days.</p><p><strong>Your Subject:</strong> ' + (formData.subject || 'General Inquiry') + '</p><p>We\'re committed to providing you with the best customer service experience. If your inquiry is urgent, please don\'t hesitate to call us directly.</p></div><div class="reference">Reference: CRBFTN-CONTACT-' + Date.now() + ' | Submitted: ' + timestamp + '</div><div class="info-box"><h3>📞 Contact Information</h3><div class="contact-item"><strong>Email:</strong><span>crabfontain@gmail.com</span></div><div class="contact-item"><strong>Phone:</strong><span>+27 68 000 3578</span></div><div class="contact-item"><strong>Location:</strong><span>Makhado, Limpopo, South Africa</span></div></div><div class="banking-details"><h3>💳 Banking Details (For Advance Payments)</h3><div class="bank-item"><span class="bank-label">Account Name:</span><span class="bank-value">CRBFTN</span></div><div class="bank-item"><span class="bank-label">Bank:</span><span class="bank-value">FNB</span></div><div class="bank-item"><span class="bank-label">Account Type:</span><span class="bank-value">Business Cheque</span></div><p style="text-align:center;margin-top:15px;font-size:14px;color:#6b7280">Please use your order number as payment reference</p></div><div class="products"><h3>🔥 Featured Products</h3><div class="product-grid"><div class="product-card"><h4>Premium Tees</h4><p>Comfort meets style</p></div><div class="product-card"><h4>Designer Hoodies</h4><p>Stay warm in elegance</p></div><div class="product-card"><h4>Luxury Joggers</h4><p>Ultimate comfort wear</p></div><div class="product-card"><h4>Statement Caps</h4><p>Complete your look</p></div></div></div><div style="text-align:center;margin:30px 0"><a href="https://crbftn.com" class="cta-button">🛍️ Browse Our Full Collection</a></div><div class="social-section"><h3>Follow Us on Social Media</h3><p>Stay updated with our latest collections, exclusive offers, and style inspiration!</p><div class="social-links"><a href="#" class="social-link">f</a><a href="#" class="social-link">📷</a><a href="#" class="social-link">𝕏</a></div></div></div><div class="footer"><h3>CRBFTN - Style Redefined</h3><p>📍 Makhado, Limpopo Province, South Africa</p><p>📧 crabfontain@gmail.com</p><p>📱 +27 68 000 3578</p><p style="margin-top:25px;font-size:12px;opacity:.7">This is an automated confirmation email. Please do not reply directly to this message.</p><p style="font-size:12px;opacity:.7">For assistance, contact us at crabfontain@gmail.com</p></div></div></body></html>'
     });
 
     console.log('✅ Confirmation email sent:', confirmationResult.messageId);
