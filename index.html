@@ -1501,51 +1501,51 @@
                 modalsContainer.innerHTML = `
 <!-- Quote Email Modal -->
 <div id="quote-email-modal" class="hidden modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" style="z-index: 99999;" onclick="if(event.target === this) closeQuoteEmailModal()">
-    <div class="modal-content bg-white rounded-xl max-w-md w-full mx-4 p-6 relative" style="transform: scale(1); max-height: 90vh; overflow-y: auto;" onclick="event.stopPropagation()">
-        <button onclick="closeQuoteEmailModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <div class="modal-content" style="background: white; border-radius: 12px; max-width: 28rem; width: 100%; margin: 0 1rem; padding: 1.5rem; position: relative; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1);" onclick="event.stopPropagation()">
+        <button onclick="closeQuoteEmailModal()" style="position: absolute; top: 1rem; right: 1rem; color: #9CA3AF; cursor: pointer; background: none; border: none;">
+            <svg style="width: 1.5rem; height: 1.5rem;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
             </svg>
         </button>
-        <div class="text-center mb-6">
-            <div class="w-16 h-16 bg-gradient-to-r from-red-600 to-blue-600 rounded-full flex items-center justify-center mx-auto mb-4">
-                <svg class="w-8 h-8 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <div style="text-align: center; margin-bottom: 1.5rem;">
+            <div style="width: 4rem; height: 4rem; background: linear-gradient(to right, #DC2626, #2563EB); border-radius: 9999px; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem auto;">
+                <svg style="width: 2rem; height: 2rem; color: white;" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                 </svg>
             </div>
-            <h3 class="text-2xl font-bold text-gray-900 mb-2">Request Your Quote</h3>
-            <p class="text-gray-600">Enter your email to receive your personalized quote within 24 hours</p>
+            <h3 style="font-size: 1.5rem; font-weight: bold; color: #111827; margin-bottom: 0.5rem;">Request Your Quote</h3>
+            <p style="color: #4B5563;">Enter your email to receive your personalized quote within 24 hours</p>
         </div>
-        <div id="quote-summary" class="bg-gray-50 rounded-lg p-4 mb-6">
-            <h4 class="font-semibold text-gray-900 mb-2">Your Items:</h4>
-            <div id="quote-items-list" class="space-y-2 text-sm text-gray-600 max-h-32 overflow-y-auto"></div>
-            <div class="border-t border-gray-200 pt-2 mt-2">
-                <div class="flex justify-between items-center font-semibold text-gray-900">
+        <div id="quote-summary" style="background: #F9FAFB; border-radius: 0.5rem; padding: 1rem; margin-bottom: 1.5rem;">
+            <h4 style="font-weight: 600; color: #111827; margin-bottom: 0.5rem;">Your Items:</h4>
+            <div id="quote-items-list" style="font-size: 0.875rem; color: #4B5563; max-height: 8rem; overflow-y: auto;"></div>
+            <div style="border-top: 1px solid #E5E7EB; padding-top: 0.5rem; margin-top: 0.5rem;">
+                <div style="display: flex; justify-content: space-between; align-items: center; font-weight: 600; color: #111827;">
                     <span>Total:</span>
-                    <span id="quote-total-display" class="text-red-600">R0.00</span>
+                    <span id="quote-total-display" style="color: #DC2626;">R0.00</span>
                 </div>
             </div>
         </div>
-        <form id="quote-email-form" class="space-y-4" onsubmit="submitQuoteRequest(event)">
-            <div>
-                <label for="customer-email" class="block text-sm font-medium text-gray-700 mb-2">Email Address *</label>
-                <input type="email" id="customer-email" name="email" required placeholder="your@email.com" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200">
+        <form id="quote-email-form" onsubmit="submitQuoteRequest(event)">
+            <div style="margin-bottom: 1rem;">
+                <label for="customer-email" style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem;">Email Address *</label>
+                <input type="email" id="customer-email" name="email" required placeholder="your@email.com" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #D1D5DB; border-radius: 0.5rem; font-size: 1rem;">
             </div>
-            <div>
-                <label for="customer-name" class="block text-sm font-medium text-gray-700 mb-2">Full Name *</label>
-                <input type="text" id="customer-name" name="name" required placeholder="Your full name" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200">
+            <div style="margin-bottom: 1rem;">
+                <label for="customer-name" style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem;">Full Name *</label>
+                <input type="text" id="customer-name" name="name" required placeholder="Your full name" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #D1D5DB; border-radius: 0.5rem; font-size: 1rem;">
             </div>
-            <div>
-                <label for="customer-phone" class="block text-sm font-medium text-gray-700 mb-2">Phone Number *</label>
-                <input type="tel" id="customer-phone" name="phone" required placeholder="Your phone number" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200">
+            <div style="margin-bottom: 1rem;">
+                <label for="customer-phone" style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem;">Phone Number *</label>
+                <input type="tel" id="customer-phone" name="phone" required placeholder="Your phone number" style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #D1D5DB; border-radius: 0.5rem; font-size: 1rem;">
             </div>
-            <div>
-                <label for="customer-message" class="block text-sm font-medium text-gray-700 mb-2">Additional Message (Optional)</label>
-                <textarea id="customer-message" name="message" rows="3" placeholder="Any special requests or questions..." class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-red-500 focus:border-transparent transition-all duration-200 resize-none"></textarea>
+            <div style="margin-bottom: 1rem;">
+                <label for="customer-message" style="display: block; font-size: 0.875rem; font-weight: 500; color: #374151; margin-bottom: 0.5rem;">Additional Message (Optional)</label>
+                <textarea id="customer-message" name="message" rows="3" placeholder="Any special requests or questions..." style="width: 100%; padding: 0.75rem 1rem; border: 1px solid #D1D5DB; border-radius: 0.5rem; font-size: 1rem; resize: none;"></textarea>
             </div>
-            <div class="flex gap-3 pt-4">
-                <button type="button" onclick="closeQuoteEmailModal()" class="flex-1 px-6 py-3 border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-colors">Cancel</button>
-                <button type="submit" id="submit-quote-btn" class="flex-1 bg-gradient-to-r from-red-600 to-blue-600 text-white font-semibold py-3 px-6 rounded-lg hover:from-red-700 hover:to-blue-700 transform hover:scale-[1.02] transition-all duration-200">Send Quote Request</button>
+            <div style="display: flex; gap: 0.75rem; padding-top: 1rem;">
+                <button type="button" onclick="closeQuoteEmailModal()" style="flex: 1; padding: 0.75rem 1.5rem; border: 1px solid #D1D5DB; color: #374151; border-radius: 0.5rem; background: white; cursor: pointer; font-weight: 500;">Cancel</button>
+                <button type="submit" id="submit-quote-btn" style="flex: 1; background: linear-gradient(to right, #DC2626, #2563EB); color: white; font-weight: 600; padding: 0.75rem 1.5rem; border-radius: 0.5rem; border: none; cursor: pointer;">Send Quote Request</button>
             </div>
         </form>
     </div>
@@ -1600,6 +1600,17 @@
             await loadComponent('navigation-container', 'components/navigation.html');
             await loadComponent('footer-container', 'components/footer.html');
             await loadComponent('modals-container', 'components/modals.html');
+            
+            // ALWAYS ensure modal fallback is loaded (for both local and deployed)
+            setTimeout(() => {
+                const modal = document.getElementById('quote-email-modal');
+                if (!modal) {
+                    console.warn('⚠️ Modal not found after component load, loading fallback...');
+                    loadInlineModals();
+                } else {
+                    console.log('✅ Modal successfully loaded');
+                }
+            }, 500);
             
             // Initialize AOS animations
             if (typeof AOS !== 'undefined') {
