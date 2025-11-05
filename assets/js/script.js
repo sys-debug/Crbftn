@@ -980,22 +980,9 @@ function showQuoteEmailModal() {
     console.log('📧 Showing quote email modal...');
     let modal = document.getElementById('quote-email-modal');
     
-    // If modal doesn't exist, create a fallback modal
     if (!modal) {
-        console.log('❌ Quote modal not found, creating fallback modal...');
-        createFallbackQuoteModal();
-        modal = document.getElementById('quote-email-modal');
-    }
-    
-    if (!modal) {
-        console.error('❌ Could not create quote modal');
-        // Simple fallback - just prompt for email
-        const email = prompt('Enter your email to request a quote:');
-        const name = prompt('Enter your name:');
-        const phone = prompt('Enter your phone number (optional):');
-        if (email && name) {
-            handleQuoteSubmission(email, name, phone, 'Quote request from cart');
-        }
+        console.error('❌ Quote modal not found in DOM!');
+        alert('Error: Quote modal not loaded. Please refresh the page.');
         return;
     }
     
