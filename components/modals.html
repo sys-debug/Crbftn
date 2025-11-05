@@ -87,7 +87,7 @@
 </div>
 
 <!-- Quote Email Modal -->
-<div id="quote-email-modal" class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" style="display: none !important; z-index: 99999 !important;" onclick="if(event.target === this) closeQuoteEmailModal()">
+<div id="quote-email-modal" class="hidden modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center" style="z-index: 99999;" onclick="if(event.target === this) closeQuoteEmailModal()">
     <div class="modal-content bg-white rounded-xl max-w-md w-full mx-4 p-6 relative" style="transform: scale(1); max-height: 90vh; overflow-y: auto;" onclick="event.stopPropagation()">
         <!-- Close Button -->
         <button onclick="closeQuoteEmailModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-600 transition-colors">

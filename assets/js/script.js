@@ -1018,44 +1018,24 @@ function showQuoteEmailModal() {
         totalDisplay.textContent = `R${totalAmount.toFixed(2)}`;
     }
     
-    // ULTIMATE NUCLEAR OPTION - Override inline style using setProperty with priority
+    // SIMPLE SOLUTION - Just remove hidden class, CSS flex class handles the rest
     modal.classList.remove('hidden');
-    modal.className = modal.className.replace('hidden', ''); // Remove hidden from class string
     
-    // Use setProperty with 'important' priority to override inline styles
-    modal.style.setProperty('display', 'flex', 'important');
-    modal.style.setProperty('visibility', 'visible', 'important');
-    modal.style.setProperty('opacity', '1', 'important');
-    modal.style.setProperty('z-index', '99999', 'important');
-    modal.style.setProperty('position', 'fixed', 'important');
-    modal.style.setProperty('top', '0', 'important');
-    modal.style.setProperty('left', '0', 'important');
-    modal.style.setProperty('right', '0', 'important');
-    modal.style.setProperty('bottom', '0', 'important');
-    modal.style.setProperty('background-color', 'rgba(0, 0, 0, 0.5)', 'important');
-    modal.style.setProperty('align-items', 'center', 'important');
-    modal.style.setProperty('justify-content', 'center', 'important');
-    modal.style.setProperty('pointer-events', 'auto', 'important');
-    
-    console.log('🚀 ULTIMATE NUCLEAR ACTIVATED with setProperty!');
+    console.log('🚀 Modal shown by removing hidden class');
     console.log('Modal element:', modal);
-    console.log('Modal.style.display =', modal.style.display);
     console.log('Modal computed display:', window.getComputedStyle(modal).display);
-    console.log('Modal computed visibility:', window.getComputedStyle(modal).visibility);
-    console.log('Modal computed z-index:', window.getComputedStyle(modal).zIndex);
     console.log('Modal classList:', modal.classList.toString());
     
     // Also close the cart when showing quote modal
     const cartOverlay = document.getElementById('cart-overlay');
     if (cartOverlay) {
         cartOverlay.classList.add('hidden');
-        cartOverlay.style.display = 'none';
     }
     
-    // Make sure document body isn't preventing scrolling/interaction
+    // Prevent body scroll when modal is open
     document.body.style.overflow = 'hidden';
     
-    console.log('✅ Quote modal FORCED with NUCLEAR option!');
+    console.log('✅ Quote modal displayed!');
 }
 
 // Create fallback quote modal if component didn't load
@@ -1123,7 +1103,6 @@ function closeQuoteEmailModal() {
     const modal = document.getElementById('quote-email-modal');
     if (modal) {
         modal.classList.add('hidden');
-        modal.style.cssText = 'display: none !important; visibility: hidden !important; opacity: 0 !important;';
         
         // Reset form
         const form = document.getElementById('quote-email-form');
