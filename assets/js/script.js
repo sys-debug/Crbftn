@@ -963,11 +963,14 @@ function toggleCart() {
 }
 
 function requestQuote() {
+    console.log('🔥 Request Quote clicked! Cart:', cart);
     if (cart.length === 0) {
+        alert('Your cart is empty! Please add items first.');
         showToast('Your cart is empty! Add some items first.');
         return;
     }
     
+    console.log('✅ Cart has items, showing modal...');
     // Show the email collection modal
     showQuoteEmailModal();
 }
