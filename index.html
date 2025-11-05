@@ -1651,7 +1651,8 @@
             // Load components
             await loadComponent('navigation-container', 'components/navigation.html');
             await loadComponent('footer-container', 'components/footer.html');
-            await loadComponent('modals-container', 'components/modals.html');
+            // DISABLED: Modal is already embedded in HTML with inline styles
+            // await loadComponent('modals-container', 'components/modals.html');
             
             // Check if modal loaded successfully
             setTimeout(() => {

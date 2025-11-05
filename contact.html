@@ -496,7 +496,8 @@
         document.addEventListener('DOMContentLoaded', async function() {
             await loadComponent('navigation-container', 'components/navigation.html');
             await loadComponent('footer-container', 'components/footer.html');
-            await loadComponent('modals-container', 'components/modals.html');
+            // DISABLED: Modal embedded in HTML
+            // await loadComponent('modals-container', 'components/modals.html');
             
             // Initialize AOS animations
             if (typeof AOS !== 'undefined') {
