@@ -24,17 +24,14 @@ exports.handler = async (event, context) => {
 
         // Get environment variables
         const {
-            EMAIL_HOST,
-            EMAIL_PORT,
             EMAIL_USER,
             EMAIL_PASS,
             EMAIL_TO
         } = process.env;
 
         // Validate SMTP configuration
-        if (!EMAIL_HOST || !EMAIL_USER || !EMAIL_PASS || !EMAIL_TO) {
+        if (!EMAIL_USER || !EMAIL_PASS || !EMAIL_TO) {
             console.error('Missing SMTP configuration:', {
-                EMAIL_HOST: !!EMAIL_HOST,
                 EMAIL_USER: !!EMAIL_USER,
                 EMAIL_PASS: !!EMAIL_PASS,
                 EMAIL_TO: !!EMAIL_TO
@@ -88,8 +85,6 @@ exports.handler = async (event, context) => {
             command: error.command,
             stack: error.stack,
             envVars: {
-                hasHost: !!EMAIL_HOST,
-                hasPort: !!EMAIL_PORT,
                 hasUser: !!EMAIL_USER,
                 hasPass: !!EMAIL_PASS,
                 hasTo: !!EMAIL_TO
