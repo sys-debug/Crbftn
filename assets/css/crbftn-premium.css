@@ -1057,22 +1057,47 @@ body.has-sticky-nav {
 }
 
 /* Ensure modal form elements are visible */
+#quote-email-modal * {
+    visibility: visible !important;
+    opacity: 1 !important;
+}
+
+#quote-email-modal h3 {
+    font-size: 1.5rem !important;
+    font-weight: bold !important;
+    color: #111827 !important;
+    margin-bottom: 0.5rem !important;
+}
+
+#quote-email-modal p {
+    color: #4B5563 !important;
+    margin-bottom: 1rem !important;
+}
+
+#quote-email-modal h4 {
+    font-weight: 600 !important;
+    color: #111827 !important;
+    margin-bottom: 0.5rem !important;
+}
+
 #quote-email-modal label {
-    display: block;
-    font-size: 0.875rem;
-    font-weight: 500;
-    color: #374151;
-    margin-bottom: 0.5rem;
+    display: block !important;
+    font-size: 0.875rem !important;
+    font-weight: 500 !important;
+    color: #374151 !important;
+    margin-bottom: 0.5rem !important;
 }
 
 #quote-email-modal input,
 #quote-email-modal textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #D1D5DB;
-    border-radius: 0.5rem;
-    font-size: 1rem;
-    margin-bottom: 1rem;
+    width: 100% !important;
+    padding: 0.75rem 1rem !important;
+    border: 1px solid #D1D5DB !important;
+    border-radius: 0.5rem !important;
+    font-size: 1rem !important;
+    margin-bottom: 1rem !important;
+    background: white !important;
+    color: #111827 !important;
 }
 
 #quote-email-modal button[type="submit"] {
@@ -1083,6 +1108,7 @@ body.has-sticky-nav {
     border: none !important;
     border-radius: 0.5rem !important;
     cursor: pointer !important;
+    flex: 1 !important;
 }
 
 #quote-email-modal button[type="button"] {
@@ -1092,6 +1118,30 @@ body.has-sticky-nav {
     color: #374151 !important;
     border-radius: 0.5rem !important;
     cursor: pointer !important;
+    flex: 1 !important;
+}
+
+#quote-email-modal svg {
+    display: inline-block !important;
+}
+
+#quote-summary {
+    background: #F9FAFB !important;
+    border-radius: 0.5rem !important;
+    padding: 1rem !important;
+    margin-bottom: 1.5rem !important;
+}
+
+#quote-items-list {
+    max-height: 8rem !important;
+    overflow-y: auto !important;
+    font-size: 0.875rem !important;
+    color: #4B5563 !important;
+}
+
+#quote-total-display {
+    color: #DC2626 !important;
+    font-weight: bold !important;
 }
 
 @keyframes modalSlideIn {
