@@ -1055,8 +1055,8 @@ function showQuoteEmailModal() {
         `;
     }
     
-    // SIMPLE SOLUTION - Just remove hidden class and ensure display is flex with centering
-    modal.classList.remove('hidden');
+    // SIMPLE SOLUTION - Just remove modal-hidden class and ensure display is flex with centering
+    modal.classList.remove('modal-hidden');
     modal.style.display = 'flex';
     modal.style.justifyContent = 'center';
     modal.style.alignItems = 'center';
@@ -1144,7 +1144,7 @@ function closeQuoteEmailModal() {
     console.log('🚪 Closing quote modal...');
     const modal = document.getElementById('quote-email-modal');
     if (modal) {
-        modal.classList.add('hidden');
+        modal.classList.add('modal-hidden');
         modal.style.display = 'none';
         modal.style.zIndex = '-9999';
         modal.style.transform = 'translateY(-200%)';

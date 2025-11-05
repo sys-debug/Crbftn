@@ -1017,11 +1017,14 @@ body.has-sticky-nav {
 }
 
 /* ========== MODAL SYSTEM ========== */
-.modal.hidden {
+.modal-hidden {
     display: none !important;
+    visibility: hidden !important;
+    z-index: -9999 !important;
+    transform: translateY(-200%) !important;
 }
 
-.modal:not(.hidden) {
+.modal:not(.modal-hidden) {
     display: flex !important;
     visibility: visible !important;
     opacity: 1 !important;
