@@ -1042,6 +1042,25 @@ body.has-sticky-nav {
     opacity: 1 !important;
 }
 
+.modal-content {
+    position: relative;
+    z-index: 1001;
+    max-height: 90vh;
+    overflow-y: auto;
+    animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
 /* ========== SIZE SELECTION STYLES ========== */
 .size-btn {
     transition: all 0.2s ease-in-out;
