@@ -977,17 +977,18 @@ function requestQuote() {
 
 // Show quote email modal
 function showQuoteEmailModal() {
+    console.log('📧 Showing quote email modal...');
     let modal = document.getElementById('quote-email-modal');
     
     // If modal doesn't exist, create a fallback modal
     if (!modal) {
-        console.log('Quote modal not found, creating fallback modal...');
+        console.log('❌ Quote modal not found, creating fallback modal...');
         createFallbackQuoteModal();
         modal = document.getElementById('quote-email-modal');
     }
     
     if (!modal) {
-        console.error('Could not create quote modal');
+        console.error('❌ Could not create quote modal');
         // Simple fallback - just prompt for email
         const email = prompt('Enter your email to request a quote:');
         const name = prompt('Enter your name:');
@@ -1017,14 +1018,19 @@ function showQuoteEmailModal() {
         totalDisplay.textContent = `R${totalAmount.toFixed(2)}`;
     }
     
-    // Show modal
+    // FORCE show modal - Tailwind's hidden class uses !important so we need to override aggressively
     modal.classList.remove('hidden');
-    modal.classList.add('flex');
-    modal.style.display = 'flex';
-    modal.style.alignItems = 'center';
-    modal.style.justifyContent = 'center';
+    modal.style.display = 'flex !important';
+    modal.style.visibility = 'visible';
+    modal.style.opacity = '1';
     
-    console.log('✅ Quote modal displayed!');
+    // Also close the cart when showing quote modal
+    const cartOverlay = document.getElementById('cart-overlay');
+    if (cartOverlay) {
+        cartOverlay.classList.add('hidden');
+    }
+    
+    console.log('✅ Quote modal FORCED display! Check if visible now.');
 }
 
 // Create fallback quote modal if component didn't load
@@ -1088,16 +1094,20 @@ function createFallbackQuoteModal() {
 
 // Close quote email modal
 function closeQuoteEmailModal() {
+    console.log('🚪 Closing quote modal...');
     const modal = document.getElementById('quote-email-modal');
     if (modal) {
         modal.classList.add('hidden');
-        modal.classList.remove('flex');
+        modal.style.display = 'none';
+        modal.style.visibility = 'hidden';
+        modal.style.opacity = '0';
         
         // Reset form
         const form = document.getElementById('quote-email-form');
         if (form) {
             form.reset();
         }
+        console.log('✅ Quote modal closed');
     }
 }
 
@@ -1166,21 +1176,22 @@ async function handleQuoteSubmission(customerEmail, customerName, customerPhone,
     `;
     submitBtn.disabled = true;
     
-    // Submit via SMTP function instead of Netlify forms
+    // Submit via SMTP function - CORRECT format matching send-email.js expectations
     const emailData = {
         type: 'quote',
-        formData: {
-            customerEmail: customerEmail,
-            customerName: customerName || 'Not provided',
-            customerPhone: customerPhone || 'Not provided',
-            customerMessage: customerMessage || 'No additional message',
-            items: quoteData.items,
-            totalAmount: totalAmount,
-            itemsCount: itemsCount,
+        items: quoteData.items,
+        totalAmount: totalAmount,
+        customerInfo: {
+            email: customerEmail,
+            name: customerName || 'Not provided',
+            phone: customerPhone || 'Not provided',
+            message: customerMessage || 'No additional message',
             timestamp: timestamp,
             quoteId: quoteId
         }
     };
+    
+    console.log('📤 Sending quote request to Netlify function:', emailData);
     
     // Submit via SMTP function with fallback
     let response, result;
