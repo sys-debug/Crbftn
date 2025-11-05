@@ -45,31 +45,15 @@ exports.handler = async (event, context) => {
             };
         }
 
-        // Create SMTP transporter with Gmail-optimized settings
+        // Create transporter (same as working Mulambwane site)
+        console.log('📧 Creating transporter...');
         const transporter = nodemailer.createTransporter({
-            host: EMAIL_HOST,
-            port: parseInt(EMAIL_PORT) || 587,
-            secure: false, // Use STARTTLS
+            service: 'gmail',
             auth: {
                 user: EMAIL_USER,
                 pass: EMAIL_PASS
-            },
-            tls: {
-                rejectUnauthorized: false,
-                ciphers: 'SSLv3'
-            },
-            debug: true, // Enable debug output
-            logger: true // Log to console
+            }
         });
-
-        // Verify SMTP connection with better error handling
-        try {
-            await transporter.verify();
-            console.log('SMTP connection verified successfully');
-        } catch (verifyError) {
-            console.error('SMTP verification failed:', verifyError);
-            // Continue anyway - some SMTP servers don't support verify
-        }
 
         const emailsSent = [];
 

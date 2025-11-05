@@ -538,7 +538,7 @@
             // Get form elements
             const form = document.getElementById('contactForm');
             const successDiv = document.getElementById('contactSuccess');
-            const submitBtn = form.querySelector('button[type="submit"]');
+            const submitBtn = form ? form.querySelector('button[type="submit"]') : null;
             
             // Show direct contact fallback immediately
             successDiv.style.display = 'block';
@@ -553,8 +553,10 @@
             `;
             
             // Reset button
-            submitBtn.innerHTML = 'Send Message';
-            submitBtn.disabled = false;
+            if (submitBtn) {
+                submitBtn.innerHTML = 'Send Message';
+                submitBtn.disabled = false;
+            }
             
             // Scroll to message
             successDiv.scrollIntoView({ behavior: 'smooth' });
