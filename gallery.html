@@ -6,6 +6,12 @@
     <title>Gallery - CRBFTN Collection Showcase</title>
     <meta name="description" content="Explore the CRBFTN gallery. Discover our latest collections, behind-the-scenes moments, and brand lifestyle.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.png">
+    <link rel="shortcut icon" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -20,13 +26,48 @@
     <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Mobile Menu Function with Fallback -->
+    <script>
+        window.mobileMenuToggle = function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                return;
+            }
+            
+            // Create ONLY mobile menu if not found, don't touch the navigation
+            const navContainer = document.getElementById('navigation-container');
+            if (navContainer && !document.getElementById('mobile-menu')) {
+                const mobileMenu = document.createElement('div');
+                mobileMenu.id = 'mobile-menu';
+                mobileMenu.className = 'md:hidden bg-white shadow-lg';
+                mobileMenu.style.cssText = 'position: fixed; top: 64px; left: 0; right: 0; z-index: 99998; max-height: calc(100vh - 64px); overflow-y: auto;';
+                mobileMenu.innerHTML = `
+                    <div class="px-4 py-4">
+                        <a href="index.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                        <a href="about.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                        <a href="products.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Clothing</a>
+                        <a href="gallery.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                        <a href="reviews.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                        <a href="contact.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                    </div>
+                `;
+                navContainer.appendChild(mobileMenu);
+                setTimeout(() => mobileMenu.classList.toggle('hidden'), 10);
+            }
+        }
+        window.toggleMobileMenu = window.mobileMenuToggle;
+    </script>
 </head>
 <body class="bg-gray-50 overflow-x-hidden">
     <!-- Navigation -->
     <div id="navigation-container"></div>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-black via-red-900 to-blue-900 text-white py-20 bg-cover bg-center bg-blend-overlay" style="background-image: url('assets/images/products/jeans-premium.jpg');">
+    <section class="relative text-white py-20" style="background: url('assets/images/gallery/gallery-hero.webp') center/cover no-repeat; background-attachment: fixed;">
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>">
         <div class="floating-element floating-element-1"></div>
         <div class="floating-element floating-element-2"></div>
         
@@ -69,7 +110,7 @@
                 <div class="gallery-item collections" data-aos="fade-up" data-aos-delay="100">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/gallery/collection-1.jpg" alt="Autumn Collection 2024" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/gallery/collection-1.webp" alt="Autumn Collection 2024" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Autumn Collection 2024</h3>
@@ -83,7 +124,7 @@
                 <div class="gallery-item lifestyle" data-aos="fade-up" data-aos-delay="200">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/gallery/lifestyle-1.jpg" alt="Urban Lifestyle" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/gallery/lifestyle-1.webp" alt="Urban Lifestyle" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Urban Lifestyle</h3>
@@ -97,7 +138,7 @@
                 <div class="gallery-item behind-scenes" data-aos="fade-up" data-aos-delay="300">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/gallery/behind-scenes-1.jpg" alt="Design Process" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/products/behind-scenes-1.webp" alt="Design Process" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Design Process</h3>
@@ -111,7 +152,7 @@
                 <div class="gallery-item collections" data-aos="fade-up" data-aos-delay="100">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/gallery/collection-2.jpg" alt="Summer Essentials" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/gallery/collection-2.webp" alt="Summer Essentials" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Summer Essentials</h3>
@@ -125,7 +166,7 @@
                 <div class="gallery-item events" data-aos="fade-up" data-aos-delay="200">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/gallery/lifestyle-2.jpg" alt="Launch Event" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/gallery/lifestyle-2.webp" alt="Launch Event" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Launch Event</h3>
@@ -139,7 +180,7 @@
                 <div class="gallery-item lifestyle" data-aos="fade-up" data-aos-delay="300">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/gallery/lifestyle-3.jpg" alt="Street Culture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/gallery/lifestyle-3.webp" alt="Street Culture" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Street Culture</h3>
@@ -153,7 +194,7 @@
                 <div class="gallery-item collections" data-aos="fade-up" data-aos-delay="100">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/products/accessories-combo.jpg" alt="Accessories Line" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/products/crbftn-explorer-backpack.webp" alt="Accessories Line" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Accessories Line</h3>
@@ -167,7 +208,7 @@
                 <div class="gallery-item behind-scenes" data-aos="fade-up" data-aos-delay="200">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/gallery/behind-scenes-2.jpg" alt="Production Flow" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/products/behind-scenes-2.webp" alt="Production Flow" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Production Flow</h3>
@@ -181,7 +222,7 @@
                 <div class="gallery-item events" data-aos="fade-up" data-aos-delay="300">
                     <div class="premium-card overflow-hidden group cursor-pointer">
                         <div class="relative h-80 overflow-hidden">
-                            <img src="assets/images/products/jacket-streetwear.jpg" alt="Pop-up Store" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
+                            <img src="assets/images/products/leather-jacket.webp" alt="Pop-up Store" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500">
                             <div class="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                             <div class="absolute bottom-4 left-4 text-white opacity-0 group-hover:opacity-100 transition-opacity duration-300">
                                 <h3 class="text-xl font-bold mb-2">Pop-up Store</h3>
@@ -354,3 +395,4 @@
     </script>
 </body>
 </html>
+

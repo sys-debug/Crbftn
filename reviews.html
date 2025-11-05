@@ -6,6 +6,12 @@
     <title>Customer Reviews - CRBFTN</title>
     <meta name="description" content="Read what our customers say about CRBFTN. Real reviews from real people who love our premium clothing from Makhado, Limpopo.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.png">
+    <link rel="shortcut icon" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -20,13 +26,48 @@
     <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Mobile Menu Function with Fallback -->
+    <script>
+        window.mobileMenuToggle = function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                return;
+            }
+            
+            // Create ONLY mobile menu if not found, don't touch the navigation
+            const navContainer = document.getElementById('navigation-container');
+            if (navContainer && !document.getElementById('mobile-menu')) {
+                const mobileMenu = document.createElement('div');
+                mobileMenu.id = 'mobile-menu';
+                mobileMenu.className = 'md:hidden bg-white shadow-lg';
+                mobileMenu.style.cssText = 'position: fixed; top: 64px; left: 0; right: 0; z-index: 99998; max-height: calc(100vh - 64px); overflow-y: auto;';
+                mobileMenu.innerHTML = `
+                    <div class="px-4 py-4">
+                        <a href="index.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                        <a href="about.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                        <a href="products.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Clothing</a>
+                        <a href="gallery.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                        <a href="reviews.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                        <a href="contact.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                    </div>
+                `;
+                navContainer.appendChild(mobileMenu);
+                setTimeout(() => mobileMenu.classList.toggle('hidden'), 10);
+            }
+        }
+        window.toggleMobileMenu = window.mobileMenuToggle;
+    </script>
 </head>
 <body class="bg-gray-50 overflow-x-hidden">
     <!-- Navigation -->
     <div id="navigation-container"></div>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-black via-red-900 to-blue-900 text-white py-24 bg-cover bg-center bg-blend-overlay" style="background-image: url('assets/images/products/t-shirt-premium.jpg');">
+    <section class="relative text-white py-24" style="background: url('assets/images/hero/reviews-hero.webp') center/cover no-repeat; background-attachment: fixed;">
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>">
         <div class="floating-element floating-element-1"></div>
         <div class="floating-element floating-element-2"></div>
         
@@ -468,3 +509,4 @@
     <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99835476556a3e9a',t:'MTc2MjA4MzM0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
+

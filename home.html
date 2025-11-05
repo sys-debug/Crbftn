@@ -20,6 +20,42 @@
     <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Mobile Menu Function - Available Immediately -->
+    <script>
+        // Global mobile menu function with fallback system
+        window.mobileMenuToggle = function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                console.log('Mobile menu toggled:', menu.classList.contains('hidden') ? 'closed' : 'open');
+                return;
+            }
+            
+            // Create ONLY mobile menu if not found, don't touch the navigation
+            console.log('Mobile menu not found, creating mobile menu only...');
+            const navContainer = document.getElementById('navigation-container');
+            if (navContainer && !document.getElementById('mobile-menu')) {
+                const mobileMenu = document.createElement('div');
+                mobileMenu.id = 'mobile-menu';
+                mobileMenu.className = 'md:hidden bg-white shadow-lg';
+                mobileMenu.style.cssText = 'position: fixed; top: 64px; left: 0; right: 0; z-index: 99998; max-height: calc(100vh - 64px); overflow-y: auto;';
+                mobileMenu.innerHTML = `
+                    <div class="px-4 py-4">
+                        <a href="index.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                        <a href="about.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                        <a href="products.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Clothing</a>
+                        <a href="gallery.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                        <a href="reviews.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                        <a href="contact.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                    </div>
+                `;
+                navContainer.appendChild(mobileMenu);
+                setTimeout(() => mobileMenu.classList.toggle('hidden'), 10);
+            }
+        }
+        window.toggleMobileMenu = window.mobileMenuToggle;
+    </script>
 </head>
 <body class="bg-gray-50 overflow-x-hidden">
     <!-- Navigation -->

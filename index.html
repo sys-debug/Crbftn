@@ -1,10 +1,16 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>CRBFTN - Premium Clothing Brand from Makhado</title>
     <meta name="description" content="Discover premium streetwear and clothing from CRBFTN. Born in Makhado, Limpopo. Style redefined through quality craftsmanship.">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.png">
+    <link rel="shortcut icon" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png">
     
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
@@ -17,6 +23,101 @@
     <!-- Custom Styles -->
     <link rel="stylesheet" href="assets/css/crbftn-premium.css">
     
+    <!-- Load JavaScript early to ensure functions are available for navigation -->
+    <script src="assets/js/script.js"></script>
+    
+    <!-- Mobile Menu Function - Available Immediately -->
+    <script>
+        // Define fallback navigation loading function globally
+        window.loadInlineNavigation = function() {
+            const navContainer = document.getElementById('navigation-container');
+            if (navContainer) {
+                navContainer.innerHTML = `
+                    <nav class="navbar bg-white shadow-lg sticky top-0 z-50">
+                        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                            <div class="flex justify-between items-center h-16">
+                                <div class="flex items-center">
+                                    <a href="index.html" class="flex items-center">
+                                        <img src="assets/images/logo.png" alt="CRBFTN Logo" class="h-12 w-55">
+                                    </a>
+                                </div>
+                                <div class="hidden md:flex space-x-8">
+                                    <a href="index.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                                    <a href="about.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                                    <a href="products.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Clothing</a>
+                                    <a href="gallery.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                                    <a href="reviews.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                                    <a href="contact.html" class="nav-link text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                                </div>
+                                <div class="flex items-center space-x-4">
+                                    <button onclick="toggleCart()" class="relative p-2 text-gray-700 hover:text-purple-600 transition-colors">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 3h2l.4 2M7 13h10l4-8H5.4m0 0L7 13m0 0l-1.5 6M7 13l-1.5 6m0 0h9"></path>
+                                        </svg>
+                                        <span id="cart-count" class="cart-badge">0</span>
+                                    </button>
+                                    <button class="md:hidden" onclick="mobileMenuToggle()">
+                                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </nav>
+                    <div id="mobile-menu" class="hidden md:hidden bg-white shadow-lg" style="position: fixed; top: 64px; left: 0; right: 0; z-index: 99998; max-height: calc(100vh - 64px); overflow-y: auto;">
+                        <div class="px-4 py-4">
+                            <a href="index.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                            <a href="about.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                            <a href="products.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Clothing</a>
+                            <a href="gallery.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                            <a href="reviews.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                            <a href="contact.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                        </div>
+                    </div>
+                `;
+                console.log('Fallback navigation loaded with mobile menu');
+            }
+        };
+        
+        // Global mobile menu function - works with both component and fallback
+        window.mobileMenuToggle = function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                console.log('Mobile menu toggled:', menu.classList.contains('hidden') ? 'closed' : 'open');
+                return;
+            }
+            
+            // If menu not found, ONLY create the mobile menu, NOT the entire navigation
+            console.log('Mobile menu not found, creating mobile menu only...');
+            const navContainer = document.getElementById('navigation-container');
+            if (navContainer && !document.getElementById('mobile-menu')) {
+                const mobileMenu = document.createElement('div');
+                mobileMenu.id = 'mobile-menu';
+                mobileMenu.className = 'md:hidden bg-white shadow-lg';
+                mobileMenu.style.cssText = 'position: fixed; top: 64px; left: 0; right: 0; z-index: 99998; max-height: calc(100vh - 64px); overflow-y: auto;';
+                mobileMenu.innerHTML = `
+                    <div class="px-4 py-4">
+                        <a href="index.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                        <a href="about.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                        <a href="products.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Clothing</a>
+                        <a href="gallery.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                        <a href="reviews.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                        <a href="contact.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                    </div>
+                `;
+                navContainer.appendChild(mobileMenu);
+                setTimeout(() => mobileMenu.classList.toggle('hidden'), 10);
+                console.log('Mobile menu only created and toggled');
+            }
+        };
+        
+        // Aliases for different function names
+        window.toggleMobileMenu = window.mobileMenuToggle;
+        window.toggleMobileMenuFallback = window.mobileMenuToggle;
+    </script>
+    
     <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
@@ -26,7 +127,7 @@
     <div id="navigation-container"></div>
 
     <!-- Hero Section -->
-    <section class="hero-enhanced relative overflow-hidden min-h-screen flex items-center" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('assets/images/hero/hero-main.jpg'); background-size: cover; background-position: center; background-attachment: fixed;">
+    <section class="hero-enhanced relative overflow-hidden min-h-screen flex items-center" style="background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.5)), url('assets/images/hero/hero-main.webp'); background-size: cover; background-position: center; background-attachment: fixed;">
         <!-- Floating Elements -->
         <div class="floating-element floating-element-1"></div>
         <div class="floating-element floating-element-2"></div>
@@ -140,13 +241,13 @@
                 <!-- Premium Hoodies Collection -->
                 <div class="category-card premium-card hover-lift" data-aos="fade-up" data-aos-delay="200">
                     <div class="category-image relative overflow-hidden rounded-2xl mb-6">
-                        <img src="assets/images/products/hoodie-classic.jpg" alt="Premium Hoodies" class="absolute inset-0 w-full h-full object-cover">
+                        <img src="assets/images/products/premium-hoodie.webp" alt="Premium Hoodies" class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-br from-black via-red-900 to-red-700 opacity-70"></div>
                         <div class="absolute inset-0 bg-black bg-opacity-30"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="text-center text-white animate-float">
                                 <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-                                    <img src="assets/images/products/hoodie-classic.jpg" alt="Hoodie" class="w-full h-full object-cover">
+                                    <img src="assets/images/products/premium-hoodie.webp" alt="Hoodie" class="w-full h-full object-cover">
                                 </div>
                                 <div class="w-16 h-1 bg-white mx-auto mb-4 opacity-60"></div>
                                 <h3 class="text-3xl font-bold mb-2 heading-brand text-white">Premium Hoodies</h3>
@@ -178,13 +279,13 @@
                 <!-- Classic Tees Collection -->
                 <div class="category-card premium-card hover-lift" data-aos="fade-up" data-aos-delay="400">
                     <div class="category-image relative overflow-hidden rounded-2xl mb-6">
-                        <img src="assets/images/products/t-shirt-premium.jpg" alt="Classic Tees" class="absolute inset-0 w-full h-full object-cover">
+                        <img src="assets/images/products/classic-tee.webp" alt="Classic Tees" class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-br from-blue-800 via-blue-600 to-blue-400 opacity-70"></div>
                         <div class="absolute inset-0 bg-black bg-opacity-20"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="text-center text-white animate-float" style="animation-delay: 1s;">
                                 <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-                                    <img src="assets/images/products/t-shirt-premium.jpg" alt="T-Shirt" class="w-full h-full object-cover">
+                                    <img src="assets/images/products/classic-tee.webp" alt="T-Shirt" class="w-full h-full object-cover">
                                 </div>
                                 <div class="w-16 h-1 bg-white mx-auto mb-4 opacity-60"></div>
                                 <h3 class="text-3xl font-bold mb-2 heading-brand text-white">Classic Tees</h3>
@@ -216,13 +317,13 @@
                 <!-- Premium Accessories Collection -->
                 <div class="category-card premium-card hover-lift" data-aos="fade-up" data-aos-delay="600">
                     <div class="category-image relative overflow-hidden rounded-2xl mb-6">
-                        <img src="assets/images/products/accessories-combo.jpg" alt="Accessories" class="absolute inset-0 w-full h-full object-cover">
+                        <img src="assets/images/products/crbftn-explorer-backpack.webp" alt="Accessories" class="absolute inset-0 w-full h-full object-cover">
                         <div class="absolute inset-0 bg-gradient-to-br from-red-700 via-red-500 to-red-300 opacity-70"></div>
                         <div class="absolute inset-0 bg-black bg-opacity-25"></div>
                         <div class="absolute inset-0 flex items-center justify-center">
                             <div class="text-center text-white animate-float" style="animation-delay: 2s;">
                                 <div class="w-20 h-20 mx-auto mb-4 rounded-full overflow-hidden border-4 border-white">
-                                    <img src="assets/images/products/cap-urban.jpg" alt="Accessories" class="w-full h-full object-cover">
+                                    <img src="assets/images/products/snapback-cap.webp" alt="Accessories" class="w-full h-full object-cover">
                                 </div>
                                 <div class="w-16 h-1 bg-white mx-auto mb-4 opacity-60"></div>
                                 <h3 class="text-3xl font-bold mb-2 heading-brand text-white">Accessories</h3>
@@ -288,15 +389,26 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/hoodie-classic.jpg" alt="Premium Hoodie" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/premium-hoodie.webp" alt="Premium Hoodie" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Premium Hoodie</h4>
                                     <p class="text-gray-600 text-sm mb-3">Luxury streetwear comfort</p>
+                                    
+                                    <!-- Size Selection -->
+                                    <div class="mb-3">
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+                                        <div class="flex gap-2">
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="flex justify-between items-center">
                                         <span class="text-xl font-bold text-red-600">R899</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -306,15 +418,26 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/t-shirt-premium.jpg" alt="Designer Tee" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/classic-tee.webp" alt="Designer Tee" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Designer Tee</h4>
                                     <p class="text-gray-600 text-sm mb-3">Premium cotton blend</p>
+                                    
+                                    <!-- Size Selection -->
+                                    <div class="mb-3">
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+                                        <div class="flex gap-2">
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="flex justify-between items-center">
                                         <span class="text-xl font-bold text-red-600">R599</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+                                        <button onclick="addToCartWithSize(31, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -324,15 +447,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/jeans-premium.jpg" alt="Premium Jeans" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/classic-crbftn-jeans.webp" alt="Premium Jeans" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Premium Jeans</h4>
                                     <p class="text-gray-600 text-sm mb-3">Crafted denim perfection</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R1299</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -342,15 +488,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/cap-urban.jpg" alt="Premium Cap" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/snapback-cap.webp" alt="Premium Cap" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Premium Cap</h4>
                                     <p class="text-gray-600 text-sm mb-3">Signature streetwear piece</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R399</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -360,15 +529,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/jacket-streetwear.jpg" alt="Bomber Jacket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/leather-jacket.webp" alt="Bomber Jacket" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Bomber Jacket</h4>
                                     <p class="text-gray-600 text-sm mb-3">Street-ready style</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R1599</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -389,15 +581,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/tank-top-athletic.jpg" alt="Trendy Crop Top" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/classic-tee.webp" alt="Trendy Crop Top" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Trendy Crop Top</h4>
                                     <p class="text-gray-600 text-sm mb-3">Youth street fashion</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R449</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -407,15 +622,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/shorts-summer.jpg" alt="Biker Shorts" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/cargo-pants.webp" alt="Biker Shorts" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Biker Shorts</h4>
                                     <p class="text-gray-600 text-sm mb-3">Cool comfort style</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R299</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -425,15 +663,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/t-shirt-premium.jpg" alt="Graphic Tee" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/classic-tee.webp" alt="Graphic Tee" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Graphic Tee</h4>
                                     <p class="text-gray-600 text-sm mb-3">Hip urban design</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R399</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -443,15 +704,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/polo-classic.jpg" alt="Mini Dress" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/polo-shirt.webp" alt="Mini Dress" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Mini Dress</h4>
                                     <p class="text-gray-600 text-sm mb-3">Trendy youth style</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R699</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -461,15 +745,28 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/sneakers-limited.jpg" alt="Sneaker Style" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/crbftn-air-classics.webp" alt="Sneaker Style" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Sneaker Style</h4>
                                     <p class="text-gray-600 text-sm mb-3">Street culture footwear</p>
+                                    
+                                    <!-- Shoe Size Selection -->
+                                    <div class="mb-3">
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+                                        <div class="flex gap-2 flex-wrap">
+                                            <button onclick="selectSize(this, '7')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">7</button>
+                                            <button onclick="selectSize(this, '8')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">8</button>
+                                            <button onclick="selectSize(this, '9')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">9</button>
+                                            <button onclick="selectSize(this, '10')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">10</button>
+                                            <button onclick="selectSize(this, '11')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">11</button>
+                                        </div>
+                                    </div>
+                                    
                                     <div class="flex justify-between items-center">
-                                        <span class="text-xl font-bold text-red-600">R899</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+                                        <span class="text-xl font-bold text-red-600">R1599</span>
+                                        <button onclick="addToCartWithSize(3, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
                                     </div>
                                 </div>
                             </div>
@@ -490,15 +787,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/polo-classic.jpg" alt="Golf Shirt" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/polo-shirt.webp" alt="Golf Shirt" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Golf Shirt</h4>
                                     <p class="text-gray-600 text-sm mb-3">Professional comfort</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R549</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -508,15 +828,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/t-shirt-premium.jpg" alt="Business Tee" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/classic-tee.webp" alt="Business Tee" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Business Tee</h4>
                                     <p class="text-gray-600 text-sm mb-3">Smart casual elegance</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R449</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -526,15 +869,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/jacket-streetwear.jpg" alt="Formal Blazer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/leather-jacket.webp" alt="Formal Blazer" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Formal Blazer</h4>
                                     <p class="text-gray-600 text-sm mb-3">Executive style</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R1899</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -544,15 +910,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/jeans-premium.jpg" alt="Dress Pants" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/classic-crbftn-jeans.webp" alt="Dress Pants" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Dress Pants</h4>
                                     <p class="text-gray-600 text-sm mb-3">Professional tailoring</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R899</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -562,15 +951,42 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/sneakers-limited.jpg" alt="Dress Shoes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/crbftn-air-classics.webp" alt="Dress Shoes" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Dress Shoes</h4>
                                     <p class="text-gray-600 text-sm mb-3">Executive footwear</p>
+                                    <!-- Shoe Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2 flex-wrap">
+
+                                            <button onclick="selectSize(this, '7')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">7</button>
+
+                                            <button onclick="selectSize(this, '8')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">8</button>
+
+                                            <button onclick="selectSize(this, '9')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">9</button>
+
+                                            <button onclick="selectSize(this, '10')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">10</button>
+
+                                            <button onclick="selectSize(this, '11')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">11</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R1299</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -591,15 +1007,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/accessories-combo.jpg" alt="Premium Backpack" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/crbftn-explorer-backpack.webp" alt="Premium Backpack" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Premium Backpack</h4>
                                     <p class="text-gray-600 text-sm mb-3">Urban lifestyle essential</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R799</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -609,15 +1048,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/accessories-combo.jpg" alt="Laptop Bag" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/crbftn-explorer-backpack.webp" alt="Laptop Bag" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Laptop Bag</h4>
                                     <p class="text-gray-600 text-sm mb-3">Professional tech protection</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R649</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -627,15 +1089,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/cap-urban.jpg" alt="Side Bag" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/snapback-cap.webp" alt="Side Bag" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Side Bag</h4>
                                     <p class="text-gray-600 text-sm mb-3">Casual carry companion</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R449</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -645,15 +1130,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/sweatshirt-cozy.jpg" alt="Smart Watch" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/zip-up-hoodie.webp" alt="Smart Watch" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Smart Watch</h4>
                                     <p class="text-gray-600 text-sm mb-3">Tech meets style</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R1999</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -663,15 +1171,38 @@
                         <div class="product-scroll-item">
                             <div class="premium-card h-full overflow-hidden group">
                                 <div class="aspect-square mb-4 rounded-lg relative overflow-hidden">
-                                    <img src="assets/images/products/cap-urban.jpg" alt="Designer Shades" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
+                                    <img src="assets/images/products/snapback-cap.webp" alt="Designer Shades" class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-300">
                                     <div class="absolute inset-0 bg-black bg-opacity-20 group-hover:bg-opacity-10 transition-all duration-300"></div>
                                 </div>
                                 <div class="p-4">
                                     <h4 class="font-semibold text-lg mb-2">Designer Shades</h4>
                                     <p class="text-gray-600 text-sm mb-3">Premium eyewear</p>
+                                    <!-- Size Selection -->
+
+                                    <div class="mb-3">
+
+                                        <p class="text-sm font-medium text-gray-700 mb-2">Size:</p>
+
+                                        <div class="flex gap-2">
+
+                                            <button onclick="selectSize(this, 'S')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">S</button>
+
+                                            <button onclick="selectSize(this, 'M')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">M</button>
+
+                                            <button onclick="selectSize(this, 'L')" class="size-btn px-3 py-1 border border-gray-300 rounded text-sm hover:border-red-600 hover:text-red-600 transition-colors">L</button>
+
+                                        </div>
+
+                                    </div>
+
+                                    
+
                                     <div class="flex justify-between items-center">
+
                                         <span class="text-xl font-bold text-red-600">R599</span>
-                                        <a href="cart.html" class="btn-primary text-sm px-4 py-2">Add to Cart</a>
+
+                                        <button onclick="addToCartWithSize(1, this)" class="btn-primary text-sm px-4 py-2">Add to Cart</button>
+
                                     </div>
                                 </div>
                             </div>
@@ -736,10 +1267,10 @@
                     <div class="relative">
                         <!-- Main Heritage Card -->
                         <div class="premium-card bg-gradient-to-br from-red-900 to-blue-900 text-white p-12 rounded-3xl animate-float overflow-hidden relative">
-                            <img src="assets/images/hero/hero-about.jpg" alt="Makhado Heritage" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                            <img src="assets/images/hero/hero-about.webp" alt="Makhado Heritage" class="absolute inset-0 w-full h-full object-cover opacity-30">
                             <div class="text-center relative z-10">
                                 <div class="w-24 h-24 mx-auto mb-6 rounded-full overflow-hidden border-4 border-white">
-                                    <img src="assets/images/gallery/lifestyle-1.jpg" alt="Heritage" class="w-full h-full object-cover">
+                                    <img src="assets/images/gallery/lifestyle-1.webp" alt="Heritage" class="w-full h-full object-cover">
                                 </div>
                                 <h3 class="text-3xl font-bold mb-4 heading-brand text-white">Makhado Heritage</h3>
                                 <p class="text-xl opacity-90 mb-6">Where mountains meet fashion</p>
@@ -836,8 +1367,46 @@
     <!-- Modals -->
     <div id="modals-container"></div>
 
-    <!-- Scripts -->
-    <script src="assets/js/script.js"></script>
+    <!-- Firebase SDK -->
+    <script type="module">
+        // Import Firebase SDKs
+        import { initializeApp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js';
+        import { getFirestore, collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js';
+        
+        // Firebase configuration - will be injected by Netlify build process
+        // Environment variables are set in Netlify dashboard
+        const firebaseConfig = {
+            apiKey: "%%FIREBASE_API_KEY%%",
+            authDomain: "%%FIREBASE_AUTH_DOMAIN%%",
+            projectId: "%%FIREBASE_PROJECT_ID%%", 
+            storageBucket: "%%FIREBASE_STORAGE_BUCKET%%",
+            messagingSenderId: "%%FIREBASE_MESSAGING_SENDER_ID%%",
+            appId: "%%FIREBASE_APP_ID%%"
+        };
+
+        // Only initialize if config is properly injected (not placeholder values)
+        if (firebaseConfig.apiKey && !firebaseConfig.apiKey.includes('%%')) {
+            try {
+                // Initialize Firebase
+                const app = initializeApp(firebaseConfig);
+                const db = getFirestore(app);
+
+                // Make Firebase functions available globally
+                window.firebaseApp = app;
+                window.firestoreDb = db;
+                window.firestoreCollection = collection;
+                window.firestoreAddDoc = addDoc;
+                window.firestoreServerTimestamp = serverTimestamp;
+                
+                console.log('Firebase initialized successfully');
+            } catch (error) {
+                console.warn('Firebase initialization failed:', error);
+                // Firebase functions will be undefined, app will still work without Firestore
+            }
+        } else {
+            console.log('Firebase config not available - running without Firestore integration');
+        }
+    </script>
 
     <!-- Component Loader Script -->
     <script>
@@ -870,7 +1439,7 @@
                                 <div class="flex items-center">
                                     <a href="index.html" class="flex items-center">
                                         <div class="border-2 border-gray-300 rounded-lg p-2 bg-white shadow-sm">
-                                            <img src="assets/images/logo.png" alt="CRBFTN Logo" class="h-12 w-60">
+                                            <img src="assets/images/logo.png" alt="CRBFTN Logo" class="h-12 w-55">
                                         </div>
                                     </a>
                                 </div>
@@ -920,7 +1489,7 @@
             const email = event.target.querySelector('input[type="email"]').value;
             
             // Show success message
-            showToast('Thanks for subscribing! Welcome to the CRBFTN family 🎉');
+            showToast('Thanks for subscribing! Welcome to the CRBFTN family ??');
             event.target.reset();
         }
 
@@ -978,3 +1547,4 @@
     </script>
 </body>
 </html>
+

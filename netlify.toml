@@ -1,6 +1,6 @@
 [build]
   publish = "."
-  command = ""
+  command = "chmod +x inject-firebase-config.sh && ./inject-firebase-config.sh"
 
 # Email Environment Variables
 [build.environment]
@@ -8,30 +8,41 @@
   EMAIL_PASS = ""
   EMAIL_HOST = "smtp.gmail.com"
   EMAIL_PORT = "587"
-  EMAIL_TO = ""
+  EMAIL_TO = "email.crabfontain@gmail.com"
+  # Firebase Environment Variables (set in Netlify dashboard)
+  FIREBASE_API_KEY = ""
+  FIREBASE_AUTH_DOMAIN = ""
+  FIREBASE_PROJECT_ID = ""
+  FIREBASE_STORAGE_BUCKET = ""
+  FIREBASE_MESSAGING_SENDER_ID = ""
+  FIREBASE_APP_ID = ""
 
 # Form notifications with branded templates
 [forms]
   # Contact form - business notification
-  [forms.contact-business]
+  # The HTML contact form uses name="contact" and posts form-name="contact"
+  [forms.contact]
     template = "email-templates/contact-business-notification.html"
     to = "${EMAIL_TO}"
-    subject = "New CRBFTN Contact Form Submission from {{name}}"
-    
+    subject = "New CRBFTN Contact Form Submission from {{firstName}} {{lastName}}"
+
   # Contact form - customer thank you
-  [forms.contact-customer]
+  # JS posts a secondary form-name 'contact-customer-thankyou' for the customer email
+  [forms."contact-customer-thankyou"]
     template = "email-templates/contact-customer-thankyou.html"
     to = "{{email}}"
     subject = "Thank you for contacting CRBFTN - We'll be in touch soon!"
 
   # Quote request - business notification
-  [forms.quote-business]
+  # The site posts form-name='quote-request' when submitting a quote
+  [forms."quote-request"]
     template = "email-templates/quote-business-notification.html"
     to = "${EMAIL_TO}"
     subject = "New CRBFTN Quote Request from {{customerName}}"
 
   # Quote request - customer confirmation
-  [forms.quote-customer]
+  # The site posts form-name='quote-customer-confirmation' for the customer confirmation email
+  [forms."quote-customer-confirmation"]
     template = "email-templates/quote-customer-confirmation.html"
     to = "{{customerEmail}}"
     subject = "Your CRBFTN Quote Request - We're Preparing Your Custom Quote!"

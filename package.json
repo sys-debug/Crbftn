@@ -1,0 +1,15 @@
+{
+  "name": "crbftn-website",
+  "version": "1.0.0",
+  "description": "CRBFTN Premium Streetwear Website",
+  "main": "index.js",
+  "scripts": {
+    "build": "echo 'Static site - no build required'"
+  },
+  "dependencies": {
+    "nodemailer": "^6.9.7"
+  },
+  "keywords": ["crbftn", "streetwear", "netlify"],
+  "author": "CRBFTN",
+  "license": "MIT"
+}

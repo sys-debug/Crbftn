@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Netlify Function Diagnostics - CRBFTN</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            background: #f5f5f5;
+        }
+        .test-section {
+            background: white;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        button {
+            background: #4CAF50;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background: #45a049;
+        }
+        button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 15px;
+            border-radius: 4px;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+        .success {
+            background: #d4edda;
+            border: 1px solid #c3e6cb;
+            color: #155724;
+        }
+        .error {
+            background: #f8d7da;
+            border: 1px solid #f5c6cb;
+            color: #721c24;
+        }
+        .info {
+            background: #d1ecf1;
+            border: 1px solid #bee5eb;
+            color: #0c5460;
+        }
+        h1 {
+            color: #333;
+        }
+        h2 {
+            color: #666;
+            border-bottom: 2px solid #4CAF50;
+            padding-bottom: 10px;
+        }
+        .instructions {
+            background: #fff3cd;
+            border: 1px solid #ffeaa7;
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>🔧 Netlify Function Diagnostics</h1>
+    
+    <div class="instructions">
+        <strong>📋 How to Use:</strong>
+        <ol>
+            <li>Make sure you've committed and deployed your code to Netlify</li>
+            <li>Run each test below to see detailed error messages</li>
+            <li>Check the Console (F12) for additional debugging info</li>
+            <li>Take screenshots of any errors to review</li>
+        </ol>
+    </div>
+
+    <!-- Test 1: Check if function exists -->
+    <div class="test-section">
+        <h2>Test 1: Check Function Endpoint</h2>
+        <p>This checks if the Netlify function is deployed and responding.</p>
+        <button onclick="testFunctionExists()">Run Test 1</button>
+        <div id="test1Result"></div>
+    </div>
+
+    <!-- Test 2: Test with minimal data -->
+    <div class="test-section">
+        <h2>Test 2: Minimal Contact Request</h2>
+        <p>Sends the simplest possible contact request to isolate issues.</p>
+        <button onclick="testMinimalContact()">Run Test 2</button>
+        <div id="test2Result"></div>
+    </div>
+
+    <!-- Test 3: Test with full contact data -->
+    <div class="test-section">
+        <h2>Test 3: Full Contact Request</h2>
+        <p>Sends a complete contact form submission.</p>
+        <button onclick="testFullContact()">Run Test 3</button>
+        <div id="test3Result"></div>
+    </div>
+
+    <!-- Test 4: Test quote request -->
+    <div class="test-section">
+        <h2>Test 4: Quote Request</h2>
+        <p>Tests the quote submission functionality.</p>
+        <button onclick="testQuoteRequest()">Run Test 4</button>
+        <div id="test4Result"></div>
+    </div>
+
+    <!-- Test 5: Environment check -->
+    <div class="test-section">
+        <h2>Test 5: Environment Variables Check</h2>
+        <p>Verifies environment variables are accessible (won't show values for security).</p>
+        <button onclick="testEnvironment()">Run Test 5</button>
+        <div id="test5Result"></div>
+    </div>
+
+    <script>
+        // Helper function to display results
+        function showResult(elementId, success, message, data = null) {
+            const element = document.getElementById(elementId);
+            element.className = 'result ' + (success ? 'success' : 'error');
+            element.innerHTML = `<strong>${success ? '✅ SUCCESS' : '❌ ERROR'}:</strong><br>${message}`;
+            if (data) {
+                element.innerHTML += `<br><br><strong>Details:</strong><br>${JSON.stringify(data, null, 2)}`;
+            }
+            console.log(`${elementId}:`, { success, message, data });
+        }
+
+        function showInfo(elementId, message) {
+            const element = document.getElementById(elementId);
+            element.className = 'result info';
+            element.innerHTML = `<strong>ℹ️ RUNNING:</strong><br>${message}`;
+        }
+
+        // Test 1: Check if function exists
+        async function testFunctionExists() {
+            const resultId = 'test1Result';
+            showInfo(resultId, 'Checking if function endpoint exists...');
+            
+            try {
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({}) // Empty request
+                });
+                
+                const data = await response.json();
+                
+                if (response.status === 400) {
+                    // 400 is expected for missing data - function exists!
+                    showResult(resultId, true, 'Function endpoint is responding!', {
+                        status: response.status,
+                        response: data
+                    });
+                } else if (response.status === 500) {
+                    showResult(resultId, false, 'Function exists but returned 500 error', {
+                        status: response.status,
+                        response: data
+                    });
+                } else {
+                    showResult(resultId, true, 'Function is accessible', {
+                        status: response.status,
+                        response: data
+                    });
+                }
+            } catch (error) {
+                showResult(resultId, false, 'Failed to reach function endpoint', {
+                    error: error.message,
+                    note: 'Function may not be deployed or Netlify site may be offline'
+                });
+            }
+        }
+
+        // Test 2: Minimal contact request
+        async function testMinimalContact() {
+            const resultId = 'test2Result';
+            showInfo(resultId, 'Sending minimal contact request...');
+            
+            const minimalData = {
+                type: 'contact',
+                formData: {
+                    firstName: 'Test',
+                    lastName: 'User',
+                    email: 'test@example.com',
+                    message: 'This is a test message.',
+                    timestamp: new Date().toISOString()
+                }
+            };
+            
+            try {
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(minimalData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult(resultId, true, 'Email sent successfully!', data);
+                } else {
+                    showResult(resultId, false, `Request failed with status ${response.status}`, {
+                        status: response.status,
+                        response: data,
+                        sentData: minimalData
+                    });
+                }
+            } catch (error) {
+                showResult(resultId, false, 'Request failed', {
+                    error: error.message,
+                    sentData: minimalData
+                });
+            }
+        }
+
+        // Test 3: Full contact request
+        async function testFullContact() {
+            const resultId = 'test3Result';
+            showInfo(resultId, 'Sending full contact request...');
+            
+            const fullData = {
+                type: 'contact',
+                formData: {
+                    firstName: 'John',
+                    lastName: 'Doe',
+                    email: 'john.doe@example.com',
+                    subject: 'Test Contact Form',
+                    message: 'This is a full test of the contact form with all fields populated.',
+                    timestamp: new Date().toISOString()
+                },
+                templateData: {
+                    customerName: 'John Doe',
+                    businessName: 'CRBFTN',
+                    businessEmail: 'crabfontain@gmail.com'
+                }
+            };
+            
+            try {
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(fullData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult(resultId, true, 'Email sent successfully!', data);
+                } else {
+                    showResult(resultId, false, `Request failed with status ${response.status}`, {
+                        status: response.status,
+                        response: data
+                    });
+                }
+            } catch (error) {
+                showResult(resultId, false, 'Request failed', {
+                    error: error.message
+                });
+            }
+        }
+
+        // Test 4: Quote request
+        async function testQuoteRequest() {
+            const resultId = 'test4Result';
+            showInfo(resultId, 'Sending quote request...');
+            
+            const quoteData = {
+                type: 'quote',
+                formData: {
+                    firstName: 'Jane',
+                    lastName: 'Smith',
+                    email: 'jane.smith@example.com',
+                    phone: '+27123456789',
+                    items: [
+                        { name: 'Premium Hoodie', size: 'L', price: 599, quantity: 2 },
+                        { name: 'Classic T-Shirt', size: 'M', price: 299, quantity: 1 }
+                    ],
+                    totalAmount: 1497,
+                    timestamp: new Date().toISOString()
+                },
+                templateData: {
+                    customerName: 'Jane Smith',
+                    businessName: 'CRBFTN',
+                    businessEmail: 'crabfontain@gmail.com'
+                }
+            };
+            
+            try {
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(quoteData)
+                });
+                
+                const data = await response.json();
+                
+                if (response.ok) {
+                    showResult(resultId, true, 'Quote email sent successfully!', data);
+                } else {
+                    showResult(resultId, false, `Request failed with status ${response.status}`, {
+                        status: response.status,
+                        response: data
+                    });
+                }
+            } catch (error) {
+                showResult(resultId, false, 'Request failed', {
+                    error: error.message
+                });
+            }
+        }
+
+        // Test 5: Environment check
+        async function testEnvironment() {
+            const resultId = 'test5Result';
+            showInfo(resultId, 'Checking environment configuration...');
+            
+            // This test sends a minimal request and checks the error response
+            // to see if environment variables are mentioned
+            const testData = {
+                type: 'contact',
+                formData: {
+                    firstName: 'Env',
+                    lastName: 'Test',
+                    email: 'test@test.com',
+                    message: 'Environment check',
+                    timestamp: new Date().toISOString()
+                }
+            };
+            
+            try {
+                const response = await fetch('/.netlify/functions/send-email', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(testData)
+                });
+                
+                const data = await response.json();
+                
+                // Check for environment variable errors
+                const envError = data.error && (
+                    data.error.includes('EMAIL_') || 
+                    data.details && data.details.includes('EMAIL_')
+                );
+                
+                if (envError) {
+                    showResult(resultId, false, '❌ Environment variables are missing or misconfigured', {
+                        response: data,
+                        action: 'Please verify environment variables in Netlify dashboard'
+                    });
+                } else if (response.ok) {
+                    showResult(resultId, true, 'Environment variables appear to be configured correctly!', data);
+                } else {
+                    showResult(resultId, false, 'Error occurred, but likely not environment-related', {
+                        status: response.status,
+                        response: data,
+                        note: 'Check error details above for specific issue'
+                    });
+                }
+            } catch (error) {
+                showResult(resultId, false, 'Could not complete environment check', {
+                    error: error.message
+                });
+            }
+        }
+
+        // Auto-run Test 1 on page load
+        window.addEventListener('load', () => {
+            console.log('Page loaded. Running initial diagnostics...');
+            setTimeout(testFunctionExists, 500);
+        });
+    </script>
+</body>
+</html>

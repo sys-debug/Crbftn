@@ -6,6 +6,12 @@
     <title>Clothing Collection - CRBFTN</title>
     <meta name="description" content="Discover CRBFTN's premium clothing collection. Quality apparel from Makhado, Limpopo with South African heritage."
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.png">
+    <link rel="shortcut icon" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -20,13 +26,49 @@
     <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Mobile Menu Function - Available Immediately -->
+    <script>
+        window.mobileMenuToggle = function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                return;
+            }
+            
+            // Create ONLY mobile menu if not found, don't touch the navigation
+            const navContainer = document.getElementById('navigation-container');
+            if (navContainer && !document.getElementById('mobile-menu')) {
+                const mobileMenu = document.createElement('div');
+                mobileMenu.id = 'mobile-menu';
+                mobileMenu.className = 'md:hidden bg-white shadow-lg';
+                mobileMenu.style.cssText = 'position: fixed; top: 64px; left: 0; right: 0; z-index: 99998; max-height: calc(100vh - 64px); overflow-y: auto;';
+                mobileMenu.innerHTML = `
+                    <div class="px-4 py-4">
+                        <a href="index.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                        <a href="about.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                        <a href="products.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Clothing</a>
+                        <a href="gallery.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                        <a href="reviews.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                        <a href="contact.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                    </div>
+                `;
+                navContainer.appendChild(mobileMenu);
+                setTimeout(() => mobileMenu.classList.toggle('hidden'), 10);
+            }
+        }
+        window.toggleMobileMenu = window.mobileMenuToggle;
+    </script>
 </head>
 <body class="bg-gray-50 overflow-x-hidden">
     <!-- Navigation -->
     <div id="navigation-container"></div>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-black via-red-900 to-blue-900 text-white py-24 bg-cover bg-center bg-blend-overlay" style="background-image: url('assets/images/products/sneakers-limited.jpg');">
+    <section class="relative text-white py-24" style="background: url('assets/images/hero/products-hero.webp') center/cover no-repeat; background-attachment: fixed;">
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>
+        
         <div class="floating-element floating-element-1"></div>
         <div class="floating-element floating-element-2"></div>
         
@@ -108,10 +150,12 @@
     <!-- Clothing Grid -->
     <section class="py-16 bg-gray-50">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="product-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8" id="products-grid">
+            <div class="product-grid grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4 gap-4 sm:gap-6 md:gap-8" id="products-grid">
                 <!-- Default clothing while JavaScript loads -->
                 <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="assets/images/products/hoodie-classic.jpg" alt="Premium Hoodie" class="w-full h-48 object-cover">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="assets/images/products/premium-hoodie.webp" alt="Premium Hoodie" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
                     <div class="p-4">
                         <h3 class="font-semibold text-lg mb-2">Premium Hoodie</h3>
                         <p class="text-gray-600 text-sm mb-3">Comfortable premium hoodie perfect for any season</p>
@@ -123,7 +167,9 @@
                 </div>
                 
                 <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="assets/images/products/t-shirt-premium.jpg" alt="Classic Tee" class="w-full h-48 object-cover">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="assets/images/products/classic-tee.webp" alt="Classic Tee" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
                     <div class="p-4">
                         <h3 class="font-semibold text-lg mb-2">Classic Tee</h3>
                         <p class="text-gray-600 text-sm mb-3">Premium cotton t-shirt with CRBFTN branding</p>
@@ -135,7 +181,9 @@
                 </div>
                 
                 <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="assets/images/products/sneakers-limited.jpg" alt="Designer Sneakers" class="w-full h-48 object-cover">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="assets/images/products/crbftn-air-classics.webp" alt="Designer Sneakers" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
                     <div class="p-4">
                         <h3 class="font-semibold text-lg mb-2">Designer Sneakers</h3>
                         <p class="text-gray-600 text-sm mb-3">Limited edition CRBFTN footwear collection</p>
@@ -147,7 +195,9 @@
                 </div>
                 
                 <div class="product-card card-hover bg-white rounded-lg shadow-md overflow-hidden">
-                    <img src="assets/images/products/cap-urban.jpg" alt="CRBFTN Cap" class="w-full h-48 object-cover">
+                    <div class="aspect-square overflow-hidden">
+                        <img src="assets/images/products/snapback-cap.webp" alt="CRBFTN Cap" class="w-full h-full object-cover hover:scale-110 transition-transform duration-300">
+                    </div>
                     <div class="p-4">
                         <h3 class="font-semibold text-lg mb-2">CRBFTN Cap</h3>
                         <p class="text-gray-600 text-sm mb-3">Signature cap with embroidered logo</p>

@@ -1037,3 +1037,120 @@ body.has-sticky-nav {
     visibility: visible !important;
     opacity: 1 !important;
 }
+
+/* ========== SIZE SELECTION STYLES ========== */
+.size-btn {
+    transition: all 0.2s ease-in-out;
+    min-width: 36px;
+    text-align: center;
+    cursor: pointer;
+    user-select: none;
+}
+
+.size-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.size-btn.selected,
+.size-btn.border-red-600 {
+    background-color: var(--red-50);
+    border-color: var(--brand-red) !important;
+    color: var(--brand-red) !important;
+    font-weight: 600;
+}
+
+.size-btn:active {
+    transform: translateY(0);
+}
+
+/* ========== MOBILE PRODUCT GRID ENHANCEMENTS ========== */
+@media (max-width: 768px) {
+    .product-grid {
+        gap: 1rem; /* Smaller gap on tablets */
+    }
+    
+    .product-card {
+        margin-bottom: 0.5rem;
+    }
+    
+    /* Ensure aspect-square works on mobile */
+    .aspect-square {
+        position: relative;
+        width: 100%;
+    }
+    
+    .aspect-square::before {
+        content: '';
+        display: block;
+        padding-top: 100%; /* 1:1 Aspect Ratio */
+    }
+    
+    .aspect-square > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}
+
+@media (max-width: 640px) {
+    .product-grid {
+        gap: 0.75rem; /* Even smaller gap on mobile */
+        padding: 0 0.5rem;
+    }
+    
+    .product-card {
+        border-radius: 12px;
+    }
+    
+    /* Touch-friendly hover effects */
+    .product-card:hover .aspect-square img,
+    .product-card:active .aspect-square img {
+        transform: scale(1.05);
+    }
+}
+
+@media (max-width: 480px) {
+    .product-grid {
+        gap: 0.5rem;
+        grid-template-columns: repeat(2, 1fr); /* Force 2 columns on very small screens */
+    }
+    
+    .product-card .p-4 {
+        padding: 0.75rem;
+    }
+    
+    .product-card h3 {
+        font-size: 0.875rem;
+        margin-bottom: 0.5rem;
+    }
+    
+    .product-card p {
+        font-size: 0.75rem;
+        margin-bottom: 0.75rem;
+    }
+    
+    /* Category scroll products on index page - mobile */
+    .scroll-product-card .aspect-square {
+        position: relative;
+        width: 100%;
+    }
+    
+    .scroll-product-card .aspect-square::before {
+        content: '';
+        display: block;
+        padding-top: 100%;
+    }
+    
+    .scroll-product-card .aspect-square > img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+    }
+}

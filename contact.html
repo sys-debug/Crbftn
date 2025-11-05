@@ -6,6 +6,12 @@
     <title>Contact Us - CRBFTN</title>
     <meta name="description" content="Get in touch with CRBFTN. Located in Makhado, Limpopo. Premium clothing brand with South African heritage.">
     
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="assets/images/logo.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="assets/images/logo.png">
+    <link rel="shortcut icon" href="assets/images/logo.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="assets/images/logo.png">
+    
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     
@@ -20,13 +26,56 @@
     <!-- AOS Animation Library -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+    
+    <!-- Mobile Menu Function - Available Immediately -->
+    <script>
+        // Global mobile menu function - works with both component and fallback
+        window.mobileMenuToggle = function() {
+            const menu = document.getElementById('mobile-menu');
+            if (menu) {
+                menu.classList.toggle('hidden');
+                console.log('Mobile menu toggled:', menu.classList.contains('hidden') ? 'closed' : 'open');
+                return;
+            }
+            
+            // Create ONLY mobile menu if not found, don't touch the navigation
+            console.log('Mobile menu not found, creating mobile menu only...');
+            const navContainer = document.getElementById('navigation-container');
+            if (navContainer && !document.getElementById('mobile-menu')) {
+                const mobileMenu = document.createElement('div');
+                mobileMenu.id = 'mobile-menu';
+                mobileMenu.className = 'md:hidden bg-white shadow-lg';
+                mobileMenu.style.cssText = 'position: fixed; top: 64px; left: 0; right: 0; z-index: 99998; max-height: calc(100vh - 64px); overflow-y: auto;';
+                mobileMenu.innerHTML = `
+                    <div class="px-4 py-4">
+                        <a href="index.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Home</a>
+                        <a href="about.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">About</a>
+                        <a href="products.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Clothing</a>
+                        <a href="gallery.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Gallery</a>
+                        <a href="reviews.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Reviews</a>
+                        <a href="contact.html" class="block py-3 text-gray-700 hover:text-purple-600 transition-colors">Contact</a>
+                    </div>
+                `;
+                navContainer.appendChild(mobileMenu);
+                console.log('Mobile menu fallback created');
+                // Toggle it immediately
+                setTimeout(() => mobileMenu.classList.toggle('hidden'), 10);
+            }
+        }
+        window.toggleMobileMenu = window.mobileMenuToggle;
+    </script>
+    
+    <!-- EmailJS -->
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
 </head>
 <body class="bg-gray-50 overflow-x-hidden">
     <!-- Navigation -->
     <div id="navigation-container"></div>
 
     <!-- Hero Section -->
-    <section class="relative bg-gradient-to-br from-black via-red-900 to-blue-900 text-white py-24 bg-cover bg-center bg-blend-overlay" style="background-image: url('assets/images/products/hoodie-classic.jpg');">
+    <section class="relative text-white py-24" style="background: url('assets/images/hero/contact-hero.webp') center/cover no-repeat; background-attachment: fixed;">
+        <!-- Dark Overlay -->
+        <div class="absolute inset-0 bg-black bg-opacity-70"></div>">
         <div class="floating-element floating-element-1"></div>
         <div class="floating-element floating-element-2"></div>
         
@@ -133,17 +182,14 @@
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path>
                                 </svg>
                                 <div>
-                                    <h3 class="text-lg font-semibold text-green-800">Message Sent Successfully!</h3>
-                                    <p class="text-green-600">Thank you for reaching out. We'll get back to you within 24 hours.</p>
+                                    <h3 class="text-lg font-semibold text-green-800">Email Client Opened!</h3>
+                                    <p class="text-green-600">Your email client should now be open with your message pre-filled. Please send the email to complete your message to us.</p>
+                                    <p class="text-green-600 mt-2"><strong>Alternative:</strong> Email us directly at <a href="mailto:crabfontain@gmail.com" class="text-green-700 underline">crabfontain@gmail.com</a></p>
                                 </div>
                             </div>
                         </div>
                         
-                        <form name="contact" method="POST" data-netlify="true" data-netlify-honeypot="bot-field" onsubmit="return handleContactSubmission(event)" class="space-y-6">
-                            <!-- Hidden fields for Netlify -->
-                            <input type="hidden" name="form-name" value="contact" />
-                            <input type="hidden" name="bot-field" />
-                            <input type="hidden" name="submissionDate" id="submissionDate" />
+                        <form name="contact" onsubmit="return handleContactSubmission(event)" class="space-y-6">
                             
                             <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                                 <div>
@@ -213,11 +259,36 @@
                             </button>
                         </form>
                         
+                        <!-- Direct Contact Alternative -->
+                        <div class="mt-8 p-6 bg-blue-50 border border-blue-200 rounded-lg">
+                            <h3 class="text-lg font-semibold text-blue-800 mb-3">Having Trouble? Contact Us Directly</h3>
+                            <div class="space-y-2">
+                                <p class="text-blue-700">
+                                    <strong>Email:</strong> 
+                                    <a href="mailto:crabfontain@gmail.com" class="text-blue-800 underline hover:text-blue-900">
+                                        crabfontain@gmail.com
+                                    </a>
+                                </p>
+                                <p class="text-blue-700">
+                                    <strong>WhatsApp:</strong> 
+                                    <a href="https://wa.me/27680003578" class="text-blue-800 underline hover:text-blue-900" target="_blank">
+                                        +27 68 000 3578
+                                    </a>
+                                </p>
+                                <p class="text-blue-700"><strong>Location:</strong> Makhado, Limpopo, South Africa</p>
+                            </div>
+                        </div>
+                        
                         <!-- Hidden form for quote requests -->
                         <form name="quote-request" method="POST" data-netlify="true" style="display: none;">
                             <input type="text" name="items" />
                             <input type="text" name="total" />
                             <input type="text" name="timestamp" />
+                            <input type="text" name="itemsCount" />
+                            <input type="email" name="customerEmail" />
+                            <input type="text" name="customerName" />
+                            <input type="text" name="customerMessage" />
+                            <input type="text" name="userAgent" />
                         </form>
                         
                         <!-- Hidden form for customer thank you emails -->
@@ -235,6 +306,9 @@
                             <input type="text" name="total" />
                             <input type="text" name="timestamp" />
                             <input type="text" name="itemsCount" />
+                            <input type="email" name="customerEmail" />
+                            <input type="text" name="customerName" />
+                            <input type="text" name="customerMessage" />
                         </form>
                     </div>
                 </div>
@@ -388,21 +462,13 @@
             }
         });
 
-        // Contact form submission handler with dual emails
-        function handleContactSubmission(event) {
+        // Contact form submission handler - REAL EMAIL SYSTEM
+        async function handleContactSubmission(event) {
             event.preventDefault(); // Prevent default form submission
             
             const form = event.target;
             const successDiv = document.getElementById('contactSuccess');
             const formData = new FormData(form);
-            
-            // Set the submission date
-            const dateField = document.getElementById('submissionDate');
-            const timestamp = new Date().toISOString();
-            if (dateField) {
-                dateField.value = timestamp;
-                formData.set('submissionDate', timestamp);
-            }
             
             // Show loading state
             const submitBtn = form.querySelector('button[type="submit"]');
@@ -410,45 +476,88 @@
             submitBtn.innerHTML = '<svg class="w-5 h-5 mr-2 animate-spin" fill="none" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4" class="opacity-25"></circle><path fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" class="opacity-75"></path></svg>Sending...';
             submitBtn.disabled = true;
             
-            // Submit main contact form (to business)
-            fetch('/', {
-                method: 'POST',
-                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                body: new URLSearchParams(formData).toString()
-            })
-            .then(() => {
-                // Now send thank you email to customer
-                const customerFormData = new FormData();
-                customerFormData.append('form-name', 'contact-customer-thankyou');
-                customerFormData.append('firstName', formData.get('firstName'));
-                customerFormData.append('lastName', formData.get('lastName'));
-                customerFormData.append('email', formData.get('email'));
-                customerFormData.append('subject', formData.get('subject'));
-                customerFormData.append('timestamp', timestamp);
+            try {
+                // Prepare data for Netlify function
+                const contactData = {
+                    type: 'contact',
+                    formData: {
+                        firstName: formData.get('firstName'),
+                        lastName: formData.get('lastName'),
+                        email: formData.get('email'),
+                        subject: formData.get('subject') || 'Contact from CRBFTN Website',
+                        message: formData.get('message'),
+                        timestamp: new Date().toISOString()
+                    }
+                };
                 
-                return fetch('/', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(customerFormData).toString()
-                });
-            })
-            .then(() => {
-                // Show success message
-                form.style.display = 'none';
-                successDiv.style.display = 'block';
-                successDiv.scrollIntoView({ behavior: 'smooth' });
+                // Send to Netlify function
+                let response, result;
+                try {
+                    response = await fetch('/.netlify/functions/send-email', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                        },
+                        body: JSON.stringify(contactData)
+                    });
+                    result = await response.json();
+                } catch (fetchError) {
+                    console.error('Fetch error:', fetchError);
+                    // Fallback to EmailJS if Netlify function fails
+                    return handleEmailJSFallback(contactData.formData);
+                }
                 
+                if (response.ok && result.success) {
+                    // Show success message
+                    successDiv.style.display = 'block';
+                    successDiv.innerHTML = `
+                        <div class="bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded mb-4">
+                            <strong>Message sent successfully!</strong><br>
+                            We'll get back to you within 24 hours. Check your email for confirmation.
+                        </div>
+                    `;
+                    form.reset();
+                } else {
+                    // Try EmailJS fallback if Netlify function fails
+                    console.log('Netlify function failed, trying EmailJS fallback...');
+                    return handleEmailJSFallback(contactData.formData);
+                }
+            } catch (error) {
+                console.error('Contact form error:', error);
+                // Try EmailJS fallback as last resort
+                return handleEmailJSFallback(contactData.formData);
+            } finally {
                 // Reset button
                 submitBtn.innerHTML = originalText;
                 submitBtn.disabled = false;
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-                alert('There was an error sending your message. Please try again or contact us directly at hello@crbftn.co.za');
-                // Reset button
-                submitBtn.innerHTML = originalText;
-                submitBtn.disabled = false;
-            });
+            }
+        }
+        
+        // EmailJS Fallback Function
+        async function handleEmailJSFallback(formData) {
+            // Get form elements
+            const form = document.getElementById('contactForm');
+            const successDiv = document.getElementById('contactSuccess');
+            const submitBtn = form.querySelector('button[type="submit"]');
+            
+            // Show direct contact fallback immediately
+            successDiv.style.display = 'block';
+            successDiv.innerHTML = `
+                <div class="bg-yellow-100 border border-yellow-400 text-yellow-700 px-4 py-3 rounded mb-4">
+                    <strong>Automatic email system is temporarily unavailable.</strong><br><br>
+                    <strong>Please contact us directly:</strong><br>
+                    📧 Email: <a href="mailto:crabfontain@gmail.com" class="underline font-bold">crabfontain@gmail.com</a><br>
+                    📱 WhatsApp: <a href="https://wa.me/27680003578" target="_blank" class="underline font-bold">+27 68 000 3578</a><br><br>
+                    We apologize for the inconvenience and will respond within 24 hours!
+                </div>
+            `;
+            
+            // Reset button
+            submitBtn.innerHTML = 'Send Message';
+            submitBtn.disabled = false;
+            
+            // Scroll to message
+            successDiv.scrollIntoView({ behavior: 'smooth' });
             
             return false;
         }
