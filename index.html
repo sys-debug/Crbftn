@@ -1483,8 +1483,9 @@
                     console.log('Using inline navigation fallback');
                     loadInlineNavigation();
                 } else if (elementId === 'modals-container') {
-                    console.log('Using inline modals fallback');
-                    loadInlineModals();
+                    console.log('Modal already embedded in HTML, skipping fallback');
+                    // DISABLED: Modal is already in the HTML with inline styles
+                    // loadInlineModals();
                 }
             }
         }
@@ -1652,12 +1653,11 @@
             await loadComponent('footer-container', 'components/footer.html');
             await loadComponent('modals-container', 'components/modals.html');
             
-            // ALWAYS ensure modal fallback is loaded (for both local and deployed)
+            // Check if modal loaded successfully
             setTimeout(() => {
                 const modal = document.getElementById('quote-email-modal');
                 if (!modal) {
-                    console.warn('⚠️ Modal not found after component load, loading fallback...');
-                    loadInlineModals();
+                    console.error('❌ Modal not found in DOM!');
                 } else {
                     console.log('✅ Modal successfully loaded');
                 }
