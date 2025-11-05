@@ -1413,21 +1413,28 @@
         // Function to load HTML components
         async function loadComponent(elementId, componentPath) {
             try {
+                console.log(`Loading component: ${componentPath} into ${elementId}`);
                 const response = await fetch(componentPath);
                 if (!response.ok) {
                     throw new Error(`HTTP error! status: ${response.status}`);
                 }
                 const html = await response.text();
-                document.getElementById(elementId).innerHTML = html;
+                const element = document.getElementById(elementId);
+                if (element) {
+                    element.innerHTML = html;
+                    console.log(`✅ Successfully loaded ${componentPath}`);
+                } else {
+                    console.error(`❌ Element ${elementId} not found`);
+                }
             } catch (error) {
                 console.error(`Error loading ${componentPath}:`, error);
-                // Fallback for local file testing
-                if (location.protocol === 'file:') {
-                    if (elementId === 'navigation-container') {
-                        loadInlineNavigation();
-                    } else if (elementId === 'modals-container') {
-                        loadInlineModals();
-                    }
+                // Fallback for local file testing OR if fetch fails
+                if (elementId === 'navigation-container') {
+                    console.log('Using inline navigation fallback');
+                    loadInlineNavigation();
+                } else if (elementId === 'modals-container') {
+                    console.log('Using inline modals fallback');
+                    loadInlineModals();
                 }
             }
         }
