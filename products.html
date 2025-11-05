@@ -286,7 +286,12 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Modals -->`n    <div id="modals-container">`n        <!-- Cart overlay and product modal loaded from components/modals.html -->`n    </div>`n`n    <!-- Quote Email Modal (embedded with inline styles) -->
+    <!-- Modals -->
+    <div id="modals-container">
+        <!-- Cart overlay and product modal loaded from components/modals.html -->
+    </div>
+
+    <!-- Quote Email Modal (embedded with inline styles) -->
         <div id="quote-email-modal" class="modal-hidden modal" onclick="if(event.target === this) closeQuoteEmailModal()" style="display: none !important; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: -9999; transform: translateY(-200%);">
             <div class="modal-content" onclick="event.stopPropagation()" style="position: relative; background: white; padding: 30px; border-radius: 12px; max-width: 450px; width: 90%; margin: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); color: #111;">
                 <button onclick="closeQuoteEmailModal()" class="modal-close-btn" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #666; cursor: pointer; font-size: 24px;">
@@ -335,7 +340,6 @@
                 </form>
             </div>
         </div>
-    </div>
 
 
     <!-- Custom JavaScript -->
@@ -449,4 +453,5 @@
     <script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'99835476556a3e9a',t:'MTc2MjA4MzM0Mi4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script>
 </body>
 </html>
+
 
