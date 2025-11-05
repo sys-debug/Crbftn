@@ -1048,6 +1048,50 @@ body.has-sticky-nav {
     max-height: 90vh;
     overflow-y: auto;
     animation: modalSlideIn 0.3s ease-out;
+    background: white !important;
+    border-radius: 12px !important;
+    padding: 1.5rem !important;
+    max-width: 28rem !important;
+    width: 100% !important;
+    box-shadow: 0 20px 25px -5px rgba(0,0,0,0.1), 0 10px 10px -5px rgba(0,0,0,0.04) !important;
+}
+
+/* Ensure modal form elements are visible */
+#quote-email-modal label {
+    display: block;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #374151;
+    margin-bottom: 0.5rem;
+}
+
+#quote-email-modal input,
+#quote-email-modal textarea {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 1px solid #D1D5DB;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+#quote-email-modal button[type="submit"] {
+    background: linear-gradient(to right, #DC2626, #2563EB) !important;
+    color: white !important;
+    font-weight: 600 !important;
+    padding: 0.75rem 1.5rem !important;
+    border: none !important;
+    border-radius: 0.5rem !important;
+    cursor: pointer !important;
+}
+
+#quote-email-modal button[type="button"] {
+    padding: 0.75rem 1.5rem !important;
+    border: 1px solid #D1D5DB !important;
+    background: white !important;
+    color: #374151 !important;
+    border-radius: 0.5rem !important;
+    cursor: pointer !important;
 }
 
 @keyframes modalSlideIn {
