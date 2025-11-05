@@ -261,49 +261,49 @@
     <div id="modals-container">
         <!-- Quote Email Modal -->
         <div id="quote-email-modal" class="hidden modal" onclick="if(event.target === this) closeQuoteEmailModal()">
-            <div class="modal-content" onclick="event.stopPropagation()">
-                <button onclick="closeQuoteEmailModal()" class="modal-close-btn">
+            <div class="modal-content" onclick="event.stopPropagation()" style="position: relative; background: white; padding: 30px; border-radius: 12px; max-width: 450px; width: 90%; margin: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); color: #111;">
+                <button onclick="closeQuoteEmailModal()" class="modal-close-btn" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #666; cursor: pointer; font-size: 24px;">
                     <svg width="24" height="24" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path>
                     </svg>
                 </button>
-                <div class="modal-header">
-                    <div class="modal-icon">
-                        <svg width="32" height="32" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <div class="modal-header" style="text-align: center; margin-bottom: 20px;">
+                    <div class="modal-icon" style="width: 64px; height: 64px; background: linear-gradient(to right, #DC2626, #2563EB); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 15px;">
+                        <svg width="32" height="32" fill="none" stroke="white" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
                         </svg>
                     </div>
-                    <h3>Request Your Quote</h3>
-                    <p>Enter your email to receive your personalized quote within 24 hours</p>
+                    <h3 style="font-size: 24px; font-weight: bold; color: #111; margin-bottom: 8px;">Request Your Quote</h3>
+                    <p style="color: #666; font-size: 14px;">Enter your email to receive your personalized quote within 24 hours</p>
                 </div>
-                <div id="quote-summary">
-                    <h4>Your Items:</h4>
-                    <div id="quote-items-list"></div>
-                    <div class="quote-total-row">
-                        <span>Total:</span>
-                        <span id="quote-total-display">R0.00</span>
+                <div id="quote-summary" style="margin-bottom: 20px; padding: 15px; background: #f9fafb; border-radius: 8px;">
+                    <h4 style="font-size: 16px; font-weight: bold; color: #111; margin-bottom: 10px;">Your Items:</h4>
+                    <div id="quote-items-list" style="color: #111;"></div>
+                    <div class="quote-total-row" style="display: flex; justify-content: space-between; padding-top: 10px; margin-top: 10px; border-top: 1px solid #ddd; font-weight: bold;">
+                        <span style="color: #111;">Total:</span>
+                        <span id="quote-total-display" style="color: #111;">R0.00</span>
                     </div>
                 </div>
                 <form id="quote-email-form" onsubmit="submitQuoteRequest(event)">
-                    <div class="form-group">
-                        <label for="customer-email">Email Address *</label>
-                        <input type="email" id="customer-email" name="email" required placeholder="your@email.com">
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="customer-email" style="display: block; font-size: 14px; font-weight: 600; color: #111; margin-bottom: 6px;">Email Address *</label>
+                        <input type="email" id="customer-email" name="email" required placeholder="your@email.com" style="width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: white; color: #111;">
                     </div>
-                    <div class="form-group">
-                        <label for="customer-name">Full Name *</label>
-                        <input type="text" id="customer-name" name="name" required placeholder="Your full name">
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="customer-name" style="display: block; font-size: 14px; font-weight: 600; color: #111; margin-bottom: 6px;">Full Name *</label>
+                        <input type="text" id="customer-name" name="name" required placeholder="Your full name" style="width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: white; color: #111;">
                     </div>
-                    <div class="form-group">
-                        <label for="customer-phone">Phone Number *</label>
-                        <input type="tel" id="customer-phone" name="phone" required placeholder="Your phone number">
+                    <div class="form-group" style="margin-bottom: 16px;">
+                        <label for="customer-phone" style="display: block; font-size: 14px; font-weight: 600; color: #111; margin-bottom: 6px;">Phone Number *</label>
+                        <input type="tel" id="customer-phone" name="phone" required placeholder="Your phone number" style="width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: white; color: #111;">
                     </div>
-                    <div class="form-group">
-                        <label for="customer-message">Additional Message (Optional)</label>
-                        <textarea id="customer-message" name="message" rows="3" placeholder="Any special requests or questions..."></textarea>
+                    <div class="form-group" style="margin-bottom: 20px;">
+                        <label for="customer-message" style="display: block; font-size: 14px; font-weight: 600; color: #111; margin-bottom: 6px;">Additional Message (Optional)</label>
+                        <textarea id="customer-message" name="message" rows="3" placeholder="Any special requests or questions..." style="width: 100%; padding: 10px 12px; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; background: white; color: #111; resize: vertical;"></textarea>
                     </div>
-                    <div class="modal-buttons">
-                        <button type="button" onclick="closeQuoteEmailModal()" class="btn-cancel">Cancel</button>
-                        <button type="submit" id="submit-quote-btn" class="btn-submit">Send Quote Request</button>
+                    <div class="modal-buttons" style="display: flex; gap: 12px; margin-top: 20px;">
+                        <button type="button" onclick="closeQuoteEmailModal()" class="btn-cancel" style="flex: 1; padding: 12px; background: white; border: 1px solid #ddd; border-radius: 6px; font-size: 14px; font-weight: 600; color: #666; cursor: pointer;">Cancel</button>
+                        <button type="submit" id="submit-quote-btn" class="btn-submit" style="flex: 1; padding: 12px; background: linear-gradient(to right, #DC2626, #2563EB); border: none; border-radius: 6px; font-size: 14px; font-weight: 600; color: white; cursor: pointer;">Send Quote Request</button>
                     </div>
                 </form>
             </div>
