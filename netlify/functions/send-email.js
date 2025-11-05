@@ -1,10 +1,24 @@
 const nodemailer = require('nodemailer');
 
 exports.handler = async (event, context) => {
+    // Handle CORS
+    if (event.httpMethod === 'OPTIONS') {
+        return {
+            statusCode: 200,
+            headers: {
+                'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Headers': 'Content-Type',
+                'Access-Control-Allow-Methods': 'POST, OPTIONS',
+            },
+            body: ''
+        };
+    }
+
     // Only allow POST requests
     if (event.httpMethod !== 'POST') {
         return {
             statusCode: 405,
+            headers: { 'Access-Control-Allow-Origin': '*' },
             body: JSON.stringify({ error: 'Method not allowed' })
         };
     }
@@ -18,6 +32,7 @@ exports.handler = async (event, context) => {
         if (!type || !formData) {
             return {
                 statusCode: 400,
+                headers: { 'Access-Control-Allow-Origin': '*' },
                 body: JSON.stringify({ error: 'Missing required fields: type, formData' })
             };
         }
@@ -38,6 +53,7 @@ exports.handler = async (event, context) => {
             });
             return {
                 statusCode: 500,
+                headers: { 'Access-Control-Allow-Origin': '*' },
                 body: JSON.stringify({ error: 'SMTP configuration incomplete' })
             };
         }
@@ -64,12 +80,14 @@ exports.handler = async (event, context) => {
             default:
                 return {
                     statusCode: 400,
+                    headers: { 'Access-Control-Allow-Origin': '*' },
                     body: JSON.stringify({ error: 'Invalid email type' })
                 };
         }
 
         return {
             statusCode: 200,
+            headers: { 'Access-Control-Allow-Origin': '*' },
             body: JSON.stringify({ 
                 success: true, 
                 message: `Emails sent successfully`,
@@ -92,6 +110,7 @@ exports.handler = async (event, context) => {
         });
         return {
             statusCode: 500,
+            headers: { 'Access-Control-Allow-Origin': '*' },
             body: JSON.stringify({ 
                 error: 'Failed to send email',
                 details: error.message,
