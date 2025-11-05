@@ -395,9 +395,7 @@
     <!-- Footer -->
     <div id="footer-container"></div>
 
-    <!-- Modals -->
-    <div id="modals-container">
-        <!-- Quote Email Modal -->
+    <!-- Modals -->`n    <div id="modals-container">`n        <!-- Cart overlay and product modal loaded from components/modals.html -->`n    </div>`n`n    <!-- Quote Email Modal (embedded with inline styles) -->
         <div id="quote-email-modal" class="hidden modal" onclick="if(event.target === this) closeQuoteEmailModal()" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0, 0, 0, 0.5); z-index: 1000;">
             <div class="modal-content" onclick="event.stopPropagation()" style="display: block; position: relative; background: white; padding: 30px; border-radius: 12px; max-width: 450px; width: 90%; margin: 20px; box-shadow: 0 10px 40px rgba(0,0,0,0.3); color: #111;">
                 <button onclick="closeQuoteEmailModal()" class="modal-close-btn" style="position: absolute; top: 15px; right: 15px; background: transparent; border: none; color: #666; cursor: pointer; font-size: 24px;">
@@ -538,8 +536,7 @@
         document.addEventListener('DOMContentLoaded', async function() {
             await loadComponent('navigation-container', 'components/navigation.html');
             await loadComponent('footer-container', 'components/footer.html');
-            // DISABLED: Modal embedded in HTML
-            // await loadComponent('modals-container', 'components/modals.html');
+            await loadComponent('modals-container', 'components/modals.html');
             
             // Initialize AOS animations
             if (typeof AOS !== 'undefined') {
